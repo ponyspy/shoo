@@ -1,0 +1,60 @@
+extends ../layout
+include ../_forms.pug
+
+block header_meta
+	- var content_title= 'ДОБАВИТЬ РАБОТУ'
+
+block header_include
+	- var include_libs_css = ['pickmeup.min.css', 'font-awesome.css', 'wysiwyg-editor.min.css']
+	- var include_css = ['add.css']
+	- var include_libs_js = ['jquery.pickmeup.min.js', 'wysiwyg.min.js', 'wysiwyg-editor.min.js', 'jquery-ui.min.js', 'jquery.filedrop.js']
+	- var include_js = ['upload.js', 'editor.js', 'add.js', 'a_events.js']
+
+block sub_menu
+	a.sub_item.back_link(href='/admin/works') Назад
+	span.sub_item.toggle_eng Перевод
+	.sub_right_block
+		input.form_cancel(type='submit', value='Отменить')
+		input.form_submit(type='submit', value='Добавить')
+
+block content
+	.form_block
+		.title= content_title
+		form(action="", method="post", enctype="multipart/form-data")
+			.form_title Название:
+			+form_text_single('title')
+			.form_title Синоним:
+			input(type='text', name='sym')
+			.form_title Год:
+			input(type='number', name='year', value=new Date().getFullYear())
+			.form_title Уровень:
+			+form_text_single('level')
+			.form_title Площадь:
+			+form_text_single('area')
+			.form_title Локация:
+			+form_text_single('location')
+			.form_title Описание:
+			+form_text_multi('description')
+			.form_title Обложка:
+			+form_single_file('poster')(accept='image/jpeg,image/png,image/gif')
+			.form_title Видео YouTube / Vimeo:
+			input(type='text', name='embed')
+			.form_title Изображения:
+			+form_images_upload()
+			.form_title Участники:
+			+form_multiple_select('peoples', peoples)
+			.form_title Категория:
+			+form_single_select('category', categorys)
+			.form_title Тип:
+			select(name='type')
+				option(value='design') Дизайн
+				option(value='architecture') Архитектура
+				option(value='public') Публичный интерьер
+			.form_title Статус:
+			select(name='status')
+				option(value='base') Обычный
+				option(value='hidden') Скрытый
+				option(value='special') Особый
+			.form_title Дата публикации:
+			+form_date('date')
+

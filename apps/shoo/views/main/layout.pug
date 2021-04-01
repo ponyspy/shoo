@@ -1,0 +1,22 @@
+doctype html
+html(lang=locale)
+	head
+		include header
+	body(class=menu_active)
+		.main_block
+			.title_block
+				br
+				br
+				br
+				if (session && session.user_id)
+					.stargazer_block
+							a(href='/auth') stargazer
+							span= ' | '
+							a(href='/auth/logout') выход
+
+			.content_block
+				block content
+
+			.footer_block
+
+		include counters
