@@ -3,11 +3,6 @@
 		.list_item
 			a.item_rm.work(href='#', id=work._id) -- удалить
 			a.item_title(href='/admin/works/edit/' + work._id, class=work.status)= (work.i18n.title.get('ru') || '!!! ПУСТОЕ ПОЛЕ !!!')
-			span= ' | '
-			span.item_images= work.images.length
-			if work.images.some(function(image) { return image.main == true })
-				span= ' + '
-				span.item_poster= 'p'
 			span.item_preview
 				span= ' --> '
 				a(href='/' + (work.type == 'project' ? 'projects' : 'research') + '/' + (work.sym ? work.sym : work._short_id), target='_blank') превью

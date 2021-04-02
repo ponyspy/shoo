@@ -42,7 +42,7 @@ block content
 			.form_title Изображения:
 			+form_images_upload()
 			.form_title Участники:
-			+form_multiple_select('peoples', peoples)
+			+form_multiple_select('peoples', peoples)(field='name')
 			.form_title Категория:
 			+form_single_select('category', categorys)
 			.form_title Тип:

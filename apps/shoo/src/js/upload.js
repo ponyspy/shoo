@@ -55,7 +55,7 @@ $(function() {
 	$(document).on('click', '.image_size', function(event) {
 		var $this = $(this);
 
-		var arr_size = ['0x', '1x', '2x', '3x'];
+		var arr_size = ['0x', '1x', '2x'];
 		var current = $this.children('input').val();
 		var index = arr_size.indexOf(current);
 
