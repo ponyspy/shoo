@@ -38,7 +38,8 @@ module.exports = function(Model, Params) {
 		work._short_id = shortid.generate();
 		work.status = post.status;
 		work.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
-		work.category = post.category;
+		work.build_date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
+		work.category = post.category == 'none' ? undefined : post.category;
 		work.year = post.year;
 		work.type = post.type;
 		work.sym = post.sym ? post.sym : undefined;

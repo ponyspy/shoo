@@ -29,7 +29,7 @@ var userSchema = new Schema({
 var workSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
-	year: Number,
+	build_date: { type: Date, default: Date.now },
 	area: { type: String, trim: true, locale: true },
 	level: { type: String, trim: true, locale: true },
 	location: { type: String, trim: true, locale: true },

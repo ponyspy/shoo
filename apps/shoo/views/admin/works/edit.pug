@@ -26,8 +26,8 @@ block content
 			+form_text_single('title', work)
 			.form_title Синоним:
 			input(type='text', name='sym', value=work.sym, placeholder=work._short_id)
-			.form_title Год:
-			input(type='number', name='year', value=work.year)
+			.form_title Дата сдачи:
+			+form_date('build_date', work.build_date)
 			.form_title Уровень:
 			+form_text_single('level', work)
 			.form_title Площадь:

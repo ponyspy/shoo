@@ -12,7 +12,7 @@ block header_include
 block sub_menu
 	a.sub_item.back_link(href='/admin') Назад
 	span.sub_item.toggle_eng Перевод
-	a.sub_item(href='/office', target='_blank') Превью
+	a.sub_item(href='/about', target='_blank') Превью
 	.sub_right_block
 		input.form_cancel(type='submit', value='Отменить')
 		input.form_submit(type='submit', value='Сохранить')
@@ -21,16 +21,32 @@ block content
 	.form_block
 		.title= content_title
 		form(action='', method='post')
-			.form_title Портфолио (ссылка):
-			input(type='text', name='link', value= content.link)
-			.form_title Адрес:
-			input.ru(type='text', name='adress[ru]', value= content.adress_ru)
-			input.en(type='text', name='adress[en]', value= content.adress_en)
-			.form_title Текст CV:
+			.form_title Контакты:
 			.content
-				textarea.ru.editor(name='cv[ru]')= content.cv_ru
-				textarea.en.editor(name='cv[en]')= content.cv_en
-			.form_title Текст CV (дополнительно):
+				textarea.ru.editor(name='contacts[ru]')= content.contacts_ru
+				textarea.en.editor(name='contacts[en]')= content.contacts_en
+			.form_title Философия:
+			.content
+				textarea.ru.editor(name='philosophy[ru]')= content.philosophy_ru
+				textarea.en.editor(name='philosophy[en]')= content.philosophy_en
+			.form_title Как работаем:
+			.content
+				textarea.ru.editor(name='how_work[ru]')= content.how_work_ru
+				textarea.en.editor(name='how_work[en]')= content.how_work_en
+			.form_title Наши услуги:
+			.content
+				textarea.ru.editor(name='our_service[ru]')= content.our_service_ru
+				textarea.en.editor(name='our_service[en]')= content.our_service_en
+			.form_title Клиенты:
+			.content
+				textarea.ru.editor(name='clients[ru]')= content.clients_ru
+				textarea.en.editor(name='clients[en]')= content.clients_en
+			.form_title Команда:
+			.content
+				textarea.ru.editor(name='our_team[ru]')= content.our_team_ru
+				textarea.en.editor(name='our_team[en]')= content.our_team_en
+			.form_title Вакансии:
 			.content(style='overflow: hidden;')
-				textarea.ru.editor(name='desc[ru]')= content.desc_ru
-				textarea.en.editor(name='desc[en]')= content.desc_en
+				textarea.ru.editor(name='vacancies[ru]')= content.vacancies_ru
+				textarea.en.editor(name='vacancies[en]')= content.vacancies_en
+
