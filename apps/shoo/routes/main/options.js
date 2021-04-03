@@ -8,18 +8,23 @@ module.exports = function(Model, Params) {
 	module.sitemap = function(req, res, next) {
 
 		Work.where('status').ne('hidden').exec(function(err, works) {
-			var smStream = new sitemap.SitemapStream({ hostname: 'https://' + req.hostname });
+			var sm_stream = new sitemap.SitemapStream({ hostname: 'https://' + req.hostname });
+			var links = [
+				{ url: '/' },
+				{ url: '/about' }
+			];
 
-			smStream.write({ url: '/' });
-			smStream.write({ url: '/about' });
-
-			works.forEach(function(work) {
-				smStream.write({ url: '/' + work.type + '/' + (work.sym ? work.sym : work._short_id) })
+			links.forEach(function(link) {
+				sm_stream.write(link);
 			});
 
-			smStream.end();
+			works.forEach(function(work) {
+				sm_stream.write({ url: '/' + work.type + '/' + (work.sym ? work.sym : work._short_id) })
+			});
 
-			smStream.pipe(res).on('error', function(err) {
+			sm_stream.end();
+
+			sm_stream.pipe(res).on('error', function(err) {
 				return next(err);
 			});
 		});
