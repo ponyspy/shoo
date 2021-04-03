@@ -52,6 +52,7 @@ module.exports = function(Model, Params) {
 			work.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 			work.build_date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 			work.category = post.category == 'none' ? undefined : post.category;
+			work.main = post.main == 'none' ? undefined : post.main;
 			work.peoples = post.peoples == 'none' ? [] : post.peoples;
 			work.year = post.year;
 			work.type = post.type;

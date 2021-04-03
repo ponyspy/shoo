@@ -36,6 +36,7 @@ var workSchema = new Schema({
 	brands: { type: String, trim: true, locale: true },
 	poster: { type: String },
 	status: String,
+	main: String,
 	sym: { type: String, trim: true, index: true, unique: true, sparse: true },
 	type: 'String', // design, architecture
 	category: { type: ObjectId, ref: 'Category' },

@@ -44,13 +44,18 @@ block content
 			+form_images_upload(work.images)
 			.form_title Участники:
 			+form_multiple_select('peoples', peoples, work.peoples)(field='name')
-			.form_title Категория:
-			+form_single_select('category', categorys, work.category)
+			.form_title На главной:
+			select(name='main')
+				option(value='none') нет
+				option(value='slider', selected= work.main == 'slider' && 'slider') В слайдере
+				option(value='column', selected= work.main == 'column' && 'column') В колонке
 			.form_title Тип:
 			select(name='type')
 				option(value='design', selected= work.type == 'design' && 'design') Дизайн
 				option(value='architecture', selected= work.type == 'architecture' && 'architecture') Архитектура
 				option(value='public', selected= work.type == 'public' && 'public') Публичный интерьер
+			.form_title Категория:
+			+form_single_select('category', categorys, work.category)
 			.form_title Статус:
 			select(name='status')
 				option(value='base') Обычный
