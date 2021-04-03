@@ -75,10 +75,8 @@ var awardSchema = new Schema({
 
 var eventSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
-	s_title: { type: String, trim: true, locale: true },
-	place: { type: String, trim: true, locale: true },
-	link: String,
-	year: Number,
+	description: { type: String, trim: true, locale: true },
+	poster: { type: String },
 	status: String,
 	_short_id: { type: String, unique: true, index: true, sparse: true },
 	date: { type: Date, default: Date.now },

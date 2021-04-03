@@ -1,5 +1,6 @@
 var shortid = require('shortid');
 var moment = require('moment');
+var async = require('async');
 
 module.exports = function(Model, Params) {
 	var module = {};
@@ -7,6 +8,7 @@ module.exports = function(Model, Params) {
 	var Event = Model.Event;
 
 	var checkNested = Params.locale.checkNested;
+	var uploadImage = Params.upload.image;
 
 
 	module.index = function(req, res, next) {
@@ -16,15 +18,14 @@ module.exports = function(Model, Params) {
 
 	module.form = function(req, res, next) {
 		var post = req.body;
-		var file = req.file;
+		var files = req.files;
+		console.log(files)
 
 		var event = new Event();
 
 		event._short_id = shortid.generate();
 		event.status = post.status;
 		event.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
-		event.year = post.year;
-		event.link = post.link;
 
 		var locales = post.en ? ['ru', 'en'] : ['ru'];
 
@@ -32,17 +33,20 @@ module.exports = function(Model, Params) {
 			checkNested(post, [locale, 'title'])
 				&& event.setPropertyLocalised('title', post[locale].title, locale);
 
-			checkNested(post, [locale, 's_title'])
-				&& event.setPropertyLocalised('s_title', post[locale].s_title, locale);
-
-			checkNested(post, [locale, 'place'])
-				&& event.setPropertyLocalised('place', post[locale].place, locale);
+			checkNested(post, [locale, 'description'])
+				&& event.setPropertyLocalised('description', post[locale].description, locale);
 		});
 
-		event.save(function(err, event) {
+		async.series([
+			async.apply(uploadImage, event, 'events', 'poster', 1200, files.poster && files.poster[0], null),
+		], function(err, results) {
 			if (err) return next(err);
 
-			res.redirect('/admin/events');
+			event.save(function(err, event) {
+				if (err) return next(err);
+
+				res.redirect('/admin/events');
+			});
 		});
 	};
 

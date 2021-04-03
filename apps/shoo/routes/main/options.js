@@ -14,7 +14,7 @@ module.exports = function(Model, Params) {
 			smStream.write({ url: '/about' });
 
 			works.forEach(function(work) {
-				smStream.write({ url: '/works/' + (work.sym ? work.sym : work._short_id) })
+				smStream.write({ url: '/' + work.type + '/' + (work.sym ? work.sym : work._short_id) })
 			});
 
 			smStream.end();

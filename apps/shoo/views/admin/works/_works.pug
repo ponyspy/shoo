@@ -5,7 +5,7 @@
 			a.item_title(href='/admin/works/edit/' + work._id, class=work.status)= (work.i18n.title.get('ru') || '!!! ПУСТОЕ ПОЛЕ !!!')
 			span.item_preview
 				span= ' --> '
-				a(href='/' + (work.type == 'project' ? 'projects' : 'research') + '/' + (work.sym ? work.sym : work._short_id), target='_blank') превью
+				a(href='/' + work.type + '/' + (work.sym ? work.sym : work._short_id), target='_blank') превью
 
 .list_counter
 	a.list_back(href='#'): b назад

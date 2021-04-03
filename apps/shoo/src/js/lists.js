@@ -178,7 +178,7 @@ $(function() {
 		.on('click', '.item_rm.user', {path:'/admin/users/remove', description: 'Удалить пользователя?'}, remove)
 		.on('click', '.item_rm.work', {path:'/admin/works/remove', description: 'Удалить работу?'}, remove)
 		.on('click', '.item_rm.publication', {path:'/admin/publications/remove', description: 'Удалить публикацию?'}, remove)
-		.on('click', '.item_rm.event', {path:'/admin/events/remove', description: 'Удалить событие?'}, remove)
+		.on('click', '.item_rm.event', {path:'/admin/events/remove', description: 'Удалить новость?'}, remove)
 		.on('click', '.item_rm.award', {path:'/admin/awards/remove', description: 'Удалить награду?'}, remove)
 		.on('click', '.item_rm.people', {path:'/admin/peoples/remove', description: 'Удалить человека?'}, remove)
 		.on('click', '.item_rm.category', {path:'/admin/categorys/remove', description: 'Удалить кутегорию?'}, remove);

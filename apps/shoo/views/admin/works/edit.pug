@@ -13,7 +13,7 @@ block header_include
 block sub_menu
 	a.sub_item.back_link(href='/admin/works') Назад
 	span.sub_item.toggle_eng Перевод
-	a.sub_item(href='/' + (work.type == 'project' ? 'projects' : 'research') + '/' + work._short_id, target='_blank') Превью
+	a.sub_item(href='/' + work.type + '/' + work._short_id, target='_blank') Превью
 	.sub_right_block
 		input.form_cancel(type='submit', value='Отменить')
 		input.form_submit(type='submit', value='Сохранить')
