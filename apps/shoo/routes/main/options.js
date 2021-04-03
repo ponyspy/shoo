@@ -8,13 +8,13 @@ module.exports = function(Model, Params) {
 	module.sitemap = function(req, res, next) {
 
 		Work.where('status').ne('hidden').exec(function(err, works) {
-			var arr_works = events.map(function(work) {
+			var arr_works = works.map(function(work) {
 				return {
 					url: '/works/' + (work.sym ? work.sym : work._short_id)
 				};
 			});
 
-			var site_map = sitemap.createSitemap ({
+			var site_map = sitemap.createSitemap({
 				hostname: 'https://' + req.hostname,
 				// cacheTime: 600000,
 				urls: [
