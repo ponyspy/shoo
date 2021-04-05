@@ -3,17 +3,17 @@ var pug = require('pug');
 module.exports = function(Model) {
 	var module = {};
 
-	var Event = Model.Event;
+	var News = Model.News;
 
 
 	module.index = function(req, res, next) {
-		Event.find().sort('-date').limit(10).exec(function(err, events) {
+		News.find().sort('-date').limit(10).exec(function(err, news) {
 			if (err) return next(err);
 
-			Event.count().exec(function(err, count) {
+			News.count().exec(function(err, count) {
 				if (err) return next(err);
 
-				res.render('admin/events', {events: events, count: Math.ceil(count / 10)});
+				res.render('admin/news', {news: news, count: Math.ceil(count / 10)});
 			});
 		});
 	};
@@ -23,8 +23,8 @@ module.exports = function(Model) {
 		var post = req.body;
 
 		var Query = (post.context.text && post.context.text !== '')
-			? Event.find({ $text : { $search : post.context.text } } )
-			: Event.find();
+			? News.find({ $text : { $search : post.context.text } } )
+			: News.find();
 
 		if (post.context.status && post.context.status != 'all') {
 			Query.where('status').equals(post.context.status);
@@ -33,19 +33,19 @@ module.exports = function(Model) {
 		Query.count(function(err, count) {
 			if (err) return next(err);
 
-			Query.find().sort('-date').skip(+post.context.skip).limit(+post.context.limit).exec(function(err, events) {
+			Query.find().sort('-date').skip(+post.context.skip).limit(+post.context.limit).exec(function(err, news) {
 				if (err) return next(err);
 
-				if (events.length > 0) {
+				if (news.length > 0) {
 					var opts = {
-						events: events,
+						news: news,
 						load_list: true,
 						count: Math.ceil(count / 10),
 						skip: +post.context.skip,
 						compileDebug: false, debug: false, cache: true, pretty: false
 					};
 
-					res.send(pug.renderFile(__app_root + '/views/admin/events/_events.pug', opts));
+					res.send(pug.renderFile(__app_root + '/views/admin/news/_news.pug', opts));
 				} else {
 					res.send('end');
 				}

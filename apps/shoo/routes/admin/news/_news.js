@@ -8,7 +8,7 @@ var Params = {
 	helpers: require('../_params/helpers')
 };
 
-var events = {
+var news = {
 	list: require('./list.js')(Model),
 	add: require('./add.js')(Model, Params),
 	edit: require('./edit.js')(Model, Params),
@@ -19,19 +19,19 @@ module.exports = (function() {
 	var router = express.Router();
 
 	router.route('/')
-		.get(events.list.index)
-		.post(events.list.get_list);
+		.get(news.list.index)
+		.post(news.list.get_list);
 
 	router.route('/add')
-		.get(events.add.index)
-		.post(events.add.form);
+		.get(news.add.index)
+		.post(news.add.form);
 
-	router.route('/edit/:event_id')
-		.get(events.edit.index)
-		.post(events.edit.form);
+	router.route('/edit/:news_item_id')
+		.get(news.edit.index)
+		.post(news.edit.form);
 
 	router.route('/remove')
-		.post(events.remove.index);
+		.post(news.remove.index);
 
 	return router;
 })();

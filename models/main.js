@@ -74,7 +74,7 @@ var awardSchema = new Schema({
 	date: { type: Date, default: Date.now },
 });
 
-var eventSchema = new Schema({
+var newsSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
 	poster: { type: String },
@@ -109,7 +109,7 @@ projectSchema.index({'date': -1});
 projectSchema.index({'title.value': 'text', 'description.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 publicationSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 awardSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
-eventSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
+newsSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 peopleSchema.index({'name.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 categorySchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 
@@ -124,7 +124,7 @@ userSchema.plugin(mongooseBcrypt, { fields: ['password'] });
 projectSchema.plugin(mongooseLocale);
 publicationSchema.plugin(mongooseLocale);
 awardSchema.plugin(mongooseLocale);
-eventSchema.plugin(mongooseLocale);
+newsSchema.plugin(mongooseLocale);
 peopleSchema.plugin(mongooseLocale);
 categorySchema.plugin(mongooseLocale);
 
@@ -138,6 +138,7 @@ module.exports.User = mongoose.model('User', userSchema);
 module.exports.Project = mongoose.model('Project', projectSchema);
 module.exports.Publication = mongoose.model('Publication', publicationSchema);
 module.exports.Award = mongoose.model('Award', awardSchema);
-module.exports.Event = mongoose.model('Event', eventSchema);
+module.exports.News = mongoose.model('News', newsSchema);
 module.exports.People = mongoose.model('People', peopleSchema);
 module.exports.Category = mongoose.model('Category', categorySchema);
+
