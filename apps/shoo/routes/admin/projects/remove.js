@@ -1,3 +1,4 @@
+var async = require('async');
 var rimraf = require('rimraf');
 
 module.exports = function(Model) {
@@ -9,14 +10,20 @@ module.exports = function(Model) {
 	module.index = function(req, res, next) {
 		var id = req.body.id;
 
-		Project.findByIdAndRemove(id).exec(function(err) {
+		async.parallel([
+			function(callback) {
+				Award.update({'projects': id}, { $pull: { 'projects': id } }, { 'multi': true }).exec(callback);
+			},
+			function(callback) {
+				Project.findByIdAndRemove(id).exec(callback);
+			},
+			function(callback) {
+				rimraf(__glob_root + '/public/cdn/' + __app_name + '/projects/' + id, { glob: false }, callback);
+			}
+		], function(err) {
 			if (err) return next(err);
 
-			rimraf(__glob_root + '/public/cdn/' + __app_name + '/projects/' + id, { glob: false }, function(err) {
-				if (err) return next(err);
-
-				res.send('ok');
-			});
+			res.send('ok');
 		});
 
 	};

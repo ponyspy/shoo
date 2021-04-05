@@ -23,7 +23,7 @@ block content
 		form(action="", method="post")
 			.form_title Название:
 			+form_text_single('title', award)
-			.form_title Работы:
+			.form_title Проекты:
 			+form_multiple_select('projects', projects, award.projects)
 			.form_title Статус:
 			select(name='status')

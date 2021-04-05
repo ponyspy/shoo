@@ -12,7 +12,7 @@ module.exports = function(Model) {
 
 		async.parallel([
 			function(callback) {
-				Project.update({'categorys': id}, { $pull: { 'categorys': id } }, { 'multi': true }).exec(callback);
+				Project.update({'category': id}, { $unset: { 'category': 1 } }, { 'multi': true }).exec(callback);
 			},
 			function(callback) {
 				Category.findByIdAndRemove(id).exec(callback);
