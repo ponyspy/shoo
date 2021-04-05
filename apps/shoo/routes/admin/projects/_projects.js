@@ -8,7 +8,7 @@ var Params = {
 	helpers: require('../_params/helpers')
 };
 
-var works = {
+var projects = {
 	list: require('./list.js')(Model),
 	add: require('./add.js')(Model, Params),
 	edit: require('./edit.js')(Model, Params),
@@ -19,19 +19,19 @@ module.exports = (function() {
 	var router = express.Router();
 
 	router.route('/')
-		.get(works.list.index)
-		.post(works.list.get_list);
+		.get(projects.list.index)
+		.post(projects.list.get_list);
 
 	router.route('/add')
-		.get(works.add.index)
-		.post(works.add.form);
+		.get(projects.add.index)
+		.post(projects.add.form);
 
-	router.route('/edit/:work_id')
-		.get(works.edit.index)
-		.post(works.edit.form);
+	router.route('/edit/:project_id')
+		.get(projects.edit.index)
+		.post(projects.edit.form);
 
 	router.route('/remove')
-		.post(works.remove.index);
+		.post(projects.remove.index);
 
 	return router;
 })();

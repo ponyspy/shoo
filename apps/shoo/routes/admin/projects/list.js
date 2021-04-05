@@ -3,17 +3,17 @@ var pug = require('pug');
 module.exports = function(Model) {
 	var module = {};
 
-	var Work = Model.Work;
+	var Project = Model.Project;
 
 
 	module.index = function(req, res, next) {
-		Work.find().sort('-date').limit(10).exec(function(err, works) {
+		Project.find().sort('-date').limit(10).exec(function(err, projects) {
 			if (err) return next(err);
 
-			Work.count().exec(function(err, count) {
+			Project.count().exec(function(err, count) {
 				if (err) return next(err);
 
-				res.render('admin/works', {works: works, count: Math.ceil(count / 10)});
+				res.render('admin/projects', {projects: projects, count: Math.ceil(count / 10)});
 			});
 		});
 	};
@@ -23,8 +23,8 @@ module.exports = function(Model) {
 		var post = req.body;
 
 		var Query = (post.context.text && post.context.text !== '')
-			? Work.find({ $text : { $search : post.context.text } } )
-			: Work.find();
+			? Project.find({ $text : { $search : post.context.text } } )
+			: Project.find();
 
 		if (post.context.type && post.context.type != 'all') {
 			Query.where('type').equals(post.context.type);
@@ -37,19 +37,19 @@ module.exports = function(Model) {
 		Query.count(function(err, count) {
 			if (err) return next(err);
 
-			Query.find().sort('-date').skip(+post.context.skip).limit(+post.context.limit).exec(function(err, works) {
+			Query.find().sort('-date').skip(+post.context.skip).limit(+post.context.limit).exec(function(err, projects) {
 				if (err) return next(err);
 
-				if (works.length > 0) {
+				if (projects.length > 0) {
 					var opts = {
-						works: works,
+						projects: projects,
 						load_list: true,
 						count: Math.ceil(count / 10),
 						skip: +post.context.skip,
 						compileDebug: false, debug: false, cache: true, pretty: false
 					};
 
-					res.send(pug.renderFile(__app_root + '/views/admin/works/_works.pug', opts));
+					res.send(pug.renderFile(__app_root + '/views/admin/projects/_projects.pug', opts));
 				} else {
 					res.send('end');
 				}

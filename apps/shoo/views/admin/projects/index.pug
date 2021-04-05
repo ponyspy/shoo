@@ -1,7 +1,7 @@
 extends ../layout
 
 block header_meta
-	- var content_title= 'РАБОТЫ'
+	- var content_title= 'ПРОЕКТЫ'
 
 block header_include
 	- var include_css = ['add.css']
@@ -17,8 +17,9 @@ block sub_menu
 			.drop_title Тип
 			.drop_inner
 				.drop_item(class='all').select Все
-				.drop_item(class='project') Проекты
-				.drop_item(class='research') Исследования
+				.drop_item(class='design') Дизайн
+				.drop_item(class='architecture') Архиектура
+				.drop_item(class='public') Публичный интерьер
 
 		.sub_drop.status(style='z-index: 1;')
 			.drop_title Статус
@@ -26,15 +27,14 @@ block sub_menu
 				.drop_item(class='all').select Все
 				.drop_item(class='base') Обычный
 				.drop_item(class='hidden') Скрытый
-				.drop_item(class='special') Особый
 
 		input.sub_search(type='text', placeholder='Поиск...')
 
 block content
 	.title= content_title
 	br
-	a.add(href='/admin/works/add') + Добавить работу
+	a.add(href='/admin/projects/add') + Добавить проект
 	br
 	br
 	.lists_block
-		include _works.pug
+		include _projects.pug

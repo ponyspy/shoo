@@ -27,10 +27,13 @@ block content
 			select(name='type')
 				option(value='architect', selected= people.type == 'architect' && 'architect') Архитектор
 				option(value='designer', selected= people.type == 'designer' && 'designer') Дизайнер
+				option(value='3d', selected= people.type == '3d' && '3d') 3D
+				option(value='photographer', selected= people.type == 'photographer' && 'photographer') Фотограф
 			.form_title Статус:
 			select(name='status')
 				option(value='base') Обычный
 				option(value='hidden', selected= people.status == 'hidden' && 'hidden') Скрытый
+				option(value='special', selected= people.status == 'special' && 'special') Особый
 			.form_title Дата публикации:
 			+form_date('date', people.date)
 

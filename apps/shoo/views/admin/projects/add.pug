@@ -2,7 +2,7 @@ extends ../layout
 include ../_forms.pug
 
 block header_meta
-	- var content_title= 'ДОБАВИТЬ РАБОТУ'
+	- var content_title= 'ДОБАВИТЬ ПРОЕКТ'
 
 block header_include
 	- var include_libs_css = ['pickmeup.min.css', 'font-awesome.css', 'wysiwyg-editor.min.css']
@@ -11,7 +11,7 @@ block header_include
 	- var include_js = ['upload.js', 'editor.js', 'add.js', 'a_events.js']
 
 block sub_menu
-	a.sub_item.back_link(href='/admin/works') Назад
+	a.sub_item.back_link(href='/admin/projects') Назад
 	span.sub_item.toggle_eng Перевод
 	.sub_right_block
 		input.form_cancel(type='submit', value='Отменить')

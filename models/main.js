@@ -26,7 +26,7 @@ var userSchema = new Schema({
 	date: {type: Date, default: Date.now},
 });
 
-var workSchema = new Schema({
+var projectSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
 	build_date: { type: Date, default: Date.now },
@@ -68,7 +68,7 @@ var publicationSchema = new Schema({
 
 var awardSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
-	works: [{ type: ObjectId, ref: 'Work' }],
+	projects: [{ type: ObjectId, ref: 'Project' }],
 	status: String,
 	_short_id: { type: String, unique: true, index: true, sparse: true },
 	date: { type: Date, default: Date.now },
@@ -105,8 +105,8 @@ var categorySchema = new Schema({
 // ------------------------
 
 
-workSchema.index({'date': -1});
-workSchema.index({'title.value': 'text', 'description.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
+projectSchema.index({'date': -1});
+projectSchema.index({'title.value': 'text', 'description.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 publicationSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 awardSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 eventSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
@@ -121,7 +121,7 @@ categorySchema.index({'title.value': 'text'}, {language_override: 'lg', default_
 
 userSchema.plugin(mongooseBcrypt, { fields: ['password'] });
 
-workSchema.plugin(mongooseLocale);
+projectSchema.plugin(mongooseLocale);
 publicationSchema.plugin(mongooseLocale);
 awardSchema.plugin(mongooseLocale);
 eventSchema.plugin(mongooseLocale);
@@ -135,7 +135,7 @@ categorySchema.plugin(mongooseLocale);
 
 
 module.exports.User = mongoose.model('User', userSchema);
-module.exports.Work = mongoose.model('Work', workSchema);
+module.exports.Project = mongoose.model('Project', projectSchema);
 module.exports.Publication = mongoose.model('Publication', publicationSchema);
 module.exports.Award = mongoose.model('Award', awardSchema);
 module.exports.Event = mongoose.model('Event', eventSchema);

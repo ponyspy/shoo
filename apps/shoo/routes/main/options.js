@@ -3,11 +3,11 @@ var sitemap = require('sitemap');
 module.exports = function(Model, Params) {
 	var module = {};
 
-	var Work = Model.Work;
+	var Project = Model.Project;
 
 	module.sitemap = function(req, res, next) {
 
-		Work.where('status').ne('hidden').exec(function(err, works) {
+		Project.where('status').ne('hidden').exec(function(err, projects) {
 			var sm_stream = new sitemap.SitemapStream({ hostname: 'https://' + req.hostname });
 			var links = [
 				{ url: '/' },
@@ -18,8 +18,8 @@ module.exports = function(Model, Params) {
 				sm_stream.write(link);
 			});
 
-			works.forEach(function(work) {
-				sm_stream.write({ url: '/' + work.type + '/' + (work.sym ? work.sym : work._short_id) })
+			projects.forEach(function(project) {
+				sm_stream.write({ url: '/' + project.type + '/' + (project.sym ? project.sym : project._short_id) })
 			});
 
 			sm_stream.end();

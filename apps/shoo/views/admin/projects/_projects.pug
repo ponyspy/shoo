@@ -1,0 +1,19 @@
+.list_items
+	each project in projects
+		.list_item
+			a.item_rm.project(href='#', id=project._id) -- удалить
+			a.item_title(href='/admin/projects/edit/' + project._id, class=project.status)= (project.i18n.title.get('ru') || '!!! ПУСТОЕ ПОЛЕ !!!')
+			span.item_preview
+				span= ' --> '
+				a(href='/projects/' + project.type + '/' + (project.sym ? project.sym : project._short_id), target='_blank') превью
+
+.list_counter
+	a.list_back(href='#'): b назад
+	span= ' - '
+	select.list_select
+		- var i = 0;
+		while i < count
+			option(value=i selected= (i == skip / 10) )= i+1
+			- i++
+	span= ' - '
+	a.list_next(href='#'): b вперед

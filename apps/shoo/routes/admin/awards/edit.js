@@ -4,7 +4,7 @@ module.exports = function(Model, Params) {
 	var module = {};
 
 	var Award = Model.Award;
-	var Work = Model.Work;
+	var Project = Model.Project;
 
 	var checkNested = Params.locale.checkNested;
 
@@ -15,10 +15,10 @@ module.exports = function(Model, Params) {
 		Award.findById(id).exec(function(err, award) {
 			if (err) return next(err);
 
-			Work.find().exec(function(err, works) {
+			Project.find().exec(function(err, projects) {
 				if (err) return next(err);
 
-				res.render('admin/awards/edit.pug', { award: award, works: works });
+				res.render('admin/awards/edit.pug', { award: award, projects: projects });
 			});
 		});
 
@@ -35,7 +35,7 @@ module.exports = function(Model, Params) {
 
 			award.status = post.status;
 			award.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
-			award.works = post.works.filter(function(work) { return work != 'none'; });
+			award.projects = post.projects.filter(function(project) { return project != 'none'; });
 
 			var locales = post.en ? ['ru', 'en'] : ['ru'];
 

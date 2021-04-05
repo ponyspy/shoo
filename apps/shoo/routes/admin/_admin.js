@@ -5,7 +5,7 @@ var upload = multer({ dest: __glob_root + '/uploads/' });
 
 var admin = {
 	main: require('./main.js'),
-	works: require('./works/_works.js'),
+	projects: require('./projects/_projects.js'),
 	publications: require('./publications/_publications.js'),
 	awards: require('./awards/_awards.js'),
 	events: require('./events/_events.js'),
@@ -31,7 +31,7 @@ module.exports = (function() {
 		.get(checkAuth, admin.cv.edit)
 		.post(checkAuth, admin.cv.edit_form);
 
-	router.use('/works', checkAuth, upload.fields([ { name: 'poster' } ]), admin.works);
+	router.use('/projects', checkAuth, upload.fields([ { name: 'poster' } ]), admin.projects);
 	router.use('/publications', checkAuth, admin.publications);
 	router.use('/awards', checkAuth, admin.awards);
 	router.use('/events', checkAuth, upload.fields([ { name: 'poster' } ]), admin.events);
