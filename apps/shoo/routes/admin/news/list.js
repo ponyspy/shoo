@@ -10,7 +10,7 @@ module.exports = function(Model) {
 		News.find().sort('-date').limit(10).exec(function(err, news) {
 			if (err) return next(err);
 
-			News.count().exec(function(err, count) {
+			News.countDocuments().exec(function(err, count) {
 				if (err) return next(err);
 
 				res.render('admin/news', {news: news, count: Math.ceil(count / 10)});
@@ -30,7 +30,7 @@ module.exports = function(Model) {
 			Query.where('status').equals(post.context.status);
 		}
 
-		Query.count(function(err, count) {
+		Query.countDocuments(function(err, count) {
 			if (err) return next(err);
 
 			Query.find().sort('-date').skip(+post.context.skip).limit(+post.context.limit).exec(function(err, news) {

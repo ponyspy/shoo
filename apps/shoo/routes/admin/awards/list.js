@@ -10,7 +10,7 @@ module.exports = function(Model) {
 		Award.find().sort('-date').limit(10).exec(function(err, awards) {
 			if (err) return next(err);
 
-			Award.count().exec(function(err, count) {
+			Award.countDocuments().exec(function(err, count) {
 				if (err) return next(err);
 
 				res.render('admin/awards', {awards: awards, count: Math.ceil(count / 10)});
@@ -30,7 +30,7 @@ module.exports = function(Model) {
 			Query.where('status').equals(post.context.status);
 		}
 
-		Query.count(function(err, count) {
+		Query.countDocuments(function(err, count) {
 			if (err) return next(err);
 
 			Query.find().sort('-date').skip(+post.context.skip).limit(+post.context.limit).exec(function(err, awards) {
