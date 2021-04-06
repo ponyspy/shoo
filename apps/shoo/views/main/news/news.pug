@@ -1,0 +1,13 @@
+extends ../layout
+
+block header_meta
+	- var content_title = 'SHOO | News'
+	- var content_description= ''
+	- var menu_active = 'news'
+
+block header_include
+	- var include_css = ['news_item.css']
+	- var include_js = ['news_item.js']
+
+block content
+	h1 SHOO News
