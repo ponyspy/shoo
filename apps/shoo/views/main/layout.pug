@@ -5,18 +5,57 @@ html(lang=locale)
 	body(class=menu_active)
 		.main_block
 			.title_block
-				br
-				br
-				br
-				if (session && session.user_id)
-					.stargazer_block
-							a(href='/auth') stargazer
-							span= ' | '
-							a(href='/auth/logout') выход
+				a.logo_main(href='/')
+				a(href='/projects/design') Design
+				a(href='/projects/architecrure') Architecrure
+				a(href='/projects/public-interiors') Architecrure
+				a(href='/projects') All Projects
+				.menu_open
+
+				.menu_block
+					a(href='/news') News
+					a(href='/about') About
+					a(href='/about#contacts') Contacts
+					a(href='/about#publications') Publications
+					a(href='/about#team') Team
+					a(href='/about#vacancies') Vacancies
+					a(href='/about#awards') Awards
+
+					if (session && session.user_id)
+						.stargazer_block
+								a(href='/auth') stargazer
+								span= ' | '
+								a(href='/auth/logout') выход
+
+					.locale_block
+						a(href='/lang/ru', class=(locale == 'ru' ? 'active' : '')) Ru
+						a(href='/lang/en', class=(locale == 'en' ? 'active' : '')) En
+
+					.search_open Search
 
 			.content_block
 				block content
 
 			.footer_block
+				.column.social
+					a(href='#') Facebook
+					a(href='#') Instagram
+					a(href='#') Pinterest
+					a(href='#') Behance
+
+				.column.contacts
+					div +7 985 187 13 41
+					br
+					div General Enquiries:
+					div: a(href='mailto:info@studioshoo.com') info@studioshoo.com
+
+				.column.contacts
+					div Jobs & Internships:
+					div: a(href='mailto:hr@studioshoo.com') hr@studioshoo.com
+					br
+					div PR: #[a(href='mailto:pr@studioshoo.com') pr@studioshoo.com]
+
+				.column.copy Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 		include counters
+
