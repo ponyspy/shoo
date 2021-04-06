@@ -5,41 +5,47 @@ html(lang=locale)
 	body(class=menu_active)
 		.main_block
 			.title_block
-				a.logo_main(href='/')
-				a(href='/projects/design') Design
-				a(href='/projects/architecrure') Architecrure
-				a(href='/projects/public-interiors') Architecrure
-				a(href='/projects') All Projects
-				.menu_open
+				a.logo(href='/'): img(src='/stuff/shoo/icons/logo.svg')
 
-				.menu_block
-					a(href='/news') News
-					a(href='/about') About
-					a(href='/about#contacts') Contacts
-					a(href='/about#publications') Publications
-					a(href='/about#team') Team
-					a(href='/about#vacancies') Vacancies
-					a(href='/about#awards') Awards
+				a.category(href='/projects/design') Design
+				a.category(href='/projects/architecrure') Architecrure
+				a.category(href='/projects/public-interiors') Public Interiors
+				a.category(href='/projects') All Projects
 
-					if (session && session.user_id)
-						.stargazer_block
-								a(href='/auth') stargazer
-								span= ' | '
-								a(href='/auth/logout') выход
+				.menu_drop
+					span
+					span
+					span
+					span
 
-					.locale_block
-						a(href='/lang/ru', class=(locale == 'ru' ? 'active' : '')) Ru
-						a(href='/lang/en', class=(locale == 'en' ? 'active' : '')) En
+			.menu_block
+				a.menu_item(href='/news') News
+				a.menu_item(href='/about') About
+				a.menu_item(href='/about#contacts') Contacts
+				a.menu_item(href='/about#publications') Publications
+				a.menu_item(href='/about#team') Team
+				a.menu_item(href='/about#vacancies') Vacancies
+				a.menu_item(href='/about#awards') Awards
 
-					.search_open Search
+				if (session && session.user_id)
+					.stargazer_block
+							a(href='/auth') stargazer
+							span= ' | '
+							a(href='/auth/logout') выход
+
+				.locale_block
+					a(href='/lang/ru', class=(locale == 'ru' ? 'active' : '')) Ru
+					a(href='/lang/en', class=(locale == 'en' ? 'active' : '')) En
+
+				.search_open Search
 
 			.content_block
 				block content
 
 			.footer_block
 				.column.social
-					a(href='https://www.instagram.com/studio_shoo', target='_blank') Facebook
-					a(href='https://www.facebook.com/studioshoo', target='_blank') Instagram
+					a(href='https://www.facebook.com/studioshoo', target='_blank') Facebook
+					a(href='https://www.instagram.com/studio_shoo', target='_blank') Instagram
 					a(href='https://www.pinterest.ru/STUDIO_SHOO/_saved', target='_blank') Pinterest
 					a(href='#', target='_blank') Behance
 
