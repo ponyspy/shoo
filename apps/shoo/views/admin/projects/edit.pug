@@ -53,7 +53,7 @@ block content
 			select(name='type')
 				option(value='design', selected= project.type == 'design' && 'design') Дизайн
 				option(value='architecture', selected= project.type == 'architecture' && 'architecture') Архитектура
-				option(value='public', selected= project.type == 'public' && 'public') Публичный интерьер
+				option(value='public-interiors', selected= project.type == 'public-interiors' && 'public-interiors') Публичный интерьер
 			.form_title Категория:
 			+form_single_select('category', categorys, project.category)
 			.form_title Статус:

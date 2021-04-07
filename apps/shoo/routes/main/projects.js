@@ -16,7 +16,7 @@ module.exports = function(Model) {
 		Project.find({'type': req.params.type}).where('status').ne('hidden').populate('category').exec(function(err, projects) {
 			if (err) return next(err);
 
-			res.render('main/projects/category.pug', {projects: projects});
+			res.render('main/projects/type.pug', {'type': req.params.type,  projects: projects});
 		});
 	};
 
