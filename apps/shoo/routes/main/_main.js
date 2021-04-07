@@ -27,10 +27,10 @@ module.exports = (function() {
 	router.route('/projects')
 		.get(main.projects.index);
 
-	router.route('/projects/:category')
-		.get(main.projects.projects_category);
+	router.route('/projects/:type')
+		.get(main.projects.projects_type);
 
-	router.route('/projects/:category/:project_id')
+	router.route('/projects/:type/:project_id')
 		.get(main.projects.project);
 
 	router.route('/lang/:locale').get(function(req, res) {
