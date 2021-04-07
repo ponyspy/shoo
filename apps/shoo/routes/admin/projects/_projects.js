@@ -5,7 +5,6 @@ var Model = require(__glob_root + '/models/main.js');
 var Params = {
 	locale: require('../_params/locale'),
 	upload: require('../_params/upload'),
-	helpers: require('../_params/helpers')
 };
 
 var projects = {

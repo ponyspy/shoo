@@ -36,10 +36,10 @@ block content
 			+form_text_single('location', project)
 			.form_title Описание:
 			+form_text_multi('description', project)
+			.form_title Логотип (необязательно):
+			+form_single_file('logo', project)(accept='image/jpeg,image/png,image/gif')
 			.form_title Обложка:
 			+form_single_file('poster', project)(accept='image/jpeg,image/png,image/gif')
-			.form_title Видео YouTube / Vimeo:
-			input(type='text', name='embed', value=(project.embed && project.embed.provider) ? (project.embed.provider == 'youtube' ? 'https://youtu.be/' + project.embed.id : 'https://vimeo.com/' + project.embed.id) : '')
 			.form_title Изображения:
 			+form_images_upload(project.images)
 			.form_title Участники:

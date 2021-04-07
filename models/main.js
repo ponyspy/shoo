@@ -36,16 +36,13 @@ var projectSchema = new Schema({
 	location: { type: String, trim: true, locale: true },
 	brands: { type: String, trim: true, locale: true },
 	poster: { type: String },
+	logo: { type: String },
 	status: String,
 	main: String,
 	sym: { type: String, trim: true, index: true, unique: true, sparse: true },
 	type: 'String', // design, architecture
 	category: { type: ObjectId, ref: 'Category' },
 	peoples: [{ type: ObjectId, ref: 'People' }],
-	embed: {
-		provider: String,
-		id: String
-	},
 	images: [{
 		size: String,
 		gallery: Boolean,

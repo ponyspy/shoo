@@ -31,7 +31,7 @@ module.exports = (function() {
 		.get(checkAuth, admin.cv.edit)
 		.post(checkAuth, admin.cv.edit_form);
 
-	router.use('/projects', checkAuth, upload.fields([ { name: 'poster' } ]), admin.projects);
+	router.use('/projects', checkAuth, upload.fields([ { name: 'poster', name: 'logo' } ]), admin.projects);
 	router.use('/publications', checkAuth, admin.publications);
 	router.use('/awards', checkAuth, admin.awards);
 	router.use('/news', checkAuth, upload.fields([ { name: 'poster' } ]), admin.news);

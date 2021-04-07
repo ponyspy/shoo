@@ -35,10 +35,10 @@ block content
 			+form_text_single('location')
 			.form_title Описание:
 			+form_text_multi('description')
+			.form_title Логотип (необязательно):
+			+form_single_file('logo')(accept='image/jpeg,image/png,image/gif')
 			.form_title Обложка:
 			+form_single_file('poster')(accept='image/jpeg,image/png,image/gif')
-			.form_title Видео YouTube / Vimeo:
-			input(type='text', name='embed')
 			.form_title Изображения:
 			+form_images_upload()
 			.form_title Участники:

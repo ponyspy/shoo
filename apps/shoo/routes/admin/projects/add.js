@@ -12,8 +12,6 @@ module.exports = function(Model, Params) {
 	var uploadImages = Params.upload.images;
 	var uploadImage = Params.upload.image;
 	var checkNested = Params.locale.checkNested;
-	var youtubeId = Params.helpers.youtubeId;
-	var vimeoId = Params.helpers.vimeoId;
 
 
 	module.index = function(req, res, next) {
@@ -46,20 +44,6 @@ module.exports = function(Model, Params) {
 		project.type = post.type;
 		project.sym = post.sym ? post.sym : undefined;
 
-		if (youtubeId(post.embed)) {
-			project.embed = {
-				provider: 'youtube',
-				id: youtubeId(post.embed)
-			}
-		} else if (vimeoId(post.embed)) {
-			project.embed = {
-				provider: 'vimeo',
-				id: vimeoId(post.embed)
-			}
-		} else {
-			project.embed = undefined;
-		}
-
 		var locales = post.en ? ['ru', 'en'] : ['ru'];
 
 		locales.forEach(function(locale) {
@@ -82,6 +66,7 @@ module.exports = function(Model, Params) {
 
 		async.series([
 			async.apply(uploadImages, project, 'projects', null, post.images),
+			async.apply(uploadImage, project, 'projects', 'logo', 400, files.logo && files.logo[0], null),
 			async.apply(uploadImage, project, 'projects', 'poster', 1200, files.poster && files.poster[0], null),
 		], function(err, results) {
 			if (err) return next(err);
