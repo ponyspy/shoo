@@ -12,4 +12,17 @@ block header_include
 	- var include_js = ['main.js']
 
 block content
-	h1 SHOO Index
+	.slider_block.swiper-projects
+		.swiper-inner
+			each project in projects.filter(function(project) { return project.main == 'slider' })
+				.slide_item
+
+	.projects_block
+		each project in projects.filter(function(project) { return project.main == 'column' })
+			.project_item
+				.project_cover
+				.project_body
+					.project_title= project.i18n.title.get(locale)
+					.project_build= project.build_date.getFullYear()
+					.project_category= project.category && project.category.i18n.title.get(locale)
+
