@@ -6,13 +6,15 @@ module.exports = function(Model) {
 	var Publication = Model.Publication;
 	var Award = Model.Award;
 
-	module.index = function(req, res) {
+	module.index = function(req, res, next) {
 		Project.find({'main': {'$exists': true}}).where('status').ne('hidden').exec(function(err, projects) {
+			if (err) return next(err);
+
 			res.render('main/index.pug', {projects: projects});
 		});
 	};
 
-	module.about = function(req, res) {
+	module.about = function(req, res, next) {
 		People.find().where('status').nin(['hidden', 'special']).exec(function(err, peoples) {
 			if (err) return next(err);
 
