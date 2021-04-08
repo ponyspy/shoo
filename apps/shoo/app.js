@@ -35,6 +35,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(i18n.init);
 
+app.locals.static_types = require(__app_root + '/types.json');
 
 app.use(session({
 	key: 'session',

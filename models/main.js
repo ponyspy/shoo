@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
 		mongooseBcrypt = require('mongoose-bcrypt');
 
 var Schema = mongoose.Schema,
-		ObjectId = Schema.ObjectId;
+		ObjectId = Schema.Types.ObjectId;
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/' +  __app_name, {

@@ -12,6 +12,8 @@ var main = {
 module.exports = (function() {
 	var router = express.Router();
 
+	router.use(main.projects.map_categorys);
+
 	router.route('/')
 		.get(main.index.index);
 

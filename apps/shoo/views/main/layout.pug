@@ -7,10 +7,15 @@ html(lang=locale)
 			.title_block
 				a.logo(href='/'): img(src='/stuff/shoo/icons/logo.svg')
 
-				a.category(href='/projects/design') Design
-				a.category(href='/projects/architecrure') Architecrure
-				a.category(href='/projects/public-interiors') Public Interiors
-				a.category(href='/projects') All Projects
+				each p_type in project_types
+					.type_item(class=p_type.type)
+						a.type_main(href='/projects/' + p_type.type)= static_types.projects_types[p_type.type]
+						.type_categorys
+							each category in p_type.categorys
+								a(href='/projects/' + p_type.type + '#' + category.sym)= category.i18n.title.get(locale)
+
+				.type_item.all
+					a.type_main(href='/projects') All Projects
 
 				.menu_drop
 					span

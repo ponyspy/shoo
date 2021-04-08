@@ -16,12 +16,29 @@ html, body
 	padding 20px
 	.logo img
 		height 60px
-	.category
-		font-size 24pt
-		text-decoration none
-		color white
-		-webkit-text-stroke-width 1px
-		-webkit-text-stroke-color black
+	.type_item
+		position relative
+		.type_main
+			z-index 999
+			position relative
+		&:hover .type_categorys
+			display block
+		a
+			font-size 24pt
+			text-decoration none
+			color white
+			-webkit-text-stroke-width 1px
+			-webkit-text-stroke-color black
+			&:hover
+				color black
+		.type_categorys
+			display none
+			position absolute
+			left 0
+			top 0
+			padding-top 28pt
+			a
+				display block
 	.menu_drop
 		width 25px
 		height 25px
@@ -65,6 +82,8 @@ html, body
 // 	.stargazer_block
 // 	.locale_block
 
+.content_block
+	padding 20px
 
 
 .footer_block
@@ -72,6 +91,12 @@ html, body
 	color white
 	display flex
 	padding 20px
+	box-sizing border-box
+	width 100%
+
+	position absolute
+	bottom 0
+	left 0
 	a
 		color white
 	.column

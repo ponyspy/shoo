@@ -3,9 +3,10 @@ module.exports = function(Model) {
 
 	var Project = Model.Project;
 	var Award = Model.Award;
+	var Category = Model.Category;
 
 	module.index = function(req, res, next) {
-		Project.find().where('status').ne('hidden').populate('category').exec(function(err, projects) {
+		Project.find({'main': {$exists: true}}).where('status').ne('hidden').populate('category').exec(function(err, projects) {
 			if (err) return next(err);
 
 			res.render('main/projects/index.pug', {projects: projects});
@@ -31,6 +32,32 @@ module.exports = function(Model) {
 			});
 		});
 	};
+
+	module.map_categorys = function(req, res, next) {
+		Project.aggregate([
+			{ $group: {
+				_id: '$type',
+				categorys: {
+					$push: '$category'
+			}}},
+			{ $project: {
+				_id: 0,
+				'type': '$_id',
+				'categorys': '$categorys'
+			}}
+		]).exec(function(err, types) {
+			Category.populate(types, {path: 'categorys'}, function(err, types) {
+				var actual_types = Object.keys(req.app.locals.static_types.projects_types);
+
+				types.sort(function(a, b) {
+					return actual_types.indexOf(a.type) - actual_types.indexOf(b.type);
+				});
+
+				res.locals.project_types = types;
+				next();
+			});
+		});
+	}
 
 	return module;
 };
