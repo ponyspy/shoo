@@ -47,7 +47,7 @@ module.exports = function(Model) {
 			}}
 		]).exec(function(err, types) {
 			Category.populate(types, {path: 'categorys'}, function(err, types) {
-				var actual_types = Object.keys(req.app.locals.static_types.projects_types);
+				var actual_types = req.app.locals.static_types.projects_types;
 
 				types.sort(function(a, b) {
 					return actual_types.indexOf(a.type) - actual_types.indexOf(b.type);

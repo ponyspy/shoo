@@ -17,9 +17,8 @@ block sub_menu
 			.drop_title Тип
 			.drop_inner
 				.drop_item(class='all').select Все
-				.drop_item(class='design') Дизайн
-				.drop_item(class='architecture') Архиектура
-				.drop_item(class='public-interiors') Публичный интерьер
+				each p_type in static_types.projects_types
+					.drop_item(class=p_type)= __(p_type)
 
 		.sub_drop.status(style='z-index: 1;')
 			.drop_title Статус

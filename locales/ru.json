@@ -2,5 +2,9 @@
 	"designer": "Дизайнер",
 	"architect": "Архитектор",
 	"3d": "3d",
-	"photographer": "Фотограф"
+	"photographer": "Фотограф",
+	"design": "Дизайн",
+	"architecture": "Архитектура",
+	"public-interiors": "Публичный интерьер",
+	"Все проекты": "Все проекты"
 }

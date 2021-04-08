@@ -1,9 +1,10 @@
 {
-	"projects_types": {
-		"design": "Design",
-		"architecture": "Architecture",
-		"public-interiors": "Public Interiors"
-	},
+	"projects_types": [
+		"design",
+		"architecture",
+		"public-interiors"
+	],
+
 	"peoples_types": [
 		"designer",
 		"architect",

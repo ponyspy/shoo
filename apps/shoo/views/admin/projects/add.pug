@@ -50,9 +50,8 @@ block content
 				option(value='column') В колонке
 			.form_title Тип:
 			select(name='type')
-				option(value='design') Дизайн
-				option(value='architecture') Архитектура
-				option(value='public-interiors') Публичный интерьер
+				each p_type in static_types.peoples_types
+					option(value=p_type)= __(p_type)
 			.form_title Категория:
 			+form_single_select('category', categorys)
 			.form_title Статус:

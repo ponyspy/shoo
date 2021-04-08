@@ -9,13 +9,13 @@ html(lang=locale)
 
 				each p_type in project_types
 					.type_item(class=p_type.type)
-						a.type_main(href='/projects/' + p_type.type)= static_types.projects_types[p_type.type]
+						a.type_main(href='/projects/' + p_type.type)= __(p_type.type)
 						.type_categorys
 							each category in p_type.categorys
 								a(href='/projects/' + p_type.type + '#' + category.sym)= category.i18n.title.get(locale)
 
 				.type_item.all
-					a.type_main(href='/projects') All Projects
+					a.type_main(href='/projects')= __('Все проекты')
 
 				.menu_drop
 					span
