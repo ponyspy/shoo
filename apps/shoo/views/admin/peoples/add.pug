@@ -25,10 +25,8 @@ block content
 			+form_text_single('name')
 			.form_title Тип:
 			select(name='type')
-				option(value='architect') Архитектор
-				option(value='designer') Дизайнер
-				option(value='3D') 3D
-				option(value='photographer') Фотограф
+				each p_type in static_types.peoples_types
+					option(value=p_type)= __(p_type)
 			.form_title Статус:
 			select(name='status')
 				option(value='base') Обычный

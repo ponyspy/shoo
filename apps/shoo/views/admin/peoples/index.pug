@@ -16,10 +16,8 @@ block sub_menu
 			.drop_title Тип
 			.drop_inner
 				.drop_item(class='all').select Все
-				.drop_item(class='designer') Дизайнеры
-				.drop_item(class='architect') Архитекторы
-				.drop_item(class='3d') 3D
-				.drop_item(class='photographer') Фотографы
+				each p_type in static_types.peoples_types
+					.drop_item(class=p_type)= __(p_type)
 
 		.sub_drop.status(style='z-index: 1;')
 			.drop_title Статус

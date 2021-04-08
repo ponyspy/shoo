@@ -3,5 +3,11 @@
 		"design": "Design",
 		"architecture": "Architecture",
 		"public-interiors": "Public Interiors"
-	}
+	},
+	"peoples_types": [
+		"designer",
+		"architect",
+		"3d",
+		"photographer"
+	]
 }
