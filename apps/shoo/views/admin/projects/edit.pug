@@ -51,7 +51,7 @@ block content
 				option(value='column', selected= project.main == 'column' && 'column') В колонке
 			.form_title Тип:
 			select(name='type')
-				each p_type in static_types.peoples_types
+				each p_type in static_types.projects_types
 					option(value=p_type, selected= (project.type == p_type && p_type))= __(p_type)
 			.form_title Категория:
 			+form_single_select('category', categorys, project.category)

@@ -54,6 +54,7 @@ module.exports = function(Model) {
 				});
 
 				res.locals.project_types = types;
+
 				next();
 			});
 		});
