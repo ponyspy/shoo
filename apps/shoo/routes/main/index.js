@@ -7,7 +7,7 @@ module.exports = function(Model) {
 	var Award = Model.Award;
 
 	module.index = function(req, res, next) {
-		Project.find({'main': {'$exists': true}}).where('status').ne('hidden').exec(function(err, projects) {
+		Project.find({'main': {'$exists': true}}).where('status').ne('hidden').populate('category').exec(function(err, projects) {
 			if (err) return next(err);
 
 			res.render('main/index.pug', {projects: projects});

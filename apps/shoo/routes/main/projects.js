@@ -6,7 +6,7 @@ module.exports = function(Model) {
 	var Category = Model.Category;
 
 	module.index = function(req, res, next) {
-		Project.find({'main': {$exists: true}}).where('status').ne('hidden').populate('category').exec(function(err, projects) {
+		Project.find().where('status').ne('hidden').populate('category').exec(function(err, projects) {
 			if (err) return next(err);
 
 			res.render('main/projects/index.pug', {projects: projects});
