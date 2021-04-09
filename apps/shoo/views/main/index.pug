@@ -12,13 +12,27 @@ block header_include
 	- var include_js = ['main.js']
 
 block content
-	.slider_block.swiper-container
-		.swiper-wrapper
-			each project in projects.filter(function(project) { return project.main == 'slider' })
-				.slide_item.swiper-slide(style='background-image: url(' + project.poster + ')')
+	- var projects_slider = projects.filter(function(project) { return project.main == 'slider' })
+	- var projects_columns = projects.filter(function(project) { return project.main == 'column' })
 
-	.projects_block
-		each project in projects.filter(function(project) { return project.main == 'column' })
+	.projects_slider
+		.slider_block.swiper-container
+			.swiper-wrapper
+				each project in projects_slider
+					a.slide_item.swiper-slide(style='background-image: url(' + project.poster + ')', href='/projects/' + project.type + '/' + (project.sym || project._short_id))
+		.slider_body
+			each project in projects_slider
+				.project_columns
+					.column_item.left
+						.project_type= __(project.type)
+						.project_build= project.build_date.getFullYear()
+					.column_item.right
+						.project_title= project.i18n.title.get(locale)
+						.project_category= project.category && project.category.i18n.title.get(locale)
+
+
+	.projects_columns
+		each project in projects_columns
 			a.project_item(href='/projects/' + project.type + '/' + (project.sym || project._short_id))
 				.project_poster(style='background-image: url(' + project.poster + ')')
 				.project_images

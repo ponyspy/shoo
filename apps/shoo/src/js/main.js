@@ -44,6 +44,7 @@ $(function() {
 		});
 
 	var swMain = new Swiper('.swiper-container', {
+		init: false,
 		slidesPerView: 1,
 		spaceBetween: 0,
 		// centeredSlides: true,
@@ -64,8 +65,10 @@ $(function() {
 		// },
 	});
 
-	$('.swiper-container').on('click', '.swiper-slide-active', function(e) {
-		swMain.slideNext()
+	swMain.on('init slideChange', function(e) {
+		$('.slider_body').find('.project_columns').removeClass('active').eq(swMain.realIndex).addClass('active');
 	});
+
+	swMain.init();
 
 });
