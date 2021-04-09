@@ -4,9 +4,12 @@
 // .slider_block
 
 
+.content_block
+	padding 10px
+
 .projects_block
 	width 100%
-	max-width 1280px
+	max-width 1920px
 	margin 0 auto
 	.project_item
 		width 50%
@@ -14,6 +17,9 @@
 		vertical-align top
 		text-decoration none
 		color black
+		padding 10px
+		box-sizing border-box
+		margin-bottom 40px
 		.project_poster
 			width 100%
 			padding-top 60%
@@ -21,19 +27,29 @@
 			background-pocition center
 			background-repeat no-repeat
 		.project_columns
+			margin-top 10px
 			display flex
 			.column_item
 				display flex
 				&.left
+					flex-grow 1
 					flex-direction column
+				&.right
+					flex-grow 4
+					flex-direction row
 				.project_type
-					margin-right 20px
+					// background-color rgb(48, 154, 106)
+					padding-right 40px
 					&:after
 						content ':'
 				.project_build
-					margin-right 20px
+					// background-color rgb(231, 71, 37)
+					padding-right 40px
 				.project_title
-					margin-right 20px
+					// background-color rgb(249, 177, 11)
+					flex-grow 1
+					padding-right 40px
 				.project_category
-					margin-right 20px
+					// background-color rgb(224, 33, 37)
+					padding-right 80px
 

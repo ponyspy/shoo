@@ -14,7 +14,7 @@ module.exports = function(Model) {
 	};
 
 	module.projects_type = function(req, res, next) {
-		if (req.app.locals.static_types.projects_types.indexOf(req.params.type) == -1) return next(err);
+		if (req.app.locals.static_types.projects_types.indexOf(req.params.type) == -1) return next();
 
 		Project.find({'type': req.params.type}).where('status').ne('hidden').populate('category').exec(function(err, projects) {
 			if (err) return next(err);
@@ -24,8 +24,12 @@ module.exports = function(Model) {
 	};
 
 	module.project = function(req, res, next) {
+		if (req.app.locals.static_types.projects_types.indexOf(req.params.type) == -1) return next();
+
+		var id = req.params.project_id;
+
 		Project.findOne({'$or': [{ '_short_id': id }, { 'sym': id }]}).where('status').ne('hidden').populate('category peoples').exec(function(err, project) {
-			if (err) return next(err);
+			if (!project || err) return next(err);
 
 			Award.find({projects: project._id}).exec(function(err, awards) {
 				if (err) return next(err);
