@@ -14,10 +14,12 @@ module.exports = function(Model) {
 	};
 
 	module.projects_type = function(req, res, next) {
+		if (req.app.locals.static_types.projects_types.indexOf(req.params.type) == -1) return next(err);
+
 		Project.find({'type': req.params.type}).where('status').ne('hidden').populate('category').exec(function(err, projects) {
 			if (err) return next(err);
 
-			res.render('main/projects/type.pug', {'type': req.params.type,  projects: projects});
+			res.render('main/projects/type.pug', {'current_type': req.params.type,  projects: projects});
 		});
 	};
 

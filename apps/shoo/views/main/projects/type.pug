@@ -3,11 +3,11 @@ extends ../layout
 block header_meta
 	- var content_title = 'SHOO | Projects type'
 	- var content_description= ''
-	- var menu_active = ''
+	- var menu_active = current_type
 
 block header_include
 	- var include_css = ['category.css']
 	- var include_js = ['category.js']
 
 block content
-	h1= 'SHOO Projects - ' + type
+	h1= 'SHOO Projects - ' + current_type

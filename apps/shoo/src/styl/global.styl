@@ -12,7 +12,7 @@ html, body
 .title_block
 	display flex
 	justify-content space-between
-	align-items center
+	align-items flex-start
 	padding 20px
 	.logo img
 		height 60px
@@ -21,6 +21,8 @@ html, body
 		.type_main
 			z-index 999
 			position relative
+			&.active
+				color black
 		&:hover .type_categorys
 			display block
 		a
