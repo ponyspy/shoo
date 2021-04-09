@@ -19,10 +19,13 @@ block content
 
 	.projects_block
 		each project in projects.filter(function(project) { return project.main == 'column' })
-			.project_item
+			a.project_item(href='/projects/' + project.type + '/' + (project.sym || project._short_id))
 				.project_poster(style='background-image: url(' + project.poster + ')')
-				.project_body
-					.project_title= project.i18n.title.get(locale)
-					.project_category= project.category && project.category.i18n.title.get(locale)
-				.project_build= project.build_date.getFullYear()
+				.project_columns
+					.column_item.left
+						.project_type= __(project.type)
+						.project_build= project.build_date.getFullYear()
+					.column_item.right
+						.project_title= project.i18n.title.get(locale)
+						.project_category= project.category && project.category.i18n.title.get(locale)
 

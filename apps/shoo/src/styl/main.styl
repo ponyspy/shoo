@@ -1,2 +1,39 @@
 @media screen and (max-width: 680px)
 	@import 'mobile/_main.styl'
+
+// .slider_block
+
+
+.projects_block
+	width 100%
+	max-width 1280px
+	margin 0 auto
+	.project_item
+		width 50%
+		display inline-block
+		vertical-align top
+		text-decoration none
+		color black
+		.project_poster
+			width 100%
+			padding-top 60%
+			background-size cover
+			background-pocition center
+			background-repeat no-repeat
+		.project_columns
+			display flex
+			.column_item
+				display flex
+				&.left
+					flex-direction column
+				.project_type
+					margin-right 20px
+					&:after
+						content ':'
+				.project_build
+					margin-right 20px
+				.project_title
+					margin-right 20px
+				.project_category
+					margin-right 20px
+
