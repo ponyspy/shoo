@@ -1,16 +1,25 @@
 @media screen and (max-width: 680px)
 	@import 'mobile/_main.styl'
 
-// .slider_block
-
-
-.content_block
-	padding 10px
+.slider_block
+	width 100%
+	height 50vw
+	.slide_item
+		width 100%
+		height 50vw
+		background-size cover
+		background-position center
+		background-repeat no-repeat
+		border-left 20px solid white
+		border-right 20px solid white
+		box-sizing border-box
 
 .projects_block
 	width 100%
 	max-width 1920px
 	margin 0 auto
+	padding 10px
+	box-sizing border-box
 	.project_item
 		width 50%
 		display inline-block
@@ -27,7 +36,7 @@
 			z-index 99999
 			position absolute
 			background-size cover
-			background-pocition center
+			background-position center
 			background-repeat no-repeat
 			&.hide
 				display none
@@ -37,7 +46,7 @@
 			position relative
 			.project_image
 				background-size cover
-				background-pocition center
+				background-position center
 				background-repeat no-repeat
 				position absolute
 				top 0; left 0

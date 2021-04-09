@@ -42,4 +42,30 @@ $(function() {
 				$(this).trigger('slidestep');
 			}
 		});
+
+	var swMain = new Swiper('.swiper-container', {
+		slidesPerView: 1,
+		spaceBetween: 0,
+		// centeredSlides: true,
+		// autoHeight: true,
+		loop: true,
+		speed: 500,
+		keyboard: {
+			enabled: true
+		},
+		// autoplay: {
+		// 	delay: 5000,
+		// 	disableOnInteraction: true
+		// },
+		// pagination: {
+		// 	el: '.swiper-pagination',
+		// 	type: 'bullets',
+		// 	clickable: true
+		// },
+	});
+
+	$('.swiper-container').on('click', '.swiper-slide-active', function(e) {
+		swMain.slideNext()
+	});
+
 });
