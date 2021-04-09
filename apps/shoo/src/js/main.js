@@ -1,44 +1,45 @@
 $(function() {
+	var deltaX = 0;
+	var deltaY = 0;
+	var step = 150;
 
-	$(document).on('keyup', function(e) {
-		if (e.which == 32) {
-			$('.poster_item.active').trigger('click');
-		}
+	$('.project_images').each(function() {
+		var $this = $(this);
+
+		$this.children('.project_image').first().addClass('active');
+		$this.data('stack', $this.children('.project_image'));
 	});
 
-	var timer = function() {
-		$('.active').trigger('click');
-	};
+	$('.project_item').not('.hover')
+		.on('mouseenter', function(e) {
+			$(this).children('.project_poster').addClass('hide');
+		})
+		.on('mouseleave', function(e) {
+			$(this).children('.project_poster').removeClass('hide');
+		});
 
-	var interval = setInterval(timer, 3000);
+	$('.project_image')
+		.on('slidestep', function(e) {
+			var $this = $(this);
+			var $stack = $this.parent('.project_images').data('stack');
 
-	var $posters = $('.poster_item').sort(function() {
-		return 0.5 - Math.random();
-	}).appendTo('.posters_block');
+			if ($stack.length > 1 && $this.next().length !== 0) {
+				$stack.removeClass('active').filter(this).next().addClass('active');
+			} else {
+				$stack.removeClass('active').first().addClass('active');
+			}
+		})
+		.on('mousemove', function(e) {
+			if (e.pageX >= deltaX || e.pageY >= deltaY) {
+				$(this).trigger('slidestep');
 
-	setTimeout(function() {
+				deltaX = e.pageX + step;
+				deltaY = e.pageY + step;
+			} else if (e.pageX <= deltaX - step * 2 || e.pageY <= deltaY - step * 2) {
+				deltaX = e.pageX + step;
+				deltaY = e.pageY + step;
 
-		$posters.on('click', function(e) {
-
-			clearInterval(interval);
-			interval = setInterval(timer, 3000);
-
-			var flag_round = $(this).index() < $posters.length - 1;
-			var $next_load = flag_round
-				? $posters.filter(this).nextAll()
-				: $posters.first().nextAll().addBack();
-
-			$next_load.slice(0, 2).not('.load').each(function() {
-				var $this = $(this);
-				$this.attr('src', $this.attr('data-src')).addClass('load').removeAttr('data-src');
-			});
-
-			flag_round
-				? $posters.removeClass('active').filter(this).next().addClass('active')
-				: $posters.removeClass('active').first().addClass('active');
-
-		}).last().trigger('click');
-
-	}, 0);
-
+				$(this).trigger('slidestep');
+			}
+		});
 });

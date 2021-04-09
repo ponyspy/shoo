@@ -21,6 +21,9 @@ block content
 		each project in projects.filter(function(project) { return project.main == 'column' })
 			a.project_item(href='/projects/' + project.type + '/' + (project.sym || project._short_id))
 				.project_poster(style='background-image: url(' + project.poster + ')')
+				.project_images
+					each image in project.images.filter(function(image) { return image.main })
+						.project_image(style='background-image: url(' + image.thumb + ')')
 				.project_columns
 					.column_item.left
 						.project_type= __(project.type)
