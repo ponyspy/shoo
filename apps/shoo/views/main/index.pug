@@ -21,7 +21,7 @@ block content
 				each project in projects_slider
 					a.slide_item.swiper-slide(style='background-image: url(' + project.poster + ')', href='/projects/' + project.type + '/' + (project.sym || project._short_id))
 		.slider_body
-			each project in projects_slider
+			each project, i in projects_slider
 				.project_columns
 					.column_item.left
 						.project_type= __(project.type)
@@ -29,6 +29,7 @@ block content
 					.column_item.right
 						.project_title= project.i18n.title.get(locale)
 						.project_category= project.category && project.category.i18n.title.get(locale)
+						.project_counter= (i + 1) + '/' + projects_slider.length
 
 
 	.projects_columns
