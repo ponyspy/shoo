@@ -40,6 +40,7 @@ module.exports = function(Model) {
 	};
 
 	module.map_categorys = function(req, res, next) {
+		if (/admin|auth/.test(req.originalUrl)) return next();
 		if (req._parsedUrl.pathname !== '/' && !/about|projects|news/.test(req.originalUrl)) return next();
 
 		Project.aggregate([
