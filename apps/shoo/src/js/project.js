@@ -9,8 +9,8 @@ $(function() {
 			slidesPerView: 1,
 			loop: true,
 			navigation: {
-				nextEl: $this.find('.swiper-button-next')[0],
-				prevEl: $this.find('.swiper-button-prev')[0],
+				nextEl: $this.find('.arrow-right')[0],
+				prevEl: $this.find('.arrow-left')[0],
 			},
 			preloadImages: false,
 			lazy: {

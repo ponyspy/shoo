@@ -1,4 +1,3 @@
-
 .content_block
 	width 100%
 	max-width 1640px
@@ -99,28 +98,43 @@
 		padding-right 10px
 		box-sizing border-box
 		margin-bottom 20px
+		.arrow-left
+		.arrow-right
+			background-size contain
+			background-position center
+			background-repeat no-repeat
+			width 60px
+			height 60px
+			position absolute
+			z-index 999
+		.arrow-left
+			left 20px
+			background-image url('/stuff/shoo/icons/arrow_left.svg')
+		.arrow-right
+			right 20px
+			background-image url('/stuff/shoo/icons/arrow_right.svg')
 		&.g_0x
 			display none
 		&.g_1x
 			width 50%
-			.swiper-button-next
-				opacity 0
-				position absolute
-				top 30%
-			.swiper-button-prev
-				opacity 0
-				position absolute
-				top 60%
-		&.g_2x
-			width 100%
-			.swiper-button-next
-			.swiper-button-prev
+			.arrow-left
 				opacity 0
 				position absolute
 				top 50%
+			.arrow-right
+				opacity 0
+				position absolute
+				top 30%
+		&.g_2x
+			width 100%
+			.arrow-left
+			.arrow-right
+				opacity 0
+				position absolute
+				top 45%
 		&:hover
-			.swiper-button-next
-			.swiper-button-prev
+			.arrow-left
+			.arrow-right
 				opacity 1
 		.swiper-container
 			width 100%

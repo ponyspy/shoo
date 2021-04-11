@@ -46,7 +46,7 @@ $(function() {
 	var swMain = new Swiper('.swiper-container', {
 		init: false,
 		slidesPerView: 1,
-		spaceBetween: 0,
+		spaceBetween: 40,
 		// centeredSlides: true,
 		// autoHeight: true,
 		loop: true,
