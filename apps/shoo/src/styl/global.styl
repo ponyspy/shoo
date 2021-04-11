@@ -21,18 +21,20 @@ html, body
 	.type_item
 		position relative
 		.type_main
-			z-index 999
+			z-index 9999
 			position relative
 			&.active
 				color black
 		&:hover .type_categorys
 			display block
+			z-index 999
 		a
 			font-size 28pt
 			text-decoration none
 			color transparent
 			-webkit-text-stroke-width 1px
 			-webkit-text-stroke-color black
+			margin-bottom 15px
 			&:hover
 				color black
 		.type_categorys

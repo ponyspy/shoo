@@ -72,7 +72,7 @@ module.exports = function(Model) {
 			{ $group: {
 				_id: '$type',
 				categorys: {
-					$push: '$category'
+					$addToSet: '$category'
 			}}},
 			{ $project: {
 				_id: 0,
