@@ -32,7 +32,7 @@
 .project_body
 	display flex
 	padding-top 40px
-	padding-bottom 20px
+	padding-bottom 40px
 	.project_description
 		// background-color red
 		flex-basis 60%
@@ -58,63 +58,65 @@
 
 
 
-.image_item
-	margin 0 auto
-	margin-bottom 100px
-	opacity 0
-	transform translateY(100px)
-	transition .4s ease-in-out
-	&.loaded
-		opacity 1
-		transform translateY(0px)
-	.image
-		width 100%
-		display block
-		min-height 200px
-	.image_description
-		font 16pt/22pt 'MinionPro Medium'
-		margin-top 20px
-		hyphens auto
-	&.size_0x
-		max-width 0px
+.project_images
+	margin-left -10px
+	margin-right -10px
+	.image_item
+		display inline-block
+		margin-right -4px
+		font-size 0
+		margin-bottom 20px
+		padding-left 10px
+		padding-right 10px
+		box-sizing border-box
 		.image
-			height 0px
-			min-height 0px
-	&.size_1x
-		max-width 440px
-	&.size_2x
-		max-width 580px
-	&.size_3x
-		max-width 100%
-
-.gallery-block
-	margin-bottom 100px
-	position relative
-	.swiper-button-next
-	.swiper-button-prev
-		top -35px
-		bottom 0
-		margin auto
-	.swiper-container
-		margin 0 auto
-		.swiper-slide
 			width 100%
-			.slide_image
-				display block
+			padding-top 60%
+			background-size cover
+			background-position center
+			background-repeat no-repeat
+		.image_description
+			font-size 14pt
+			margin-top 10px
+		&.size_0x
+			max-width 0px
+			.image
+				height 0px
+				min-height 0px
+		&.size_0x
+			display none
+		&.size_1x
+			width 50%
+		&.size_2x
+			width 100%
+
+
+	.slider_block
+		display inline-block
+		margin-right -4px
+		font-size 0
+		padding-left 10px
+		padding-right 10px
+		box-sizing border-box
+		margin-bottom 20px
+		&.g_0x
+			display none
+		&.g_1x
+			width 50%
+		&.g_2x
+			width 100%
+		.swiper-container
+			width 100%
+			.swiper-slide
 				width 100%
-			.slide_description
-				width 100%
-				font 16pt/22pt 'MinionPro Medium'
-				text-align center
-				margin-top 20px
-				hyphens auto
+				.slide_image
+					width 100%
+					padding-top 60%
+					background-size cover
+					background-position center
+					background-repeat no-repeat
+				.slide_description
+					font-size 14pt
+					margin-top 10px
 
-	&.g_3x .swiper-container
-		max-width 740px
-
-	&.g_2x .swiper-container
-		max-width 580px
-
-	&.g_1x .swiper-container
-		max-width 440px
 

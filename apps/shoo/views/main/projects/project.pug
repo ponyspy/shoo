@@ -52,26 +52,26 @@ block content
 	.project_images
 		each item in images
 			if item.length
-				- var g_size = 'g_3x'
+				- var g_size = 'g_0x'
 				if item.every(function(item) { return item.size == '2x' })
 					- g_size = 'g_2x'
 				else if item.every(function(item) { return item.size == '1x' })
 					- g_size = 'g_1x'
-				.gallery-block(class=g_size)
-					.swiper-button-next(class='swiper-button-white')
-					.swiper-button-prev(class='swiper-button-white')
-					.swiper-container: .swiper-wrapper
-						each image in item
-							.swiper-slide
-								//- img.slide_image(src=image.thumb)
-								img.swiper-lazy.slide_image(data-src=image.thumb)
-								//- .swiper-lazy-preloader.swiper-lazy-preloader-white
-								- var description = image.description.filter(function(lang) { return lang.lg == locale })
-								.slide_description= description.length ? description[0].value : ''
+				.slider_block(class=g_size)
+					.swiper-container
+						.swiper-wrapper
+							each image in item
+								.swiper-slide
+									.swiper-lazy.slide_image(data-background=image.thumb)
+									- var description = image.description.filter(function(lang) { return lang.lg == locale })
+									.slide_description= description.length ? description[0].value : ''
+
+						.swiper-button-next(class='swiper-button-white')
+						.swiper-button-prev(class='swiper-button-white')
+
 			else
-				- var sizes = ['size_0x', 'size_1x', 'size_2x', 'size_3x' ]
-				.image_item(class=sizes[sizes.indexOf('size_' + item.size)])
-					img.image(data-src=item.thumb)
+				.image_item(class='size_' + item.size)
+					.image(style='background-image: url(' + item.thumb + ')')
 					- var description = item.description.filter(function(lang) { return lang.lg == locale })
 					.image_description= description.length ? description[0].value : ''
 
