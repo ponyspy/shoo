@@ -76,3 +76,7 @@ block content
 					- var description = item.description.filter(function(lang) { return lang.lg == locale })
 					.image_description= description.length ? description[0].value : ''
 
+		.project_sim
+			each project in sim_projects
+				b= project
+

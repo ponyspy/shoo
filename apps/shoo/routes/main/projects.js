@@ -34,23 +34,32 @@ module.exports = function(Model) {
 			Award.find({projects: project._id}).exec(function(err, awards) {
 				if (err) return next(err);
 
-				var images = project.images.reduce(function(prev, curr) {
-					if (prev.length && curr.gallery == prev[prev.length - 1][0].gallery) {
-						prev[prev.length - 1].push(curr);
-					} else {
-						prev.push([curr]);
-					}
+				var category = project.category ? project.category._id : {'$ne': 'none'};
 
-					return prev;
-				}, []).reduce(function(prev, curr) {
-					if (curr.some(function(item) { return item.gallery == true; }) && curr.length > 1) {
-						return prev.concat([curr]);
-					} else {
-						return prev.concat(curr);
-					}
-				}, []);
+				Project.aggregate().match({
+					'type': project.type, '_id': {'$ne': project._id},
+					'category': category , 'status': {'$ne': 'hidden'}
+					}).sample(2).exec(function(err, sim_projects) {
+					if (err) return next(err);
 
-				res.render('main/projects/project.pug', {project: project, awards: awards, images: images});
+					var images = project.images.reduce(function(prev, curr) {
+						if (prev.length && curr.gallery == prev[prev.length - 1][0].gallery) {
+							prev[prev.length - 1].push(curr);
+						} else {
+							prev.push([curr]);
+						}
+
+						return prev;
+					}, []).reduce(function(prev, curr) {
+						if (curr.some(function(item) { return item.gallery == true; }) && curr.length > 1) {
+							return prev.concat([curr]);
+						} else {
+							return prev.concat(curr);
+						}
+					}, []);
+
+					res.render('main/projects/project.pug', {project: project, awards: awards, sim_projects: sim_projects, images: images});
+				});
 			});
 		});
 	};
