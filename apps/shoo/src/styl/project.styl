@@ -1,0 +1,57 @@
+
+.content_block
+	width 100%
+	max-width 1640px
+	margin 0 auto
+	padding 20px
+	box-sizing border-box
+
+.project_header
+	display flex
+	font-size 28pt
+	line-height 30pt
+	margin-bottom 20px
+	.project_title
+		// background-color red
+		flex-basis 40%
+	.project_build
+		// background-color green
+		flex-basis 10%
+	.project_category
+		// background-color grey
+		flex-basis 20%
+		margin-left auto
+
+.project_poster
+	width 100%
+	padding-top 60%
+	background-size cover
+	background-position center
+	background-repeat no-repeat
+
+.project_body
+	display flex
+	padding-top 40px
+	padding-bottom 20px
+	.project_description
+		// background-color red
+		flex-basis 60%
+		padding-right 180px
+		text-indent 60px
+	.project_columns
+		// background-color green
+		flex-basis 40%
+		display flex
+		.column_item
+			flex-basis 50%
+			.column
+				&.title
+					&:after
+						content ':'
+// 				&.body
+				.line_item
+					margin-top 20px
+					.line_title
+						&:after
+							content ':'
+					// .line_body

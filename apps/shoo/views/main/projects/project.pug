@@ -1,13 +1,77 @@
 extends ../layout
 
 block header_meta
-	- var content_title = 'Studio Shoo | Project'
+	- var content_title = 'Studio Shoo | ' + __(project.type) + ' | ' + project.i18n.title.get(locale)
 	- var content_description= ''
-	- var menu_active = ''
+	- var menu_active = project.type
 
 block header_include
+	- var include_libs_css = ['swiper-bundle.min.css']
 	- var include_css = ['project.css']
+	- var include_libs_js = ['swiper-bundle.min.js']
 	- var include_js = ['project.js']
 
 block content
-	h1= project.i18n.title.get(locale)
+
+	.project_header
+		.project_title= project.i18n.title.get(locale)
+		.project_build= project.build_date.getFullYear()
+		.project_category= project.category.i18n.title.get(locale)
+
+	.project_poster(style='background-image: url(' + project.poster + ')')
+
+	.project_body
+		.project_description!= project.i18n.description.get(locale)
+		.project_columns
+			.column_item
+				.column.title Информация
+				.column.body
+					.line_item
+						.line_title Название
+						.line_body= project.i18n.title.get(locale)
+					.line_item
+						.line_title Дата
+						.line_body= project.build_date.getFullYear()
+					.line_item
+						.line_title Площадь
+						.line_body= project.i18n.area.get(locale)
+					.line_item
+						.line_title Локация
+						.line_body= project.i18n.location.get(locale)
+					.line_item
+						.line_title Уровень
+						.line_body= project.i18n.level.get(locale)
+			.column_item
+				.column.title Команда
+				.column.body
+					each people in project.peoples
+						.line_item
+							.line_title= __(people.type)
+							.line_body= people.i18n.name.get(locale)
+
+	.project_images
+		each item in images
+			if item.length
+				- var g_size = 'g_3x'
+				if item.every(function(item) { return item.size == '2x' })
+					- g_size = 'g_2x'
+				else if item.every(function(item) { return item.size == '1x' })
+					- g_size = 'g_1x'
+				.gallery-block(class=g_size)
+					.swiper-button-next(class='swiper-button-white')
+					.swiper-button-prev(class='swiper-button-white')
+					.swiper-container: .swiper-wrapper
+						each image in item
+							.swiper-slide
+								//- img.slide_image(src=image.thumb)
+								img.swiper-lazy.slide_image(data-src=image.thumb)
+								//- .swiper-lazy-preloader.swiper-lazy-preloader-white
+								- var description = image.description.filter(function(lang) { return lang.lg == locale })
+								.slide_description= description.length ? description[0].value : ''
+			else
+				- var sizes = ['size_0x', 'size_1x', 'size_2x', 'size_3x' ]
+				.image_item(class=sizes[sizes.indexOf('size_' + item.size)])
+					img.image(data-src=item.thumb)
+					- var description = item.description.filter(function(lang) { return lang.lg == locale })
+					.image_description= description.length ? description[0].value : ''
+
