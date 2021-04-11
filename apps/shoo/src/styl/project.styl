@@ -55,3 +55,66 @@
 						&:after
 							content ':'
 					// .line_body
+
+
+
+.image_item
+	margin 0 auto
+	margin-bottom 100px
+	opacity 0
+	transform translateY(100px)
+	transition .4s ease-in-out
+	&.loaded
+		opacity 1
+		transform translateY(0px)
+	.image
+		width 100%
+		display block
+		min-height 200px
+	.image_description
+		font 16pt/22pt 'MinionPro Medium'
+		margin-top 20px
+		hyphens auto
+	&.size_0x
+		max-width 0px
+		.image
+			height 0px
+			min-height 0px
+	&.size_1x
+		max-width 440px
+	&.size_2x
+		max-width 580px
+	&.size_3x
+		max-width 100%
+
+.gallery-block
+	margin-bottom 100px
+	position relative
+	.swiper-button-next
+	.swiper-button-prev
+		top -35px
+		bottom 0
+		margin auto
+	.swiper-container
+		margin 0 auto
+		.swiper-slide
+			width 100%
+			.slide_image
+				display block
+				width 100%
+			.slide_description
+				width 100%
+				font 16pt/22pt 'MinionPro Medium'
+				text-align center
+				margin-top 20px
+				hyphens auto
+
+	&.g_3x .swiper-container
+		max-width 740px
+
+	&.g_2x .swiper-container
+		max-width 580px
+
+	&.g_1x .swiper-container
+		max-width 440px
+

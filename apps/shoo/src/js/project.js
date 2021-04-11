@@ -3,18 +3,22 @@ $(function() {
 	$('.gallery-block').each(function() {
 		var $this = $(this);
 
-		var gallery = new Swiper($this.children('.swiper-container'), {
-			keyboardControl: true,
-			nextButton: $this.children('.swiper-button-next'),
-			prevButton: $this.children('.swiper-button-prev'),
+		var gallery = new Swiper($this.find('.swiper-container'), {
 			spaceBetween: 40,
 			autoHeight: true,
 			slidesPerView: 1,
-
+			navigation: {
+				nextEl: $this.find('.swiper-button-next'),
+				prevEl: $this.find('.swiper-button-prev'),
+			},
 			preloadImages: false,
-			lazyLoading: true,
-			lazyLoadingInPrevNext: true,
-			lazyLoadingInPrevNextAmount: 2
+			lazy: {
+				loadPrevNext: true,
+				loadPrevNextAmount: 2
+			},
+			keyboard: {
+				enabled: true
+			},
 		});
 
 		gallery.once('lazyImageReady', function(swiper) {
