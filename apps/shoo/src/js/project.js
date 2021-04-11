@@ -7,7 +7,7 @@ $(function() {
 			spaceBetween: 40,
 			autoHeight: true,
 			slidesPerView: 1,
-			// loop: true,
+			loop: true,
 			navigation: {
 				nextEl: $this.find('.swiper-button-next')[0],
 				prevEl: $this.find('.swiper-button-prev')[0],
