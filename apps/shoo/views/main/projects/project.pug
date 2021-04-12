@@ -30,25 +30,34 @@ block content
 					.line_item
 						.line_title Название
 						.line_body= project.i18n.title.get(locale)
+
 					.line_item
 						.line_title Дата
 						.line_body= project.build_date.getFullYear()
-					.line_item
-						.line_title Площадь
-						.line_body= project.i18n.area.get(locale)
-					.line_item
-						.line_title Локация
-						.line_body= project.i18n.location.get(locale)
-					.line_item
-						.line_title Уровень
-						.line_body= project.i18n.level.get(locale)
-			.column_item
-				.column.title Команда
-				.column.body
-					each people in project.peoples
+
+					if project.i18n.area.get(locale).length
 						.line_item
-							.line_title= __(people.type)
-							.line_body= people.i18n.name.get(locale)
+							.line_title Площадь
+							.line_body= project.i18n.area.get(locale)
+
+					if project.i18n.location.get(locale).length
+						.line_item
+							.line_title Локация
+							.line_body= project.i18n.location.get(locale)
+
+					if project.i18n.level.get(locale).length
+						.line_item
+							.line_title Уровень
+							.line_body= project.i18n.level.get(locale)
+
+			if project.peoples.length
+				.column_item
+					.column.title Команда
+					.column.body
+						each people in project.peoples
+							.line_item
+								.line_title= __(people.type)
+								.line_body= people.i18n.name.get(locale)
 
 	.project_images
 		each item in images
