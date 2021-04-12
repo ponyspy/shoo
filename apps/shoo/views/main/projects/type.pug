@@ -6,8 +6,21 @@ block header_meta
 	- var menu_active = current_type
 
 block header_include
-	- var include_css = ['category.css']
-	- var include_js = ['category.js']
+	- var include_css = ['projects_type.css']
+	- var include_js = ['projects_type.js']
 
 block content
-	h1= 'Projects - ' + current_type
+	.projects_columns
+		each project in projects
+			a.project_item(href='/projects/' + project.type + '/' + (project.sym || project._short_id))
+				.project_poster(style='background-image: url(' + project.poster + ')')
+				.project_images
+					each image in project.images.filter(function(image) { return image.main })
+						.project_image(style='background-image: url(' + image.thumb + ')')
+				.project_columns
+					.column_item.left
+						.project_type= __(project.type)
+						.project_build= project.build_date.getFullYear()
+					.column_item.right
+						.project_title= project.i18n.title.get(locale)
+						.project_category= project.category && project.category.i18n.title.get(locale)
