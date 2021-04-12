@@ -3,7 +3,7 @@ $(function() {
 	$('.swiper-container').each(function() {
 		var $this = $(this);
 
-		var gallery = new Swiper(this, {
+		var swGallery = new Swiper(this, {
 			spaceBetween: 40,
 			autoHeight: true,
 			slidesPerView: 1,
