@@ -1,13 +1,17 @@
 @media screen and (max-width: 680px)
 	@import 'mobile/_main.styl'
 
-.projects_slider
+
+.content_block
 	width 100%
 	max-width 1640px
 	margin 0 auto
-	padding-left 20px
-	padding-right 20px
+	padding 20px
 	box-sizing border-box
+
+
+.projects_slider
+	width 100%
 	.slider_block
 		width 100%
 		.slide_item
@@ -54,70 +58,6 @@
 
 
 .projects_columns
-	width 100%
-	max-width 1640px
-	margin 0 auto
-	padding 10px
-	box-sizing border-box
-	.project_item
-		width 50%
-		display inline-block
-		vertical-align top
-		text-decoration none
-		color black
-		border 10px solid white
-		box-sizing border-box
-		position relative
-		.project_poster
-			width 100%
-			padding-top 60%
-			z-index 99999
-			position absolute
-			background-size cover
-			background-position center
-			background-repeat no-repeat
-			&.hide
-				display none
-		.project_images
-			width 100%
-			padding-top 60%
-			position relative
-			.project_image
-				background-size cover
-				background-position center
-				background-repeat no-repeat
-				position absolute
-				top 0; left 0
-				width 100%
-				height 100%
-				display none
-				&.active
-					display block
-		.project_columns
-			margin-top 10px
-			display flex
-			.column_item
-				display flex
-				&.left
-					flex-basis 30%
-					flex-direction column
-				&.right
-					flex-basis 70%
-					flex-direction row
-				.project_type
-					// background-color rgb(48, 154, 106)
-					padding-right 40px
-					&:after
-						content ':'
-				.project_build
-					// background-color rgb(231, 71, 37)
-					padding-top 5px
-					padding-right 40px
-				.project_title
-					// background-color rgb(249, 177, 11)
-					flex-grow 1
-					padding-right 40px
-				.project_category
-					// background-color rgb(224, 33, 37)
-					padding-right 80px
+	margin-left -10px
+	margin-right -10px
 
