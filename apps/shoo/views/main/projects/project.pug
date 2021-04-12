@@ -3,6 +3,7 @@ extends ../layout
 block header_meta
 	- var content_title = 'Studio Shoo | ' + __(project.type) + ' | ' + project.i18n.title.get(locale)
 	- var content_description= ''
+	- var content_images = [project.poster]
 	- var menu_active = project.type
 
 block header_include
@@ -80,14 +81,28 @@ block content
 					.swiper-arrows
 						.arrow-left
 						.arrow-right
-
 			else
 				.image_item(class='size_' + item.size)
 					.image(style='background-image: url(' + item.thumb + ')')
 					- var description = item.description.filter(function(lang) { return lang.lg == locale })
 					.image_description= description.length ? description[0].value : ''
 
+	if sim_projects.length
 		.project_sim
-			each project in sim_projects
-				b= project
+			- var sim_category = project.category ? project.category.i18n.title.get(locale) : ''
+			.sim_title!= __('Еще') + '<br>' + __(project.type) + ': ' + sim_category
+			.sim_projects
+				each project in sim_projects
+					a.project_item(href='/projects/' + project.type + '/' + (project.sym || project._short_id))
+						.project_poster(style='background-image: url(' + project.poster + ')')
+						.project_images
+							each image in project.images.filter(function(image) { return image.main })
+								.project_image(style='background-image: url(' + image.thumb + ')')
+						.project_columns
+							.column_item.left
+								.project_type= __(project.type)
+								.project_build= project.build_date.getFullYear()
+							.column_item.right
+								.project_title= get_locale(project.title, locale)
+								.project_category= sim_category
 

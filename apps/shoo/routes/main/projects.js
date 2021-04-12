@@ -31,6 +31,22 @@ module.exports = function(Model) {
 		Project.findOne({'$or': [{ '_short_id': id }, { 'sym': id }]}).where('status').ne('hidden').populate('category peoples').exec(function(err, project) {
 			if (!project || err) return next(err);
 
+			var images = project.images.reduce(function(prev, curr) {
+				if (prev.length && curr.gallery == prev[prev.length - 1][0].gallery) {
+					prev[prev.length - 1].push(curr);
+				} else {
+					prev.push([curr]);
+				}
+
+				return prev;
+			}, []).reduce(function(prev, curr) {
+				if (curr.some(function(item) { return item.gallery == true; }) && curr.length > 1) {
+					return prev.concat([curr]);
+				} else {
+					return prev.concat(curr);
+				}
+			}, []);
+
 			Award.find({projects: project._id}).exec(function(err, awards) {
 				if (err) return next(err);
 
@@ -42,23 +58,13 @@ module.exports = function(Model) {
 					}).sample(2).exec(function(err, sim_projects) {
 					if (err) return next(err);
 
-					var images = project.images.reduce(function(prev, curr) {
-						if (prev.length && curr.gallery == prev[prev.length - 1][0].gallery) {
-							prev[prev.length - 1].push(curr);
-						} else {
-							prev.push([curr]);
-						}
+					var get_locale = function(option, lg) {
+						return ((option.filter(function(locale) {
+							return locale.lg == lg;
+						})[0] || {}).value || '');
+					};
 
-						return prev;
-					}, []).reduce(function(prev, curr) {
-						if (curr.some(function(item) { return item.gallery == true; }) && curr.length > 1) {
-							return prev.concat([curr]);
-						} else {
-							return prev.concat(curr);
-						}
-					}, []);
-
-					res.render('main/projects/project.pug', {project: project, awards: awards, sim_projects: sim_projects, images: images});
+					res.render('main/projects/project.pug', {get_locale: get_locale, project: project, awards: awards, sim_projects: sim_projects, images: images});
 				});
 			});
 		});
