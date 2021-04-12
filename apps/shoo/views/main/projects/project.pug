@@ -61,11 +61,13 @@ block content
 				.slider_block(class=g_size)
 					.swiper-container
 						.swiper-wrapper
-							each image in item
+							each image, i in item
 								.swiper-slide
 									.swiper-lazy.slide_image(data-background=image.thumb)
-									- var description = image.description.filter(function(lang) { return lang.lg == locale })
-									.slide_description= description.length ? description[0].value : ''
+									.slide_body
+										- var description = image.description.filter(function(lang) { return lang.lg == locale })
+										.slide_description= description.length ? description[0].value : ''
+										.slide_counter= (i+1) + ' / ' + item.length
 					.swiper-arrows
 						.arrow-left
 						.arrow-right
