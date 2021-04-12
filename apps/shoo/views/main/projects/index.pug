@@ -7,7 +7,15 @@ block header_meta
 
 block header_include
 	- var include_css = ['projects.css']
-	- var include_js = ['projects.js']
+	//- - var include_js = ['projects.js']
 
 block content
-	h1 SHOO Projects
+	.projects_block
+		each project in projects
+			a.project_item(href='/projects/' + project.type + '/' + (project.sym || project._short_id))
+				.project_type= __(project.type)
+				.project_title= project.i18n.title.get(locale)
+				.project_build= project.build_date.getFullYear()
+				if project.category
+					.project_category= project.category.i18n.title.get(locale)
+

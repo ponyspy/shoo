@@ -9,15 +9,10 @@ $(function() {
 		keyboard: {
 			enabled: true
 		},
-		// autoplay: {
-		// 	delay: 5000,
-		// 	disableOnInteraction: true
-		// },
-		// pagination: {
-		// 	el: '.swiper-pagination',
-		// 	type: 'bullets',
-		// 	clickable: true
-		// },
+		autoplay: {
+			delay: 5000,
+			disableOnInteraction: true
+		},
 	});
 
 });

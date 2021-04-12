@@ -14,8 +14,8 @@ html(lang=locale)
 							each category in p_type.categorys
 								a(href='/projects/' + p_type.type + '#' + (category.sym || category._short_id))= category.i18n.title.get(locale)
 
-				.type_item.all
-					a.type_main(href='/projects')= __('Все проекты')
+				.type_item
+					a.type_main(class=(menu_active == 'all') && 'active', href='/projects')= __('Все проекты')
 
 				.menu_drop
 					span
