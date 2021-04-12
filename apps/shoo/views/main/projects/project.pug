@@ -66,7 +66,7 @@ block content
 									.swiper-lazy.slide_image(data-background=image.thumb)
 									- var description = image.description.filter(function(lang) { return lang.lg == locale })
 									.slide_description= description.length ? description[0].value : ''
-
+					.swiper-arrows
 						.arrow-left
 						.arrow-right
 
