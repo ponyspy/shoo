@@ -7,6 +7,30 @@ block header_meta
 
 block header_include
 	- var include_css = ['news_item.css']
-	- var include_js = ['news_item.js']
+	//- - var include_js = ['news_item.js']
 
 block content
+	.news_header
+		.column_item.left
+			.news_type= __('Новости')
+			.news_date= moment(news.date).format('DD.MM.YYYY')
+		.column_item.right
+			.news_title= news.i18n.title.get(locale)
+
+	.news_poster(style='background-image: url(' + news.poster + ')')
+
+	.news_description!= news.i18n.description.get(locale)
+
+	if sim_news.length
+		.news_sim
+			.sim_title!= __('Еще') + ' ' + __('Новости')
+			.sim_news
+				each news_item in sim_news
+					a.news_item(href='/news/' + (news_item.sym || news_item._short_id))
+						.news_poster(style='background-image: url(' + news_item.poster + ')')
+						.news_columns
+							.column_item.left
+								.news_type= __('Новости')
+								.news_date= moment(news_item.date).format('DD.MM.YYYY')
+							.column_item.right
+								.news_title= get_locale(news.title, locale)
