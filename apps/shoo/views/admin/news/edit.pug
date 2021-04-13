@@ -23,6 +23,8 @@ block content
 		form(action="", method="post", enctype="multipart/form-data")
 			.form_title Название:
 			+form_text_single('title', news_item)
+			.form_title Синоним:
+			input(type='text', name='sym', value=news_item.sym, placeholder=news_item._short_id)
 			.form_title Описание:
 			+form_text_multi('description', news_item)
 			.form_title Обложка:

@@ -25,6 +25,7 @@ module.exports = function(Model, Params) {
 		news_item._short_id = shortid.generate();
 		news_item.status = post.status;
 		news_item.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
+		news_item.sym = post.sym ? post.sym : undefined;
 
 		var locales = post.en ? ['ru', 'en'] : ['ru'];
 

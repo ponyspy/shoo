@@ -1,0 +1,49 @@
+.content_block
+	width 100%
+	max-width 1640px
+	margin 0 auto
+	padding 20px
+	box-sizing border-box
+
+.news_block
+	margin-left -10px
+	margin-right -10px
+	margin-bottom 120px
+	.news_item
+		width 50%
+		display inline-block
+		vertical-align top
+		text-decoration none
+		color black
+		border 10px solid white
+		box-sizing border-box
+		.news_poster
+			width 100%
+			padding-top 60%
+			background-size contain
+			background-position center
+			background-repeat no-repeat
+		.news_columns
+			margin-top 10px
+			display flex
+			.column_item
+				display flex
+				&.left
+					flex-basis 30%
+					flex-direction column
+				&.right
+					flex-basis 70%
+					flex-direction row
+				.news_type
+					// background-color rgb(48, 154, 106)
+					padding-right 40px
+					&:after
+						content ':'
+				.news_date
+					// background-color rgb(231, 71, 37)
+					padding-top 5px
+					padding-right 40px
+				.news_title
+					// background-color rgb(249, 177, 11)
+					flex-grow 1
+					padding-right 40px

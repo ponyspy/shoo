@@ -1,13 +1,23 @@
 extends ../layout
 
 block header_meta
-	- var content_title = 'Studio Shoo | News'
+	- var content_title = 'Shoo | ' + __('Новости')
 	- var content_description= ''
 	- var menu_active = 'news'
 
 block header_include
 	- var include_css = ['news.css']
-	- var include_js = ['news.js']
+	//- - var include_js = ['news.js']
 
 block content
-	h1 SHOO News
+	.news_block
+		each news_item in news
+			a.news_item(href='/news/' + (news_item.sym || news_item._short_id))
+				.news_poster(style='background-image: url(' + news_item.poster + ')')
+				.news_columns
+					.column_item.left
+						.news_type= __('Новости')
+						.news_date= news_item.date.getFullYear()
+					.column_item.right
+						.news_title= news_item.i18n.title.get(locale)
+

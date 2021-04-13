@@ -77,6 +77,7 @@ var newsSchema = new Schema({
 	description: { type: String, trim: true, locale: true },
 	poster: { type: String },
 	status: String,
+	sym: { type: String, trim: true, index: true, unique: true, sparse: true },
 	_short_id: { type: String, unique: true, index: true, sparse: true },
 	date: { type: Date, default: Date.now },
 });
