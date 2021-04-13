@@ -3,7 +3,7 @@ html(lang=locale)
 	head
 		include header
 	body(class=menu_active)
-		.main_block
+		.header_block
 			.title_block
 				a.logo(href='/'): img(src='/stuff/shoo/icons/logo.svg')
 
@@ -24,13 +24,13 @@ html(lang=locale)
 					span
 
 			.menu_block
-				a.menu_item(href='/news') News
-				a.menu_item(href='/about') About
-				a.menu_item(href='/about#contacts') Contacts
-				a.menu_item(href='/about#publications') Publications
-				a.menu_item(href='/about#team') Team
-				a.menu_item(href='/about#vacancies') Vacancies
-				a.menu_item(href='/about#awards') Awards
+				a(href='/news') News
+				a(href='/about') About
+				a(href='/about#contacts') Contacts
+				a(href='/about#publications') Publications
+				a(href='/about#team') Team
+				a(href='/about#vacancies') Vacancies
+				a(href='/about#awards') Awards
 
 				if (session && session.user_id)
 					.stargazer_block
@@ -39,34 +39,34 @@ html(lang=locale)
 							a(href='/auth/logout') выход
 
 				.locale_block
-					a(href='/lang/ru', class=(locale == 'ru' ? 'active' : '')) Ru
-					a(href='/lang/en', class=(locale == 'en' ? 'active' : '')) En
+					a(href='/lang/en', class=(locale == 'en' ? 'active' : '')) Eng
+					a(href='/lang/ru', class=(locale == 'ru' ? 'active' : '')) Rus
 
 				.search_open Search
 
-			.content_block
-				block content
+		.content_block
+			block content
 
-			.footer_block
-				.column.social
-					a(href='https://www.facebook.com/studioshoo', target='_blank'): span Facebook
-					a(href='https://www.instagram.com/studio_shoo', target='_blank'): span Instagram
-					a(href='https://www.pinterest.ru/STUDIO_SHOO/_saved', target='_blank'): span Pinterest
-					a(href='https://www.behance.net/shushu14051c2d', target='_blank'): span Behance
+		.footer_block
+			.column.social
+				a(href='https://www.facebook.com/studioshoo', target='_blank'): span Facebook
+				a(href='https://www.instagram.com/studio_shoo', target='_blank'): span Instagram
+				a(href='https://www.pinterest.ru/STUDIO_SHOO/_saved', target='_blank'): span Pinterest
+				a(href='https://www.behance.net/shushu14051c2d', target='_blank'): span Behance
 
-				.column.contacts
-					div +7 985 187 13 41
-					br
-					div= __('Общие вопросы') + ':'
-					div: a(href='mailto:info@studioshoo.com') info@studioshoo.com
+			.column.contacts
+				div +7 985 187 13 41
+				br
+				div= __('Общие вопросы') + ':'
+				div: a(href='mailto:info@studioshoo.com') info@studioshoo.com
 
-				.column.contacts
-					div= __('Работа и стажировка') + ':'
-					div: a(href='mailto:hr@studioshoo.com') hr@studioshoo.com
-					br
-					div PR: #[a(href='mailto:pr@studioshoo.com') pr@studioshoo.com]
+			.column.contacts
+				div= __('Работа и стажировка') + ':'
+				div: a(href='mailto:hr@studioshoo.com') hr@studioshoo.com
+				br
+				div PR: #[a(href='mailto:pr@studioshoo.com') pr@studioshoo.com]
 
-				.column.copy Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			.column.copy Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 		include counters
 

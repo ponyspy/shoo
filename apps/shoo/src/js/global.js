@@ -3,6 +3,12 @@ $(function() {
 	var deltaY = 0;
 	var step = 150;
 
+	$('.menu_drop').on('click', function(e){
+		$(this).toggleClass('open');
+		$('body, .header_block').toggleClass('menu_open');
+	});
+
+
 	$('.project_images').each(function() {
 		var $this = $(this);
 
