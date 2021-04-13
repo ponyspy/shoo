@@ -8,6 +8,8 @@ $(function() {
 		$('body, .header_block').toggleClass('menu_open');
 	});
 
+	$(document).on('touchmove', 'body.menu_open', false)
+
 
 	$('.project_images').each(function() {
 		var $this = $(this);
