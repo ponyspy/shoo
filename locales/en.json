@@ -1,1 +1,16 @@
-{}
+{
+	"design": "Design",
+	"architecture": "Architecture",
+	"public-interiors": "Public Interiors",
+	"Все проекты": "All Projects",
+	"Общие вопросы": "General Enquiries",
+	"Работа и стажировка": "Jobs & Internships",
+	"Новости": "News",
+	"О нас": "About",
+	"Контакты": "Contacts",
+	"Публикации": "Publications",
+	"Команда": "Team",
+	"Награды": "Awards",
+	"Поиск": "Search",
+	"Вакансии": "Vacancies"
+}
