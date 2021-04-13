@@ -24,6 +24,11 @@ html(lang=locale)
 					span
 
 			.menu_block
+				if (session && session.user_id)
+					.stargazer_block
+							a(href='/auth') Stargazer
+							a(href='/auth/logout') Выход
+
 				a(href='/news') News
 				a(href='/about') About
 				a(href='/about#contacts') Contacts
@@ -31,12 +36,6 @@ html(lang=locale)
 				a(href='/about#team') Team
 				a(href='/about#vacancies') Vacancies
 				a(href='/about#awards') Awards
-
-				if (session && session.user_id)
-					.stargazer_block
-							a(href='/auth') stargazer
-							span= ' | '
-							a(href='/auth/logout') выход
 
 				.locale_block
 					a(href='/lang/en', class=(locale == 'en' ? 'active' : '')) Eng
