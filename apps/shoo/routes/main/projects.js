@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 module.exports = function(Model) {
 	var module = {};
 
@@ -64,7 +66,7 @@ module.exports = function(Model) {
 						})[0] || {}).value || '');
 					};
 
-					res.render('main/projects/project.pug', {get_locale: get_locale, project: project, awards: awards, sim_projects: sim_projects, images: images});
+					res.render('main/projects/project.pug', {get_locale: get_locale, moment: moment, project: project, awards: awards, sim_projects: sim_projects, images: images});
 				});
 			});
 		});

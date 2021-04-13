@@ -17,7 +17,7 @@ block content
 				.news_columns
 					.column_item.left
 						.news_type= __('Новости')
-						.news_date= news_item.date.getFullYear()
+						.news_date= moment(news_item.date).format('DD.MM.YYYY')
 					.column_item.right
 						.news_title= news_item.i18n.title.get(locale)
 

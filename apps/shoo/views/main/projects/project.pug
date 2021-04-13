@@ -34,7 +34,7 @@ block content
 
 					.line_item
 						.line_title Дата
-						.line_body= project.build_date.getFullYear()
+						.line_body= moment(project.build_date).locale(locale).format('MMMM YYYY')
 
 					if project.i18n.area.get(locale).length
 						.line_item

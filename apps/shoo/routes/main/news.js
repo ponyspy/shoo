@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 module.exports = function(Model) {
 	var module = {};
 
@@ -7,7 +9,7 @@ module.exports = function(Model) {
 		News.find().where('status').ne('hidden').exec(function(err, news) {
 			if (err) return next(err);
 
-			res.render('main/news/index.pug', {news: news});
+			res.render('main/news/index.pug', {news: news, moment: moment});
 		});
 	};
 
@@ -17,7 +19,7 @@ module.exports = function(Model) {
 		News.findOne({'$or': [{ '_short_id': id }, { 'sym': id }]}).where('status').ne('hidden').exec(function(err, news) {
 			if (err) return next(err);
 
-			res.render('main/news/news.pug', {news: news});
+			res.render('main/news/news.pug', {news: news, moment: moment});
 		});
 	};
 
