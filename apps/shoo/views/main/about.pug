@@ -14,48 +14,50 @@ block content
 	.content_section.one
 		a.anchor#about
 		a.anchor#contacts
-		.column_item.about
-			.column_title= __('О нас')
-			.column_s_title Философия
-			.column_body!= philosophy
+		.section_inner
+			.column_item.about
+				.column_title= __('О нас')
+				.column_s_title Философия
+				.column_body.text!= philosophy
 
-		.column_item.contacts
-			.column_title= __('Контакты')
-			.column_body
-				div +7 985 187 13 41
-				br
-				div= __('Общие вопросы') + ':'
-				div: a(href='mailto:info@studioshoo.com') info@studioshoo.com
-				br
-				div= __('Работа и стажировка') + ':'
-				div: a(href='mailto:hr@studioshoo.com') hr@studioshoo.com
-				br
-				div PR: #[a(href='mailto:pr@studioshoo.com') pr@studioshoo.com]
+			.column_item.contacts
+				.column_title= __('Контакты')
+				.column_body
+					div +7 985 187 13 41
+					br
+					div= __('Общие вопросы') + ':'
+					div: a(href='mailto:info@studioshoo.com') info@studioshoo.com
+					br
+					div= __('Работа и стажировка') + ':'
+					div: a(href='mailto:hr@studioshoo.com') hr@studioshoo.com
+					br
+					div PR: #[a(href='mailto:pr@studioshoo.com') pr@studioshoo.com]
 
-		.column_item.social
-			.column_title
-			.column_body
-				a(href='https://www.facebook.com/studioshoo', target='_blank'): span Facebook
-				a(href='https://www.instagram.com/studio_shoo', target='_blank'): span Instagram
-				a(href='https://www.pinterest.ru/STUDIO_SHOO/_saved', target='_blank'): span Pinterest
-				a(href='https://www.behance.net/shushu14051c2d', target='_blank'): span Behance
+			.column_item.social
+				.column_title.none &nbsp;
+				.column_body.links
+					a(href='https://www.facebook.com/studioshoo', target='_blank'): span Facebook
+					a(href='https://www.instagram.com/studio_shoo', target='_blank'): span Instagram
+					a(href='https://www.pinterest.ru/STUDIO_SHOO/_saved', target='_blank'): span Pinterest
+					a(href='https://www.behance.net/shushu14051c2d', target='_blank'): span Behance
 
 
 	img.content_image(src='/stuff/shoo/backgrounds/a1.jpg')
 
 
 	.content_section.two
-		.column_item.how_work
-			.column_s_title Как мы работаем
-			.column_body!= how_work
+		.section_inner
+			.column_item.how_work
+				.column_s_title Как мы работаем
+				.column_body.text!= how_work
 
-		.column_item.our_service
-			.column_s_title Наши услуги
-			.column_body!= our_service
+			.column_item.our_service
+				.column_s_title Наши услуги
+				.column_body!= our_service
 
-		.column_item.clients
-			.column_s_title Наши клиенты
-			.column_body!= clients
+			.column_item.clients
+				.column_s_title Наши клиенты
+				.column_body.text!= clients
 
 
 	img.content_image(src='/stuff/shoo/backgrounds/a2.jpg')
@@ -64,35 +66,37 @@ block content
 	.content_section.three
 		a.anchor#team
 		a.anchor#vacancies
-		.column_item.our_team
-			.column_s_title Наша команда
-			.column_body!= our_team
+		.section_inner
+			.column_item.our_team
+				.column_s_title Наша команда
+				.column_body.text!= our_team
 
-		.column_item.team
-			.column_title= __('Команда')
-			.column_body
-				each people in peoples
-					.people_item
-						.people_type= __(people.type)
-						.people_name= people.i18n.name.get(locale)
+			.column_item.team
+				.column_title= __('Команда')
+				.column_body.list
+					each people in peoples
+						.list_item
+							.people_type= __(people.type)
+							.people_name= people.i18n.name.get(locale)
 
-		.column_item.vacancies
-			.column_title= __('Вакансии')
-			.column_body!= vacancies
+			.column_item.vacancies
+				.column_title= __('Вакансии')
+				.column_body!= vacancies
 
 
 	.content_section.four
 		a.anchor#publications
 		a.anchor#awards
-		.column_item.publications
-			.column_title= __('Публикации')
-			.column_body
-				each publication in publications
-					a.publication_item(href=publication.link)= publication.i18n.title.get(locale)
+		.section_inner
+			.column_item.publications
+				.column_title= __('Публикации')
+				.column_body.links
+					each publication in publications
+						a.publication_item(href=publication.link, target='_blank'): span= publication.i18n.title.get(locale)
 
-		.column_item.awards
-			.column_title= __('Награды')
-			.column_body
-				each award in awards
-					.award_item= award.i18n.title.get(locale)
+			.column_item.awards
+				.column_title= __('Награды')
+				.column_body.list
+					each award in awards
+						.list_item= award.i18n.title.get(locale)
 
