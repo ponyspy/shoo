@@ -11,13 +11,15 @@ block header_include
 
 block content
 
-	.content_section#one
-		.column_item
+	.content_section.one
+		a.anchor#about
+		a.anchor#contacts
+		.column_item.about
 			.column_title= __('О нас')
 			.column_s_title Философия
 			.column_body!= philosophy
 
-		.column_item
+		.column_item.contacts
 			.column_title= __('Контакты')
 			.column_body
 				.body.contacts
@@ -40,16 +42,16 @@ block content
 	img.content_image(src='/stuff/shoo/backgrounds/a1.jpg')
 
 
-	.content_section
-		.column_item
+	.content_section.two
+		.column_item.how_work
 			.column_s_title Как мы работаем
 			.column_body!= how_work
 
-		.column_item
+		.column_item.our_service
 			.column_s_title Наши услуги
 			.column_body!= our_service
 
-		.column_item
+		.column_item.clients
 			.column_s_title Наши клиенты
 			.column_body!= clients
 
@@ -57,12 +59,14 @@ block content
 	img.content_image(src='/stuff/shoo/backgrounds/a2.jpg')
 
 
-	.content_section#two
-		.column_item
+	.content_section.three
+		a.anchor#team
+		a.anchor#vacancies
+		.column_item.our_team
 			.column_s_title Наша команда
 			.column_body!= our_team
 
-		.column_item
+		.column_item.team
 			.column_title= __('Команда')
 			.column_body
 				each people in peoples
@@ -70,19 +74,21 @@ block content
 						.people_type= __(people.type)
 						.people_name= people.i18n.name.get(locale)
 
-		.column_item
+		.column_item.vacancies
 			.column_title= __('Вакансии')
 			.column_body!= vacancies
 
 
-	.content_section#three
-		.column_item
+	.content_section.four
+		a.anchor#publications
+		a.anchor#awards
+		.column_item.publications
 			.column_title= __('Публикации')
 			.column_body
 				each publication in publications
 					a.publication_item(href=publication.link)= publication.i18n.title.get(locale)
 
-		.column_item
+		.column_item.awards
 			.column_title= __('Награды')
 			.column_body
 				each award in awards
