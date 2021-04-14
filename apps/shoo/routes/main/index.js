@@ -20,13 +20,8 @@ module.exports = function(Model) {
 	module.about = function(req, res, next) {
 
 		async.parallel({
-			contacts: function(callback) {
-				fs.readFile(__app_root + '/static/contacts_' + req.locale + '.html', 'utf8', function(err, content) {
-					callback(null, content || '');
-				});
-			},
-			clients: function(callback) {
-				fs.readFile(__app_root + '/static/clients_' + req.locale + '.html', 'utf8', function(err, content) {
+			philosophy: function(callback) {
+				fs.readFile(__app_root + '/static/philosophy_' + req.locale + '.html', 'utf8', function(err, content) {
 					callback(null, content || '');
 				});
 			},
@@ -40,13 +35,13 @@ module.exports = function(Model) {
 					callback(null, content || '');
 				});
 			},
-			our_team: function(callback) {
-				fs.readFile(__app_root + '/static/our_team_' + req.locale + '.html', 'utf8', function(err, content) {
+			clients: function(callback) {
+				fs.readFile(__app_root + '/static/clients_' + req.locale + '.html', 'utf8', function(err, content) {
 					callback(null, content || '');
 				});
 			},
-			philosophy: function(callback) {
-				fs.readFile(__app_root + '/static/philosophy_' + req.locale + '.html', 'utf8', function(err, content) {
+			our_team: function(callback) {
+				fs.readFile(__app_root + '/static/our_team_' + req.locale + '.html', 'utf8', function(err, content) {
 					callback(null, content || '');
 				});
 			},

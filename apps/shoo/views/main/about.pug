@@ -15,7 +15,7 @@ block content
 		.column_item
 			.column_title= __('О нас')
 			.column_s_title Философия
-			.column_body
+			.column_body!= philosophy
 
 		.column_item
 			.column_title= __('Контакты')
@@ -44,17 +44,17 @@ block content
 		.column_item
 			.column_title
 			.column_s_title Как мы работаем
-			.column_body
+			.column_body!= how_work
 
 		.column_item
 			.column_title
 			.column_s_title Наши услуги
-			.column_body
+			.column_body!= our_service
 
 		.column_item
 			.column_title
-			.column_s_title Клиенты
-			.column_body
+			.column_s_title Наши клиенты
+			.column_body!= clients
 
 
 	.content_image
@@ -64,7 +64,7 @@ block content
 		.column_item
 			.column_title
 			.column_s_title Наша команда
-			.column_body
+			.column_body!= our_team
 
 		.column_item
 			.column_title= __('Команда')
@@ -74,7 +74,7 @@ block content
 		.column_item
 			.column_title= __('Вакансии')
 			.column_s_title
-			.column_body
+			.column_body!= vacancies
 
 
 	.content_section#three

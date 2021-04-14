@@ -21,15 +21,11 @@ block content
 	.form_block
 		.title= content_title
 		form(action='', method='post')
-			.form_title Контакты:
-			.content
-				textarea.ru.editor(name='contacts[ru]')= content.contacts_ru
-				textarea.en.editor(name='contacts[en]')= content.contacts_en
 			.form_title Философия:
 			.content
 				textarea.ru.editor(name='philosophy[ru]')= content.philosophy_ru
 				textarea.en.editor(name='philosophy[en]')= content.philosophy_en
-			.form_title Как работаем:
+			.form_title Как мы работаем:
 			.content
 				textarea.ru.editor(name='how_work[ru]')= content.how_work_ru
 				textarea.en.editor(name='how_work[en]')= content.how_work_en
@@ -37,11 +33,11 @@ block content
 			.content
 				textarea.ru.editor(name='our_service[ru]')= content.our_service_ru
 				textarea.en.editor(name='our_service[en]')= content.our_service_en
-			.form_title Клиенты:
+			.form_title Наши клиенты:
 			.content
 				textarea.ru.editor(name='clients[ru]')= content.clients_ru
 				textarea.en.editor(name='clients[en]')= content.clients_en
-			.form_title Команда:
+			.form_title Наша команда:
 			.content
 				textarea.ru.editor(name='our_team[ru]')= content.our_team_ru
 				textarea.en.editor(name='our_team[en]')= content.our_team_en

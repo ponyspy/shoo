@@ -3,12 +3,6 @@ var async = require('async');
 
 exports.edit = function(req, res) {
 	async.series({
-		contacts_ru: function(callback) {
-			fs.readFile(__app_root + '/static/contacts_ru.html', 'utf8', callback);
-		},
-		contacts_en: function(callback) {
-			fs.readFile(__app_root + '/static/contacts_en.html', 'utf8', callback);
-		},
 		philosophy_ru: function(callback) {
 			fs.readFile(__app_root + '/static/philosophy_ru.html', 'utf8', callback);
 		},
@@ -54,16 +48,6 @@ exports.edit_form = function(req, res) {
 	var post = req.body;
 
 	async.series({
-		contacts_ru: function(callback) {
-			if (!post.contacts.ru) return callback(null);
-
-			fs.writeFile(__app_root + '/static/contacts_ru.html', post.contacts.ru, callback);
-		},
-		contacts_en: function(callback) {
-			if (!post.contacts.en) return callback(null);
-
-			fs.writeFile(__app_root + '/static/contacts_en.html', post.contacts.en, callback);
-		},
 		philosophy_ru: function(callback) {
 			if (!post.philosophy.ru) return callback(null);
 
