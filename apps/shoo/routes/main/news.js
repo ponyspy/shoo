@@ -6,7 +6,7 @@ module.exports = function(Model) {
 	var News = Model.News;
 
 	module.index = function(req, res, next) {
-		News.find().where('status').ne('hidden').exec(function(err, news) {
+		News.find().where('status').ne('hidden').sort('-date').exec(function(err, news) {
 			if (err) return next(err);
 
 			res.render('main/news/index.pug', {news: news, moment: moment});
