@@ -10,4 +10,81 @@ block header_include
 	- var include_js = ['about.js']
 
 block content
-	h1 SHOO About
+
+	.content_section#one
+		.column_item
+			.column_title= __('О нас')
+			.column_s_title Философия
+			.column_body
+
+		.column_item
+			.column_title= __('Контакты')
+			.column_body
+				.body.contacts
+					div +7 985 187 13 41
+					br
+					div= __('Общие вопросы') + ':'
+					div: a(href='mailto:info@studioshoo.com') info@studioshoo.com
+					br
+					div= __('Работа и стажировка') + ':'
+					div: a(href='mailto:hr@studioshoo.com') hr@studioshoo.com
+					br
+					div PR: #[a(href='mailto:pr@studioshoo.com') pr@studioshoo.com]
+				.body.social
+					a(href='https://www.facebook.com/studioshoo', target='_blank'): span Facebook
+					a(href='https://www.instagram.com/studio_shoo', target='_blank'): span Instagram
+					a(href='https://www.pinterest.ru/STUDIO_SHOO/_saved', target='_blank'): span Pinterest
+					a(href='https://www.behance.net/shushu14051c2d', target='_blank'): span Behance
+
+
+	.content_image
+
+
+	.content_section
+		.column_item
+			.column_title
+			.column_s_title Как мы работаем
+			.column_body
+
+		.column_item
+			.column_title
+			.column_s_title Наши услуги
+			.column_body
+
+		.column_item
+			.column_title
+			.column_s_title Клиенты
+			.column_body
+
+
+	.content_image
+
+
+	.content_section#two
+		.column_item
+			.column_title
+			.column_s_title Наша команда
+			.column_body
+
+		.column_item
+			.column_title= __('Команда')
+			.column_s_title
+			.column_body
+
+		.column_item
+			.column_title= __('Вакансии')
+			.column_s_title
+			.column_body
+
+
+	.content_section#three
+		.column_item
+			.column_title= __('Публикации')
+			.column_s_title
+			.column_body
+
+		.column_item
+			.column_title= __('Награды')
+			.column_s_title
+			.column_body
+
