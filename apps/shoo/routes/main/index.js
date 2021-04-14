@@ -1,3 +1,6 @@
+var fs = require('fs');
+var async = require('async');
+
 module.exports = function(Model) {
 	var module = {};
 
@@ -15,18 +18,56 @@ module.exports = function(Model) {
 	};
 
 	module.about = function(req, res, next) {
-		People.find().where('status').nin(['hidden', 'special']).exec(function(err, peoples) {
+
+		async.parallel({
+			contacts: function(callback) {
+				fs.readFile(__app_root + '/static/contacts_' + req.locale + '.html', 'utf8', function(err, content) {
+					callback(null, content || '');
+				});
+			},
+			clients: function(callback) {
+				fs.readFile(__app_root + '/static/clients_' + req.locale + '.html', 'utf8', function(err, content) {
+					callback(null, content || '');
+				});
+			},
+			how_work: function(callback) {
+				fs.readFile(__app_root + '/static/how_work_' + req.locale + '.html', 'utf8', function(err, content) {
+					callback(null, content || '');
+				});
+			},
+			our_service: function(callback) {
+				fs.readFile(__app_root + '/static/our_service_' + req.locale + '.html', 'utf8', function(err, content) {
+					callback(null, content || '');
+				});
+			},
+			our_team: function(callback) {
+				fs.readFile(__app_root + '/static/our_team_' + req.locale + '.html', 'utf8', function(err, content) {
+					callback(null, content || '');
+				});
+			},
+			philosophy: function(callback) {
+				fs.readFile(__app_root + '/static/philosophy_' + req.locale + '.html', 'utf8', function(err, content) {
+					callback(null, content || '');
+				});
+			},
+			vacancies: function(callback) {
+				fs.readFile(__app_root + '/static/vacancies_' + req.locale + '.html', 'utf8', function(err, content) {
+					callback(null, content || '');
+				});
+			},
+			awards: function(callback) {
+				Award.find().where('status').ne('hidden').exec(callback);
+			},
+			publications: function(callback) {
+				Publication.find().where('status').ne('hidden').exec(callback);
+			},
+			peoples: function(callback) {
+				People.find().where('status').nin(['hidden', 'special']).ne('hidden').exec(callback);
+			},
+		}, function(err, results) {
 			if (err) return next(err);
 
-			Publication.find().where('status').ne('hidden').exec(function(err, publications) {
-				if (err) return next(err);
-
-				Award.find().where('status').ne('hidden').exec(function(err, awards) {
-					if (err) return next(err);
-
-					res.render('main/about.pug', {peoples: peoples, publications: publications, awards: awards});
-				});
-			});
+			res.render('main/about.pug', results);
 		});
 	};
 
