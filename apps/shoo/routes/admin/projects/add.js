@@ -50,6 +50,9 @@ module.exports = function(Model, Params) {
 			checkNested(post, [locale, 'title'])
 				&& project.setPropertyLocalised('title', post[locale].title, locale);
 
+			checkNested(post, [locale, 'intro'])
+				&& project.setPropertyLocalised('intro', post[locale].intro, locale);
+
 			checkNested(post, [locale, 'area'])
 				&& project.setPropertyLocalised('area', post[locale].area, locale);
 

@@ -5,7 +5,7 @@ html(lang=locale)
 	body(class=menu_active)
 		.header_block
 			.title_block
-				a.logo(href='/'): img(src='/stuff/shoo/icons/logo.svg')
+				a.logo(href='/'): img(src= logo_title || '/stuff/shoo/icons/logo.svg')
 
 				each p_type in project_types
 					.type_item(class=p_type.type)

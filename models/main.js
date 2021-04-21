@@ -29,6 +29,7 @@ var userSchema = new Schema({
 
 var projectSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
+	intro: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
 	build_date: { type: Date, default: Date.now },
 	area: { type: String, trim: true, locale: true },
@@ -75,6 +76,7 @@ var awardSchema = new Schema({
 
 var newsSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
+	intro: { type: String, trim: true, locale: true },
 	description: { type: String, trim: true, locale: true },
 	poster: { type: String },
 	status: String,

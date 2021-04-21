@@ -2,9 +2,10 @@ extends ../layout
 
 block header_meta
 	- var content_title = 'Shoo | ' + __(project.type) + ' | ' + project.i18n.title.get(locale)
-	- var content_description= ''
+	- var content_description= project.i18n.intro.get(locale)
 	- var content_images = [project.poster]
 	- var menu_active = project.type
+	- var logo_title = project.logo
 
 block header_include
 	- var include_libs_css = ['swiper-bundle.min.css']
