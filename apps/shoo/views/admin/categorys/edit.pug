@@ -24,7 +24,7 @@ block content
 		form(action="", method="post")
 			.form_title Название:
 			+form_text_single('title', category)
-			.form_title Синоним (обязательно):
+			.form_title Синоним:
 			input(type='text', name='sym', value=category.sym)
 			.form_title Статус:
 			select(name='status')

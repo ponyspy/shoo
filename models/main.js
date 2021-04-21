@@ -93,7 +93,7 @@ var peopleSchema = new Schema({
 
 var categorySchema = new Schema({
 	title: { type: String, trim: true, locale: true },
-	sym: { type: String, trim: true, index: true, unique: true, sparse: true },
+	sym: { type: String, trim: true, index: true, sparse: true },
 	status: String,	// hidden
 	_short_id: { type: String, unique: true, index: true, sparse: true },
 	date: { type: Date, default: Date.now, index: true },
