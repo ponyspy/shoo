@@ -94,24 +94,26 @@ block content
 	.project_bottom
 		.project_columns.right
 			.column_item
-				//- .column.title
+				.column.title Материалы
 				.column.body
 					.line_item
-						.line_title Материалы
 						.line_body!= project.i18n.brands.get(locale)
 
 			.column_item
-				//- .column.title
+				.column.title Публикации
 				.column.body
 					.line_item
-						.line_title Публикации
+						//- .line_title
 						.line_body
 							each publication in publications
 								.line_item
 									a.line_body(href=publication.link, target='_blank')= publication.i18n.title.get(locale)
 
+			.column_item
+				.column.title Награды
+				.column.body
 						.line_item
-							.line_title Награды
+							//- .line_title
 							.line_body
 								each award in awards
 									.line_item
