@@ -5,12 +5,17 @@ module.exports = function(Model, Params) {
 	var module = {};
 
 	var Publication = Model.Publication;
+	var Project = Model.Project;
 
 	var checkNested = Params.locale.checkNested;
 
 
 	module.index = function(req, res, next) {
-		res.render('admin/publications/add.pug');
+		Project.find().exec(function(err, projects) {
+			if (err) return next(err);
+
+			res.render('admin/publications/add.pug', {projects: projects});
+		});
 	};
 
 
@@ -24,6 +29,7 @@ module.exports = function(Model, Params) {
 		publication.status = post.status;
 		publication.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 		publication.link = post.link;
+		publication.projects = post.projects.filter(function(project) { return project != 'none'; });
 
 		var locales = post.en ? ['ru', 'en'] : ['ru'];
 

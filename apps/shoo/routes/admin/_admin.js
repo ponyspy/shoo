@@ -11,7 +11,7 @@ var admin = {
 	news: require('./news/_news.js'),
 	peoples: require('./peoples/_peoples.js'),
 	categorys: require('./categorys/_categorys.js'),
-	cv: require('./cv.js'),
+	about: require('./about.js'),
 	users: require('./users/_users.js'),
 	options: require('./options.js')
 };
@@ -27,9 +27,9 @@ module.exports = (function() {
 
 	router.route('/').get(checkAuth, admin.main.index);
 
-	router.route('/cv')
-		.get(checkAuth, admin.cv.edit)
-		.post(checkAuth, admin.cv.edit_form);
+	router.route('/about')
+		.get(checkAuth, admin.about.edit)
+		.post(checkAuth, admin.about.edit_form);
 
 	router.use('/projects', checkAuth, upload.fields([ {name: 'poster'}, { name: 'logo' } ]), admin.projects);
 	router.use('/publications', checkAuth, admin.publications);

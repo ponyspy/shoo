@@ -25,6 +25,8 @@ block content
 			+form_text_single('title')
 			.form_title Ссылка:
 			input(type='text', name='link')
+			.form_title Проекты:
+			+form_multiple_select('projects', projects)
 			.form_title Статус:
 			select(name='status')
 				option(value='base') Обычный

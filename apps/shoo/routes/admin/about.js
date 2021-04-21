@@ -40,7 +40,7 @@ exports.edit = function(req, res) {
 			fs.readFile(__app_root + '/static/vacancies_en.html', 'utf8', callback);
 		}
 	}, function(err, results) {
-		res.render('admin/cv.pug', { content: results });
+		res.render('admin/about.pug', { content: results });
 	});
 };
 

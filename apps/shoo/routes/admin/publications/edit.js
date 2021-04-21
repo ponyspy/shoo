@@ -4,6 +4,7 @@ module.exports = function(Model, Params) {
 	var module = {};
 
 	var Publication = Model.Publication;
+	var Project = Model.Project;
 
 	var checkNested = Params.locale.checkNested;
 
@@ -14,7 +15,11 @@ module.exports = function(Model, Params) {
 		Publication.findById(id).exec(function(err, publication) {
 			if (err) return next(err);
 
-			res.render('admin/publications/edit.pug', { publication: publication });
+			Project.find().exec(function(err, projects) {
+				if (err) return next(err);
+
+				res.render('admin/publications/edit.pug', { publication: publication, projects: projects });
+			});
 		});
 
 	};
@@ -31,6 +36,7 @@ module.exports = function(Model, Params) {
 			publication.status = post.status;
 			publication.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 			publication.link = post.link;
+			publication.projects = post.projects.filter(function(project) { return project != 'none'; });
 
 			var locales = post.en ? ['ru', 'en'] : ['ru'];
 

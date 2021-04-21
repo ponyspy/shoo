@@ -59,6 +59,7 @@ var projectSchema = new Schema({
 var publicationSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
 	link: String,
+	projects: [{ type: ObjectId, ref: 'Project' }],
 	status: String,
 	_short_id: { type: String, unique: true, index: true, sparse: true },
 	date: { type: Date, default: Date.now },
