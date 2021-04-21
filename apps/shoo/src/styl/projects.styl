@@ -7,10 +7,12 @@
 
 .projects_block
 	margin-bottom 120px
-	display table
 	width 100%
+	display table
+	border-collapse collapse
 	.project_item
 		display table-row
+		border-bottom 1px solid black
 		color black
 		text-decoration none
 		&:hover .title
@@ -18,7 +20,6 @@
 		.project_cell
 			padding-top 20px
 			padding-bottom 10px
-			border-bottom 1px solid black
 			width 25%
 			display table-cell
 			&.type
