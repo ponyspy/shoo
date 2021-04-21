@@ -36,22 +36,34 @@
 	padding-top 40px
 	padding-bottom 40px
 	.project_description
-		flex-basis 55%
-		padding-right 180px
+		flex-basis 50%
+		padding-right 100px
 		text-indent 60px
 		box-sizing border-box
 	.project_columns
-		flex-basis 45%
+		flex-basis 50%
 		display flex
 		&.right
 			margin-left auto
 		.column_item
 			flex-basis 50%
+			padding-left 20px
+			padding-right 20px
+			box-sizing border-box
 			.column
 				&.title
 					&:after
 						content ':'
 // 				&.body
+				.line_link
+					color black
+					text-decoration none
+					display block
+					&:before
+						content '↘'
+						padding-right 5px
+					span:hover
+						text-decoration underline
 				.line_item
 					margin-top 20px
 					.line_title

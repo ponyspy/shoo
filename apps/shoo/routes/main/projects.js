@@ -50,10 +50,10 @@ module.exports = function(Model) {
 				}
 			}, []);
 
-			Award.find({projects: project._id}).where('status').ne('hidden').exec(function(err, awards) {
+			Award.find({projects: project._id}).where('status').ne('hidden').sort('-date').exec(function(err, awards) {
 				if (err) return next(err);
 
-				Publication.find({projects: project._id}).where('status').ne('hidden').exec(function(err, publications) {
+				Publication.find({projects: project._id}).where('status').ne('hidden').sort('-date').exec(function(err, publications) {
 					if (err) return next(err);
 
 					var category = project.category ? project.category._id : {'$ne': 'none'};

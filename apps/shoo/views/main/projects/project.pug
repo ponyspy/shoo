@@ -106,8 +106,7 @@ block content
 						//- .line_title
 						.line_body
 							each publication in publications
-								.line_item
-									a.line_body(href=publication.link, target='_blank')= publication.i18n.title.get(locale)
+								a.line_link(href=publication.link, target='_blank'): span= publication.i18n.title.get(locale)
 
 			.column_item
 				.column.title Награды
