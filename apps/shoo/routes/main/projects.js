@@ -5,6 +5,7 @@ module.exports = function(Model) {
 
 	var Project = Model.Project;
 	var Award = Model.Award;
+	var Publication = Model.Publication;
 	var Category = Model.Category;
 
 	module.index = function(req, res, next) {
@@ -49,24 +50,32 @@ module.exports = function(Model) {
 				}
 			}, []);
 
-			Award.find({projects: project._id}).exec(function(err, awards) {
+			Award.find({projects: project._id}).where('status').ne('hidden').exec(function(err, awards) {
 				if (err) return next(err);
 
-				var category = project.category ? project.category._id : {'$ne': 'none'};
-
-				Project.aggregate().match({
-					'type': project.type, '_id': {'$ne': project._id},
-					'category': category , 'status': {'$ne': 'hidden'}
-					}).sample(2).exec(function(err, sim_projects) {
+				Publication.find({projects: project._id}).where('status').ne('hidden').exec(function(err, publications) {
 					if (err) return next(err);
 
-					var get_locale = function(option, lg) {
-						return ((option.filter(function(locale) {
-							return locale.lg == lg;
-						})[0] || {}).value || '');
-					};
+					var category = project.category ? project.category._id : {'$ne': 'none'};
 
-					res.render('main/projects/project.pug', {get_locale: get_locale, moment: moment, project: project, awards: awards, sim_projects: sim_projects, images: images});
+					Project.aggregate().match({
+						'type': project.type, '_id': {'$ne': project._id},
+						'category': category , 'status': {'$ne': 'hidden'}
+						}).sample(2).exec(function(err, sim_projects) {
+						if (err) return next(err);
+
+						var get_locale = function(option, lg) {
+							return ((option.filter(function(locale) {
+								return locale.lg == lg;
+							})[0] || {}).value || '');
+						};
+
+						res.render('main/projects/project.pug', {
+							get_locale: get_locale, moment: moment,
+							project: project, awards: awards, images: images,
+							publications: publications, sim_projects: sim_projects,
+						});
+					});
 				});
 			});
 		});

@@ -20,7 +20,9 @@ block content
 		if project.category
 			.project_category= project.category.i18n.title.get(locale)
 
+
 	.project_poster(style='background-image: url(' + project.poster + ')')
+
 
 	.project_body
 		.project_description!= project.i18n.description.get(locale)
@@ -60,6 +62,7 @@ block content
 								.line_title= __(people.type)
 								.line_body= people.i18n.name.get(locale)
 
+
 	.project_gallery
 		each item in images
 			if item.length
@@ -86,6 +89,34 @@ block content
 					.image(style='background-image: url(' + item.thumb + ')')
 					- var description = item.description.filter(function(lang) { return lang.lg == locale })
 					.image_description= description.length ? description[0].value : ''
+
+
+	.project_bottom
+		.project_columns.right
+			.column_item
+				//- .column.title
+				.column.body
+					.line_item
+						.line_title Материалы
+						.line_body!= project.i18n.brands.get(locale)
+
+			.column_item
+				//- .column.title
+				.column.body
+					.line_item
+						.line_title Публикации
+						.line_body
+							each publication in publications
+								.line_item
+									a.line_body(href=publication.link, target='_blank')= publication.i18n.title.get(locale)
+
+						.line_item
+							.line_title Награды
+							.line_body
+								each award in awards
+									.line_item
+										.line_body= award.i18n.title.get(locale)
+
 
 	if sim_projects.length
 		.project_sim
