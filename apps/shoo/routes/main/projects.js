@@ -1,4 +1,5 @@
 var moment = require('moment');
+var pug = require('pug');
 
 module.exports = function(Model) {
 	var module = {};
@@ -19,12 +20,33 @@ module.exports = function(Model) {
 	module.projects_type = function(req, res, next) {
 		if (req.app.locals.static_types.projects_types.indexOf(req.params.type) == -1) return next();
 
-		Project.find({'type': req.params.type}).where('status').ne('hidden').sort('-build_date').populate('category').exec(function(err, projects) {
-			if (err) return next(err);
-
-			res.render('main/projects/type.pug', {'current_type': req.params.type,  projects: projects});
-		});
+		res.render('main/projects/type.pug', {'current_type': req.params.type});
 	};
+
+	module.get_type = function(req, res, next) {
+		if (req.app.locals.static_types.projects_types.indexOf(req.params.type) == -1) return next();
+
+		Category.findOne({'$or': [{ '_short_id': req.body.context.category }, { 'sym': req.body.context.category }]}).exec(function(err, category) {
+			var skip = +req.body.context.skip || 0;
+			var limit = +req.body.context.limit || 0;
+
+			var query = category ? {'type': req.params.type, 'category': category._id} : {'type': req.params.type };
+
+			Project.find(query).where('status').ne('hidden').skip(skip).limit(limit).sort('-build_date').populate('category').exec(function(err, projects) {
+				if (err) return next(err);
+
+				var opts = {
+					locale: req.locale,
+					projects: projects,
+					__: function() { return res.locals.__.apply(null, arguments); },
+					__n: function() { return res.locals.__n.apply(null, arguments); },
+					compileDebug: false, debug: false, cache: true, pretty: false
+				};
+
+				res.send(projects.length ? pug.renderFile(__app_root + '/views/main/projects/_projects.pug', opts) : 'end');
+			});
+		});
+	}
 
 	module.project = function(req, res, next) {
 		if (req.app.locals.static_types.projects_types.indexOf(req.params.type) == -1) return next();

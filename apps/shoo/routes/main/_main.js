@@ -30,7 +30,8 @@ module.exports = (function() {
 		.get(main.projects.index);
 
 	router.route('/projects/:type')
-		.get(main.projects.projects_type);
+		.get(main.projects.projects_type)
+		.post(main.projects.get_type);
 
 	router.route('/projects/:type/:project_id')
 		.get(main.projects.project);
