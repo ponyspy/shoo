@@ -12,7 +12,8 @@ html(lang=locale)
 						a.type_main(class=(menu_active == p_type.type) && 'active', href='/projects/' + p_type.type)= __(p_type.type)
 						.type_categorys
 							each category in p_type.categorys
-								a(href='/projects/' + p_type.type + '#' + (category.sym || category._short_id))= category.i18n.title.get(locale)
+								- var p_category = category.sym || category._short_id
+								a.type_category(href='/projects/' + p_type.type + '#' + p_category, data-category=p_category)= category.i18n.title.get(locale)
 
 				.type_item
 					a.type_main(class=(menu_active == 'all') && 'active', href='/projects')= __('Все проекты')

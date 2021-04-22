@@ -28,6 +28,7 @@ $window.on('load hashchange', function(e) {
 		}
 	};
 
+	$('.type_category').removeClass('active').filter('[data-category="' + (context.category || 'none') + '"]').addClass('active');
 	$('.projects_loader').removeClass('hide');
 
 	$.ajax({url: '', method: 'POST', data: { 'context': context }, async: false }).done(function(data) {
