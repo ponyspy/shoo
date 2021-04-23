@@ -21,7 +21,8 @@ module.exports = (function() {
 		.get(main.index.about);
 
 	router.route('/news')
-		.get(main.news.index);
+		.get(main.news.index)
+		.post(main.news.get_news);
 
 	router.route('/news/:news_id')
 		.get(main.news.news);

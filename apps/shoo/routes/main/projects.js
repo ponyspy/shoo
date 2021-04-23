@@ -32,7 +32,7 @@ module.exports = function(Model) {
 
 			var query = category ? {'type': req.params.type, 'category': category._id} : {'type': req.params.type };
 
-			Project.find(query).where('status').ne('hidden').skip(skip).limit(limit).sort('-build_date').populate('category').exec(function(err, projects) {
+			Project.find(query).where('status').ne('hidden').sort('-build_date').skip(skip).limit(limit).populate('category').exec(function(err, projects) {
 				if (err) return next(err);
 
 				var opts = {

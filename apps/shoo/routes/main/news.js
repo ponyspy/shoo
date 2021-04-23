@@ -1,4 +1,5 @@
 var moment = require('moment');
+var pug = require('pug');
 
 module.exports = function(Model) {
 	var module = {};
@@ -35,6 +36,26 @@ module.exports = function(Model) {
 			});
 		});
 	};
+
+	module.get_news = function(req, res, next) {
+		var skip = +req.body.context.skip || 0;
+		var limit = +req.body.context.limit || 0;
+
+		News.find().where('status').ne('hidden').sort('-date').skip(skip).limit(limit).exec(function(err, news) {
+			if (err) return next(err);
+
+			var opts = {
+				locale: req.locale,
+				news: news,
+				moment: moment,
+				__: function() { return res.locals.__.apply(null, arguments); },
+				__n: function() { return res.locals.__n.apply(null, arguments); },
+				compileDebug: false, debug: false, cache: true, pretty: false
+			};
+
+			res.send(news.length ? pug.renderFile(__app_root + '/views/main/news/_news.pug', opts) : 'end');
+		});
+	}
 
 	return module;
 };
