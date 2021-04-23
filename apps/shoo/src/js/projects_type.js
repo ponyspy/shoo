@@ -30,19 +30,14 @@ $window.on('load hashchange', function(e) {
 
 	$('.type_category').removeClass('active').filter('[data-category="' + (context.category || 'none') + '"]').addClass('active');
 	$('.projects_loader').removeClass('hide');
+	$('.projects_columns').empty();
 
-	$.ajax({url: '', method: 'POST', data: { 'context': context }, async: false }).done(function(data) {
-		if (data !== 'end') {
-			var $data = $(data);
+	$window.off('scroll').on('scroll', scrollLoader).trigger('scroll', true);
 
-			$('.projects_columns').empty().append($data);
-			context.skip = $data.length;
-			$window.off('scroll').scrollTop(0).on('scroll', scrollLoader);
-		}
-	});
 });
 
 $(function() {
+
 	$('.projects_loader').on('click', function(e) {
 		$window.trigger('scroll', true);
 	});
@@ -54,4 +49,5 @@ $(function() {
 
 		window.location.hash = (!hash ? '#' : '#' + hash);
 	});
+
 });

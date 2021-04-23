@@ -3,7 +3,7 @@ extends ../layout
 block header_meta
 	- var content_title = 'Shoo | ' + __('Новости') + ' | ' + news.i18n.title.get(locale)
 	- var content_description= news.i18n.intro.get(locale)
-	- var content_images = [project.poster]
+	- var content_images = [news.poster]
 	- var menu_active = 'news'
 
 block header_include
