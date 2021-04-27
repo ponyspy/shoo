@@ -31,20 +31,20 @@ html(lang=locale)
 							a(href='/auth/logout') Выход
 							br
 
-				a(href='/about')= __('О нас')
-				a(href='/about#contacts')= __('Контакты')
-				a(href='/about#publications')= __('Публикации')
-				a(href='/about#team')= __('Команда')
-				a(href='/about#vacancies')= __('Вакансии')
-				a(href='/about#awards')= __('Награды')
+				a.menu_item(href='/about')= __('О нас')
+				a.menu_item(href='/about#contacts')= __('Контакты')
+				a.menu_item(href='/about#publications')= __('Публикации')
+				a.menu_item(href='/about#team')= __('Команда')
+				a.menu_item(href='/about#vacancies')= __('Вакансии')
+				a.menu_item(href='/about#awards')= __('Награды')
 				br
 
-				a(href='/news')= __('Новости')
+				a.menu_item(href='/news')= __('Новости')
 				br
 
 				.locale_block
-					a(href='/lang/en', class=(locale == 'en' ? 'active' : '')) Eng
-					a(href='/lang/ru', class=(locale == 'ru' ? 'active' : '')) Rus
+					a.menu_item(href='/lang/en', class=(locale == 'en' ? 'active' : '')) Eng
+					a.menu_item(href='/lang/ru', class=(locale == 'ru' ? 'active' : '')) Rus
 					br
 
 				.search_open= __('Поиск')

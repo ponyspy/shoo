@@ -8,8 +8,16 @@ $(function() {
 		$('body, .header_block').toggleClass('menu_open');
 	});
 
-	$(document).on('touchmove', 'body.menu_open', false)
+	$(document).on('touchmove', 'body.menu_open', false);
 
+	$('.menu_item, .type_main, .type_category').on('click', function(e) {
+		e.preventDefault();
+
+		$('.menu_drop').removeClass('open');
+		$('body, .header_block').removeClass('menu_open');
+
+		window.location.href = $(this).attr('href');
+	});
 
 	$('.project_images').each(function() {
 		var $this = $(this);
