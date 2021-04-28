@@ -119,7 +119,7 @@ module.exports = function(Model) {
 				'categorys': '$categorys'
 			}}
 		]).exec(function(err, types) {
-			Category.populate(types, {path: 'categorys'}, function(err, types) {
+			Category.populate(types, {'path': 'categorys', 'options': {'sort': {'date': -1 }}}, function(err, types) {
 				var actual_types = req.app.locals.static_types.projects_types;
 
 				types.sort(function(a, b) {

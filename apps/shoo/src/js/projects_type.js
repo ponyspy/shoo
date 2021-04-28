@@ -28,7 +28,8 @@ $window.on('load hashchange', function(e) {
 		}
 	};
 
-	$('.type_category').removeClass('active').filter('[data-category="' + (context.category || 'none') + '"]').addClass('active');
+	$('.type_category').removeClass('active');
+	$('.type_main.active').parent().find('[data-category="' + (context.category || 'none') + '"]').addClass('active');
 	$('.projects_loader').removeClass('hide');
 	$('.projects_columns').empty();
 
