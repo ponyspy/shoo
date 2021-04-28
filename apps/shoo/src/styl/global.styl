@@ -95,6 +95,8 @@ html, body
 .header_block
 	.menu_block
 		display none
+		&.hide
+			display none!important
 	&.menu_open
 		position fixed
 		background-color black
@@ -106,7 +108,9 @@ html, body
 			.logo
 				filter: invert(100%)
 			a
+				color black
 				-webkit-text-stroke-color white
+				&.active
 				&:hover
 					color white
 		.menu_block
@@ -114,7 +118,7 @@ html, body
 			width 100%
 			flex-direction column
 			position relative
-			z-index 9999999999
+			z-index 99
 			padding-left 20px
 			padding-right 20px
 			box-sizing border-box
@@ -128,12 +132,32 @@ html, body
 				font-size 28pt
 				line-height 32pt
 				text-decoration none
-				color transparent
+				color black
 				-webkit-text-stroke-width 1px
 				-webkit-text-stroke-color white
 				&:hover
 				&.active
 					color white
+
+	.search_block
+		display none
+		padding-left 20px
+		padding-right 20px
+		box-sizing border-box
+		&.show
+			display block
+		.search_input
+			display block
+			outline none
+			margin 0
+			margin-bottom 40px
+			padding 0
+			color white
+			background-color transparent
+			border none
+			font-size 28pt
+			line-height 32pt
+			text-decoration none
 
 .content_block
 	z-index 0
@@ -168,6 +192,7 @@ html, body
 
 .projects_columns
 .sim_projects
+.search_results
 	.project_item
 		width 50%
 		display inline-block

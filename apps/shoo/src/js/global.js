@@ -3,9 +3,48 @@ $(function() {
 	var deltaY = 0;
 	var step = 150;
 
+	var search = {
+		val: '', buf: '',
+		checkResult: function() {
+			if (this.buf != this.val) {
+				this.buf = this.val;
+				this.getResult.call(search, this.val);
+			}
+		},
+		getResult: function (result) {
+			$.post('/search', { text: result }).done(function(data) {
+				$('.search_results').empty().append(data);
+			});
+		}
+	};
+
+	$('.search_input')
+		.on('keyup change', function(event) {
+			search.val = $(this).val();
+		})
+		.on('focusin', function(event) {
+			search.interval = setInterval(function() {
+				search.checkResult.call(search);
+			}, 600);
+		})
+		.on('focusout', function(event) {
+			clearInterval(search.interval);
+		});
+
 	$('.menu_drop').on('click', function(e){
-		$(this).toggleClass('open');
-		$('body, .header_block').toggleClass('menu_open');
+		if ($('.search_block').hasClass('show')) {
+			$('.menu_block').removeClass('hide');
+			$('.search_block').removeClass('show');
+		} else {
+			$(this).toggleClass('open');
+			$('body, .header_block').toggleClass('menu_open');
+		}
+	});
+
+	$('.search_open').on('click', function(e) {
+		$('.menu_block').addClass('hide');
+		$('.search_block').addClass('show');
+		$('.search_input').focus();
 	});
 
 	$(document).on('touchmove', 'body.menu_open', false);

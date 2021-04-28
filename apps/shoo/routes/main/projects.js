@@ -9,6 +9,12 @@ module.exports = function(Model) {
 	var Publication = Model.Publication;
 	var Category = Model.Category;
 
+	var get_locale = function(option, lg) {
+		return ((option.filter(function(locale) {
+			return locale.lg == lg;
+		})[0] || {}).value || '');
+	};
+
 	module.index = function(req, res, next) {
 		Project.find().where('status').ne('hidden').sort('-build_date').populate('category').exec(function(err, projects) {
 			if (err) return next(err);
@@ -85,12 +91,6 @@ module.exports = function(Model) {
 						'category': category , 'status': {'$ne': 'hidden'}
 						}).sample(2).exec(function(err, sim_projects) {
 						if (err) return next(err);
-
-						var get_locale = function(option, lg) {
-							return ((option.filter(function(locale) {
-								return locale.lg == lg;
-							})[0] || {}).value || '');
-						};
 
 						res.render('main/projects/project.pug', {
 							get_locale: get_locale, moment: moment,

@@ -24,6 +24,10 @@ html(lang=locale)
 					span
 					span
 
+			.search_block
+				input.search_input(type='text', placeholder='Поиск...')
+				.search_results
+
 			.menu_block
 				if (session && session.user_id)
 					.stargazer_block
@@ -47,7 +51,7 @@ html(lang=locale)
 					a.menu_item(href='/lang/ru', class=(locale == 'ru' ? 'active' : '')) Rus
 					br
 
-				.search_open= __('Поиск')
+				a.search_open(href='#')= __('Поиск')
 
 		.content_block
 			block content
