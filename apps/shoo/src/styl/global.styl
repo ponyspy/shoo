@@ -93,6 +93,7 @@ html, body
 				left 50%
 
 .header_block
+	overflow scroll
 	.menu_block
 		display none
 		&.hide
@@ -141,8 +142,6 @@ html, body
 
 	.search_block
 		display none
-		padding-left 20px
-		padding-right 20px
 		box-sizing border-box
 		&.show
 			display block
@@ -151,13 +150,19 @@ html, body
 			outline none
 			margin 0
 			margin-bottom 40px
-			padding 0
+			padding 20px
 			color white
 			background-color transparent
 			border none
 			font-size 28pt
 			line-height 32pt
 			text-decoration none
+		.search_results
+			padding 10px
+			margin-bottom 140px
+			.project_item
+				color white!important
+				border-color black!important
 
 .content_block
 	z-index 0
