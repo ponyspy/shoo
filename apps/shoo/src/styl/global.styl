@@ -33,7 +33,6 @@ html, body
 			color black
 		&:hover .type_categorys
 			display block
-			z-index 999
 		a
 			font-size 28pt
 			text-decoration none
@@ -45,6 +44,7 @@ html, body
 			&:hover
 				color black
 		.type_categorys
+			z-index 999
 			display none
 			position absolute
 			left 0
@@ -93,12 +93,12 @@ html, body
 				left 50%
 
 .header_block
-	overflow scroll
 	.menu_block
 		display none
 		&.hide
 			display none!important
 	&.menu_open
+		overflow scroll
 		position fixed
 		background-color black
 		width 100%
