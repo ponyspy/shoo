@@ -24,8 +24,8 @@ $(function() {
 			$('.project_images').each(function() {
 				var $this = $(this);
 
-				$this.children('.project_image').first().addClass('active');
-				$this.data('stack', $this.children('.project_image'));
+				$this.find('.project_image').first().addClass('active');
+				$this.data('stack', $this.find('.project_image'));
 			});
 		}).trigger('init_images')
 		.on('slidestep', '.project_image', function(e) {
@@ -36,11 +36,8 @@ $(function() {
 				? $stack.removeClass('active').filter(this).next().addClass('active')
 				: $stack.removeClass('active').first().addClass('active');
 		})
-		.on('mouseenter', '.project_item.images', function(e) {
-			$(this).children('.project_poster').addClass('hide');
-		})
-		.on('mouseleave', '.project_item.images', function(e) {
-			$(this).children('.project_poster').removeClass('hide');
+		.on('mouseenter mouseleave', '.project_item.images', function(e) {
+			$(this).find('.project_poster').toggleClass('hide');
 		})
 		.on('mousemove', '.project_image', function(e) {
 			if (e.pageX >= deltaX || e.pageY >= deltaY) {
