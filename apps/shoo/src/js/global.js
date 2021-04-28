@@ -19,33 +19,30 @@ $(function() {
 		window.location.href = $(this).attr('href');
 	});
 
-	$('.project_images').each(function() {
-		var $this = $(this);
+	$(document)
+		.on('init_images', function(e) {
+			$('.project_images').each(function() {
+				var $this = $(this);
 
-		$this.children('.project_image').first().addClass('active');
-		$this.data('stack', $this.children('.project_image'));
-	});
-
-	$('.project_item').not('.hover')
-		.on('mouseenter', function(e) {
-			$(this).children('.project_poster').addClass('hide');
-		})
-		.on('mouseleave', function(e) {
-			$(this).children('.project_poster').removeClass('hide');
-		});
-
-	$('.project_image')
-		.on('slidestep', function(e) {
+				$this.children('.project_image').first().addClass('active');
+				$this.data('stack', $this.children('.project_image'));
+			});
+		}).trigger('init_images')
+		.on('slidestep', '.project_image', function(e) {
 			var $this = $(this);
 			var $stack = $this.parent('.project_images').data('stack');
 
-			if ($stack.length > 1 && $this.next().length !== 0) {
-				$stack.removeClass('active').filter(this).next().addClass('active');
-			} else {
-				$stack.removeClass('active').first().addClass('active');
-			}
+			$stack.length > 1 && $this.next().length !== 0
+				? $stack.removeClass('active').filter(this).next().addClass('active')
+				: $stack.removeClass('active').first().addClass('active');
 		})
-		.on('mousemove', function(e) {
+		.on('mouseenter', '.project_item.images', function(e) {
+			$(this).children('.project_poster').addClass('hide');
+		})
+		.on('mouseleave', '.project_item.images', function(e) {
+			$(this).children('.project_poster').removeClass('hide');
+		})
+		.on('mousemove', '.project_image', function(e) {
 			if (e.pageX >= deltaX || e.pageY >= deltaY) {
 				$(this).trigger('slidestep');
 

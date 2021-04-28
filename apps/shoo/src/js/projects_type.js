@@ -18,6 +18,7 @@ $window.on('load hashchange', function(e) {
 				if (data !== 'end') {
 
 					$('.projects_columns').append(data);
+					$document.trigger('init_images');
 
 					context.skip += 4;
 					$window.on('scroll', scrollLoader);

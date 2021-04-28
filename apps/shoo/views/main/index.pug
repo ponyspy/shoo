@@ -33,7 +33,7 @@ block content
 
 	.projects_columns
 		each project in projects_columns
-			a.project_item(href='/projects/' + project.type + '/' + (project.sym || project._short_id))
+			a.project_item(class=project.images.length ? 'images' : '', href='/projects/' + project.type + '/' + (project.sym || project._short_id))
 				.project_poster(style='background-image: url(' + project.poster + ')')
 				.project_images
 					each image in project.images.filter(function(image) { return image.main })
