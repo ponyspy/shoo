@@ -15,34 +15,36 @@ block content
 	- var projects_slider = projects.filter(function(project) { return project.main == 'slider' })
 	- var projects_columns = projects.filter(function(project) { return project.main == 'column' })
 
-	.projects_slider
-		.slider_block.swiper-container
-			.swiper-wrapper
-				each project, i in projects_slider
-					a.slide_item.swiper-slide(href='/projects/' + project.type + '/' + (project.sym || project._short_id))
-						.slide_image(style='background-image: url(' + project.poster + ')')
-						.slide_columns
-							.column_item.left
-								.project_type= __(project.type)
-								.project_build= project.build_date.getFullYear()
-							.column_item.right
-								.project_title= project.i18n.title.get(locale)
-								.project_category= project.category && project.category.i18n.title.get(locale)
-								.project_counter= (i + 1) + ' / ' + projects_slider.length
+	if projects_slider.length
+		.projects_slider
+			.slider_block.swiper-container
+				.swiper-wrapper
+					each project, i in projects_slider
+						a.slide_item.swiper-slide(href='/projects/' + project.type + '/' + (project.sym || project._short_id))
+							.slide_image(style='background-image: url(' + project.poster + ')')
+							.slide_columns
+								.column_item.left
+									.project_type= __(project.type)
+									.project_build= project.build_date.getFullYear()
+								.column_item.right
+									.project_title= project.i18n.title.get(locale)
+									.project_category= project.category && project.category.i18n.title.get(locale)
+									.project_counter= (i + 1) + ' / ' + projects_slider.length
 
 
-	.projects_columns
-		each project in projects_columns
-			a.project_item(class=project.images.length ? 'images' : '', href='/projects/' + project.type + '/' + (project.sym || project._short_id))
-				.project_poster(style='background-image: url(' + project.poster + ')')
-				.project_images
-					each image in project.images.filter(function(image) { return image.main })
-						.project_image(style='background-image: url(' + image.thumb + ')')
-				.project_columns
-					.column_item.left
-						.project_type= __(project.type)
-						.project_build= project.build_date.getFullYear()
-					.column_item.right
-						.project_title= project.i18n.title.get(locale)
-						.project_category= project.category && project.category.i18n.title.get(locale)
+	if projects_columns.length
+		.projects_columns
+			each project in projects_columns
+				a.project_item(class=project.images.length ? 'images' : '', href='/projects/' + project.type + '/' + (project.sym || project._short_id))
+					.project_poster(style='background-image: url(' + project.poster + ')')
+					.project_images
+						each image in project.images.filter(function(image) { return image.main })
+							.project_image(style='background-image: url(' + image.thumb + ')')
+					.project_columns
+						.column_item.left
+							.project_type= __(project.type)
+							.project_build= project.build_date.getFullYear()
+						.column_item.right
+							.project_title= project.i18n.title.get(locale)
+							.project_category= project.category && project.category.i18n.title.get(locale)
 
