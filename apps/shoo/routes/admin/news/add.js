@@ -41,7 +41,7 @@ module.exports = function(Model, Params) {
 		});
 
 		async.series([
-			async.apply(uploadImage, news_item, 'news', 'poster', 1200, files.poster && files.poster[0], null),
+			async.apply(uploadImage, news_item, 'news', 'poster', 1920, files.poster && files.poster[0], null),
 		], function(err, results) {
 			if (err) return next(err);
 

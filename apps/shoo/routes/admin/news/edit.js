@@ -49,7 +49,7 @@ module.exports = function(Model, Params) {
 			});
 
 			async.series([
-				async.apply(uploadImage, news_item, 'news_items', 'poster', 1200, files.poster && files.poster[0], post.poster_del),
+				async.apply(uploadImage, news_item, 'news_items', 'poster', 1920, files.poster && files.poster[0], post.poster_del),
 			], function(err, results) {
 				if (err) return next(err);
 
