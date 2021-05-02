@@ -1,5 +1,7 @@
 var fs = require('fs');
 var async = require('async');
+var mkdirp = require('mkdirp');
+var mime = require('mime');
 
 exports.edit = function(req, res) {
 	async.series({
@@ -46,8 +48,27 @@ exports.edit = function(req, res) {
 
 exports.edit_form = function(req, res) {
 	var post = req.body;
+	var files = req.files;
 
 	async.series({
+		image_1: function(callback) {
+			if (!files['image_1']) return callback(null);
+
+			var file = files['image_1'][0];
+
+			mkdirp(__glob_root + '/public/cdn/images', function() {
+				fs.rename(file.path, __glob_root + '/public/cdn/images/image_1' + '.' + mime.getExtension(file.mimetype), callback);
+			});
+		},
+		image_2: function(callback) {
+			if (!files['image_2']) return callback(null);
+
+			var file = files['image_2'][0];
+
+			mkdirp(__glob_root + '/public/cdn/images', function() {
+				fs.rename(file.path, __glob_root + '/public/cdn/images/image_2' + '.' + mime.getExtension(file.mimetype), callback);
+			});
+		},
 		philosophy_ru: function(callback) {
 			if (!post.philosophy.ru) return callback(null);
 

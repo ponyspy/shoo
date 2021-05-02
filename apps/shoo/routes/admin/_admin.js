@@ -29,7 +29,7 @@ module.exports = (function() {
 
 	router.route('/about')
 		.get(checkAuth, admin.about.edit)
-		.post(checkAuth, admin.about.edit_form);
+		.post(checkAuth, upload.fields([ {name: 'image_1'}, { name: 'image_2' } ]), admin.about.edit_form);
 
 	router.use('/projects', checkAuth, upload.fields([ {name: 'poster'}, { name: 'logo' } ]), admin.projects);
 	router.use('/publications', checkAuth, admin.publications);
