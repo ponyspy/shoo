@@ -17,7 +17,7 @@ block content
 		.section_inner
 			.column_item.about
 				.column_title= __('О нас')
-				.column_s_title Философия
+				.column_s_title= __('Философия')
 				.column_body.text!= philosophy
 
 			.column_item.contacts
@@ -48,15 +48,15 @@ block content
 	.content_section.two
 		.section_inner
 			.column_item.how_work
-				.column_s_title Как мы работаем
+				.column_s_title= __('Как мы работаем')
 				.column_body.text!= how_work
 
 			.column_item.our_service
-				.column_s_title Наши услуги
+				.column_s_title= __('Наши услуги')
 				.column_body!= our_service
 
 			.column_item.clients
-				.column_s_title Наши клиенты
+				.column_s_title= __('Наши клиенты')
 				.column_body.text!= clients
 
 
@@ -68,7 +68,7 @@ block content
 		a.anchor#vacancies
 		.section_inner
 			.column_item.our_team
-				.column_s_title Наша команда
+				.column_s_title= __('Наша команда')
 				.column_body.text!= our_team
 
 			.column_item.team

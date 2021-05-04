@@ -29,34 +29,34 @@ block content
 		.project_description!= project.i18n.description.get(locale)
 		.project_columns
 			.column_item
-				.column.title Информация
+				.column.title= __('Информация')
 				.column.body
 					.line_item
-						.line_title Название
+						.line_title= __('Название')
 						.line_body= project.i18n.title.get(locale)
 
 					.line_item
-						.line_title Дата
+						.line_title= __('Дата')
 						.line_body= moment(project.build_date).locale(locale).format('MMMM YYYY')
 
 					if project.i18n.area.get(locale)
 						.line_item
-							.line_title Площадь
+							.line_title= __('Площадь')
 							.line_body= project.i18n.area.get(locale)
 
 					if project.i18n.location.get(locale)
 						.line_item
-							.line_title Локация
+							.line_title= __('Локация')
 							.line_body= project.i18n.location.get(locale)
 
 					if project.i18n.level.get(locale)
 						.line_item
-							.line_title Уровень
+							.line_title= __('Этажи')
 							.line_body= project.i18n.level.get(locale)
 
 			if project.peoples.length
 				.column_item
-					.column.title Команда
+					.column.title= __('Команда')
 					.column.body
 						each people in project.peoples
 							.line_item
@@ -95,13 +95,13 @@ block content
 	.project_bottom
 		.project_columns.right
 			.column_item
-				.column.title Материалы
+				.column.title= __('Материалы')
 				.column.body
 					.line_item
 						.line_body!= project.i18n.brands.get(locale)
 
 			.column_item
-				.column.title Публикации
+				.column.title= __('Публикации')
 				.column.body
 					.line_item
 						//- .line_title
@@ -110,7 +110,7 @@ block content
 								a.line_link(href=publication.link, target='_blank'): span= publication.i18n.title.get(locale)
 
 			.column_item
-				.column.title Награды
+				.column.title= __('Награды')
 				.column.body
 						.line_item
 							//- .line_title
