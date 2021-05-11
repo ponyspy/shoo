@@ -18,10 +18,16 @@ html, body
 
 
 .title_block
+	position fixed
+	width 100%
+	z-index 999
+	background-color white
 	display flex
 	justify-content space-between
 	align-items flex-start
 	padding 20px
+	padding-bottom 35px
+	box-sizing border-box
 	.logo img
 		height 60px
 	.type_item
@@ -110,6 +116,7 @@ html, body
 		top 0; left 0
 		z-index 999999
 		.title_block
+			background-color black
 			.logo
 				filter: invert(100%)
 			a
@@ -173,6 +180,7 @@ html, body
 .content_block
 	z-index 0
 	position relative
+	padding-top 120px!important
 
 .footer_block
 	background-color black
