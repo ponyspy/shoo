@@ -37,6 +37,7 @@ module.exports = function(Model) {
 			var limit = +req.body.context.limit || 0;
 
 			var query = category ? {'type': req.params.type, 'category': category._id} : {'type': req.params.type };
+			console.log(query)
 
 			Project.find(query).where('status').ne('hidden').sort('-build_date').skip(skip).limit(limit).populate('category').exec(function(err, projects) {
 				if (err) return next(err);
