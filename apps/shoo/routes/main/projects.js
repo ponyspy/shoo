@@ -33,15 +33,10 @@ module.exports = function(Model) {
 		if (req.app.locals.static_types.projects_types.indexOf(req.params.type) == -1) return next();
 
 		Category.findOne({'$or': [{ '_short_id': req.body.context.category }, { 'sym': req.body.context.category }]}).exec(function(err, category) {
-			console.log(category)
-			console.log({'$or': [{ '_short_id': req.body.context.category }, { 'sym': req.body.context.category }]})
 			var skip = +req.body.context.skip || 0;
 			var limit = +req.body.context.limit || 0;
 
 			var query = category ? {'type': req.params.type, 'category': category._id} : {'type': req.params.type };
-			console.log(query)
-			console.log(req.body.context.category || 'zlo')
-			console.log(typeof req.body.context.category)
 
 			Project.find(query).where('status').ne('hidden').sort('-build_date').skip(skip).limit(limit).populate('category').exec(function(err, projects) {
 				if (err) return next(err);

@@ -21,7 +21,7 @@ module.exports = function(Model, Params) {
 		category._short_id = shortid.generate();
 		category.status = post.status;
 
-		category.sym = post.sym && post.sym.toLowerCase().replace(/\s/g, '-');
+		category.sym = post.sym ? post.sym.toLowerCase().replace(/\s/g, '-') : undefined;
 
 		var locales = post.en ? ['ru', 'en'] : ['ru'];
 
