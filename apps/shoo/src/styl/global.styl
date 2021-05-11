@@ -29,6 +29,7 @@ html, body
 			position relative
 			&.active
 				color black
+				-webkit-text-stroke-color transparent
 		.type_categorys a.active
 			color black
 		&:hover .type_categorys
@@ -43,6 +44,7 @@ html, body
 			color transparent
 			&:hover
 				color black
+				-webkit-text-stroke-color transparent
 		.type_categorys
 			z-index 999
 			display none
@@ -109,10 +111,10 @@ html, body
 			.logo
 				filter: invert(100%)
 			a
-				// color black
 				-webkit-text-stroke-color white
 				&.active
 				&:hover
+					-webkit-text-stroke-color transparent
 					color white
 		.menu_block
 			display flex
@@ -134,11 +136,12 @@ html, body
 				line-height 32pt
 				text-decoration none
 				color black
-				-webkit-text-stroke-width 1px
+				-webkit-text-stroke-width 0.7px
 				-webkit-text-stroke-color white
 				&:hover
 				&.active
 					color white
+					-webkit-text-stroke-color transparent
 
 	.search_block
 		display none
