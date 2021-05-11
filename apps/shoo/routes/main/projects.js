@@ -38,7 +38,7 @@ module.exports = function(Model) {
 
 			var query = category ? {'type': req.params.type, 'category': category._id} : {'type': req.params.type };
 			console.log(query)
-			console.log(req.body.context.category)
+			console.log(req.body.context.category || 'zlo')
 
 			Project.find(query).where('status').ne('hidden').sort('-build_date').skip(skip).limit(limit).populate('category').exec(function(err, projects) {
 				if (err) return next(err);
