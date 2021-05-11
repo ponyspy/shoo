@@ -5,6 +5,7 @@ module.exports = function(Model) {
 	var module = {};
 
 	var Project = Model.Project;
+	var Award = Model.Award;
 
 
 	module.index = function(req, res, next) {
