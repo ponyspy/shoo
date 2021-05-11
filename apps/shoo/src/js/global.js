@@ -99,4 +99,13 @@ $(function() {
 				$(this).trigger('slidestep');
 			}
 		});
+
+		$('.type_item:has(>div.type_categorys)')
+			.on('mouseenter', function(e) {
+				$('.content_block').addClass('hover');
+			})
+			.on('mouseleave', function(e) {
+				$('.content_block').removeClass('hover');
+			});
+
 });
