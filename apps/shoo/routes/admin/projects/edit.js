@@ -48,7 +48,7 @@ module.exports = function(Model, Params) {
 
 			project.status = post.status;
 			project.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
-			project.build_date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
+			project.build_date = moment(post.build_date.date + 'T' + post.build_date.time.hours + ':' + post.build_date.time.minutes);
 			project.category = post.category == 'none' ? undefined : post.category;
 			project.main = post.main == 'none' ? undefined : post.main;
 			project.peoples = post.peoples == 'none' ? [] : post.peoples;
