@@ -33,6 +33,7 @@ module.exports = function(Model) {
 		if (req.app.locals.static_types.projects_types.indexOf(req.params.type) == -1) return next();
 
 		Category.findOne({'$or': [{ '_short_id': req.body.context.category }, { 'sym': req.body.context.category }]}).exec(function(err, category) {
+			console.log(category)
 			var skip = +req.body.context.skip || 0;
 			var limit = +req.body.context.limit || 0;
 
