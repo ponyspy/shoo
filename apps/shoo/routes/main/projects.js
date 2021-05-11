@@ -34,6 +34,7 @@ module.exports = function(Model) {
 
 		Category.findOne({'$or': [{ '_short_id': req.body.context.category }, { 'sym': req.body.context.category }]}).exec(function(err, category) {
 			console.log(category)
+			console.log({'$or': [{ '_short_id': req.body.context.category }, { 'sym': req.body.context.category }]})
 			var skip = +req.body.context.skip || 0;
 			var limit = +req.body.context.limit || 0;
 
