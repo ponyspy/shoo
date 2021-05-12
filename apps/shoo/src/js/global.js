@@ -94,8 +94,10 @@ $(function() {
 
 
 		.on('mouseleave', '.project_item.images', function(e) {
+			var $this = $(this);
+
 			setTimeout(function() {
-				$(this).find('.project_image').removeClass('active').last().trigger('slidestep');
+				$this.find('.project_image').removeClass('active').last().trigger('slidestep');
 			}, 300);
 		})
 
