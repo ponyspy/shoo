@@ -1,9 +1,9 @@
 each project in projects
 	a.project_item(class=project.images.length ? 'images' : '', href='/projects/' + project.type + '/' + (project.sym || project._short_id))
-		.project_poster(style='background-image: url(' + project.poster + ')')
 		.project_images
+			.project_image(data-src=project.poster)
 			each image in project.images.filter(function(image) { return image.main })
-				.project_image(style='background-image: url(' + image.thumb + ')')
+				.project_image(data-src=image.thumb)
 		.project_columns
 			.column_item.left
 				.project_type= __(project.type)
