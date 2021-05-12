@@ -94,30 +94,33 @@ block content
 
 	.project_bottom
 		.project_columns.right
-			.column_item
-				.column.title= __('Материалы')
-				.column.body
-					.line_item
-						.line_body!= project.i18n.brands.get(locale)
+			if project.i18n.brands.get(locale)
+				.column_item
+					.column.title= __('Материалы')
+					.column.body
+						.line_item
+							.line_body!= project.i18n.brands.get(locale)
 
-			.column_item
-				.column.title= __('Публикации')
-				.column.body
-					.line_item
-						//- .line_title
-						.line_body
-							each publication in publications
-								a.line_link(href=publication.link, target='_blank'): span= publication.i18n.title.get(locale)
-
-			.column_item
-				.column.title= __('Награды')
-				.column.body
+			if publications.length
+				.column_item
+					.column.title= __('Публикации')
+					.column.body
 						.line_item
 							//- .line_title
 							.line_body
-								each award in awards
-									.line_item
-										.line_body= award.i18n.title.get(locale)
+								each publication in publications
+									a.line_link(href=publication.link, target='_blank'): span= publication.i18n.title.get(locale)
+
+			if awards.length
+				.column_item
+					.column.title= __('Награды')
+					.column.body
+							.line_item
+								//- .line_title
+								.line_body
+									each award in awards
+										.line_item
+											.line_body= award.i18n.title.get(locale)
 
 
 	if sim_projects.length
