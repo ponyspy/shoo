@@ -34,19 +34,5 @@ block content
 
 	if projects_columns.length
 		.projects_columns
-			each project in projects_columns
-				a.project_item(class=project.images.length ? 'images' : '', href='/projects/' + project.type + '/' + (project.sym || project._short_id))
-					.project_images
-						.project_image(data-src=project.poster)
-						each image in project.images.filter(function(image) { return image.main })
-							.project_image(data-src=image.thumb)
-					.project_columns
-						.column_item.left
-							.project_type= __(project.type)
-							.project_build= project.build_date.getFullYear()
-						.column_item.right
-							.project_title= project.i18n.title.get(locale)
-							.project_category= project.category && project.category.i18n.title.get(locale)
-
-
+			include projects/_projects.pug
 

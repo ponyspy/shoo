@@ -92,13 +92,8 @@ $(function() {
 			});
 		}).trigger('init_images')
 
-
-		.on('mouseleave', '.project_item.images', function(e) {
-			var $this = $(this);
-
-			setTimeout(function() {
-				$this.find('.project_image').removeClass('active').last().trigger('slidestep');
-			}, 300);
+		.on('mouseleave', '.project_item', function(e) {
+			$(this).find('.project_image').removeClass('active').last().trigger('slidestep');
 		})
 
 		.on('mousemove', '.project_image', function(e) {
