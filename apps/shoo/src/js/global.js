@@ -111,7 +111,7 @@ $(function() {
 			}
 		});
 
-		$('.type_item:has(>div.type_categorys)')
+		$('.type_item:has(.type_category)')
 			.on('mouseenter', function(e) {
 				$('.content_block').addClass('hover');
 			})
