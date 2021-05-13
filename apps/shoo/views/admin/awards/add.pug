@@ -23,6 +23,8 @@ block content
 		form(action="", method="post")
 			.form_title Название:
 			+form_text_single('title')
+			.form_title Ссылка:
+			input(type='text', name='link')
 			.form_title Проекты:
 			+form_multiple_select('projects', projects)
 			.form_title Статус:

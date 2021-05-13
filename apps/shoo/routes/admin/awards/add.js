@@ -28,6 +28,7 @@ module.exports = function(Model, Params) {
 		award._short_id = shortid.generate();
 		award.status = post.status;
 		award.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
+		award.link = post.link;
 		award.projects = post.projects.filter(function(project) { return project != 'none'; });
 
 		var locales = post.en ? ['ru', 'en'] : ['ru'];
