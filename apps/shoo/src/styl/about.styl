@@ -41,16 +41,19 @@
 		.column_body
 			&.text
 				text-indent 60px
-			&.list .list_item
-				margin-bottom 20px
-			&.links a
-				text-decoration none
-				display block
-				&:before
-					content '↘'
-					padding-right 5px
-				span:hover
-					text-decoration underline
+			.item
+				&.list
+					&:before
+						content ''
+						padding-right 21px
+				&.link
+					text-decoration none
+					display block
+					&:before
+						content '↘'
+						padding-right 5px
+					span:hover
+						text-decoration underline
 
 .content_image
 	width 100%

@@ -35,11 +35,11 @@ block content
 
 			.column_item.social
 				.column_title.none &nbsp;
-				.column_body.links
-					a(href='https://www.facebook.com/studioshoo', target='_blank'): span Facebook
-					a(href='https://www.instagram.com/studio_shoo', target='_blank'): span Instagram
-					a(href='https://www.pinterest.ru/STUDIO_SHOO/_saved', target='_blank'): span Pinterest
-					a(href='https://www.behance.net/shushu14051c2d', target='_blank'): span Behance
+				.column_body
+					a.item.link(href='https://www.facebook.com/studioshoo', target='_blank'): span Facebook
+					a.item.link(href='https://www.instagram.com/studio_shoo', target='_blank'): span Instagram
+					a.item.link(href='https://www.pinterest.ru/STUDIO_SHOO/_saved', target='_blank'): span Pinterest
+					a.item.link(href='https://www.behance.net/shushu14051c2d', target='_blank'): span Behance
 
 
 	img.content_image(src='/cdn/images/image_1.jpeg')
@@ -88,15 +88,24 @@ block content
 		a.anchor#publications
 		a.anchor#awards
 		.section_inner
-			.column_item.publications
-				.column_title= __('Публикации')
-				.column_body.links
-					each publication in publications
-						a.publication_item(href=publication.link, target='_blank'): span= publication.i18n.title.get(locale)
 
-			.column_item.awards
-				.column_title= __('Награды')
-				.column_body.list
-					each award in awards
-						.list_item= award.i18n.title.get(locale)
+			if publications.length
+				.column_item.publications
+					.column_title= __('Публикации')
+					.column_body
+						each publication in publications
+							if publication.link
+								a.item.link(href=publication.link, target='_blank'): span= publication.i18n.title.get(locale)
+							else
+								.item.list= publication.i18n.title.get(locale)
+
+			if awards.length
+				.column_item.awards
+					.column_title= __('Награды')
+					.column_body.list
+						each award in awards
+							if award.link
+								a.item.link(href=award.link, target='_blank'): span= award.i18n.title.get(locale)
+							else
+								.item.list= award.i18n.title.get(locale)
 
