@@ -109,7 +109,7 @@ block content
 							//- .line_title
 							.line_body
 								each publication in publications
-									a.line_link(href=publication.link, target='_blank'): span= publication.i18n.title.get(locale)
+									a.item.link(href=publication.link, target='_blank'): span= publication.i18n.title.get(locale)
 
 			if awards.length
 				.column_item
@@ -119,8 +119,7 @@ block content
 								//- .line_title
 								.line_body
 									each award in awards
-										.line_item
-											.line_body= award.i18n.title.get(locale)
+										.item.list= award.i18n.title.get(locale)
 
 
 	if sim_projects.length

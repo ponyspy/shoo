@@ -56,21 +56,24 @@
 					&:after
 						content ':'
 // 				&.body
-				.line_link
-					color black
-					text-decoration none
-					display block
-					&:before
-						content '↘'
-						padding-right 5px
-					span:hover
-						text-decoration underline
 				.line_item
 					margin-top 20px
 					.line_title
 						&:after
 							content ':'
-					// .line_body
+					.line_body
+						.item
+							&.list:before
+								content ''
+								padding-right 15px
+							&.link
+								text-decoration none
+								display block
+								&:before
+									content '↘'
+									padding-right 5px
+								span:hover
+									text-decoration underline
 
 
 .project_gallery
