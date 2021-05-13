@@ -1,6 +1,7 @@
 var $window = $(window);
 var $document = $(document);
 
+
 $window.on('load hashchange', function(e) {
 	var context = {
 		skip: 0,
@@ -17,7 +18,13 @@ $window.on('load hashchange', function(e) {
 			$.ajax({url: '', method: 'POST', data: { 'context': context }, async: false }).done(function(data) {
 				if (data !== 'end') {
 
-					$('.projects_columns').append(data);
+					var $data = $(data);
+
+					if ($data.length < 4) {
+						$('.projects_loader').addClass('hide');
+					}
+
+					$('.projects_columns').append($data);
 					$document.trigger('init_images');
 
 					context.skip += 4;

@@ -17,7 +17,13 @@ $(function() {
 			$.ajax({url: '', method: 'POST', data: { 'context': context }, async: false }).done(function(data) {
 				if (data !== 'end') {
 
-					$('.news_block').append(data);
+					var $data = $(data);
+
+					if ($data.length < 4) {
+						$('.projects_loader').addClass('hide');
+					}
+
+					$('.news_block').append($data);
 
 					context.skip += 4;
 					$window.on('scroll', scrollLoader);
