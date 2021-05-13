@@ -75,7 +75,7 @@ html(lang=locale)
 				br
 				div PR: #[a(href='mailto:pr@studioshoo.com') pr@studioshoo.com]
 
-			.column.copy Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			.column.copy: span!='&copy; STUDIO SHOO ' + new Date().getFullYear() + '<br><br>' + __('Все права защищены.')
 
 		include counters
 
