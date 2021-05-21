@@ -35,6 +35,7 @@ $(function() {
 	$('.menu_drop').on('click', function(e){
 		if ($('.search_block').hasClass('show')) {
 			$('.menu_block').removeClass('hide');
+			$('.types_block').removeClass('hide');
 			$('.search_block').removeClass('show').find('.search_results').empty();
 			$('.search_input').val('');
 		} else {
@@ -45,6 +46,7 @@ $(function() {
 
 	$('.search_open').on('click', function(e) {
 		$('.menu_block').addClass('hide');
+		$('.types_block').addClass('hide');
 		$('.search_block').addClass('show');
 		$('.search_input').focus();
 	});
