@@ -1,3 +1,7 @@
+@media screen and (max-width: 1200px)
+	@import 'mobile/_projects.styl'
+
+
 .content_block
 	width 100%
 	max-width 1640px
@@ -9,30 +13,40 @@
 .projects_block
 	margin-bottom 120px
 	width 100%
-	display table
 	border-collapse collapse
 	.project_item
-		display table-row
 		border-bottom 1px solid black
 		color black
 		text-decoration none
-		&:hover .title
+		display flex
+		&:hover .project_title
 			text-decoration underline
-		.project_cell
+		.column_item
 			padding-top 20px
 			padding-bottom 10px
-			width 25%
-			display table-cell
-			&.type
+			display flex
+			width 50%
+			&.one
+				// background-color green
+				width 40%
+			&.two
+				width 60%
+			.project_type
+				// background-color #51c5c9
+				width 50%
 				padding-right 20px
 				&:after
 					content ':'
-			&.title
+			.project_build
+				// background-color #921d70
+				margin-left 15%
 				padding-left 20px
 				padding-right 20px
-			&.build
+			.project_title
+				width 70%
+				// background-color #e74725
 				padding-left 20px
 				padding-right 20px
-			&.category
+			.project_category
 				padding-left 20px
 
