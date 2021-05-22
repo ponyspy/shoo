@@ -26,7 +26,7 @@ module.exports = function(Model) {
 	module.projects_type = function(req, res, next) {
 		if (req.app.locals.static_types.projects_types.indexOf(req.params.type) == -1) return next();
 
-		res.render('main/projects/type.pug', {'current_type': req.params.type});
+		res.render('main/projects/projects_type.pug', {'current_type': req.params.type});
 	};
 
 	module.get_type = function(req, res, next) {
