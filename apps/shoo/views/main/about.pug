@@ -11,15 +11,17 @@ block header_include
 
 block content
 
-	.content_section.one
+	.content_section.x1
 		a.anchor#about
-		a.anchor#contacts
 		.section_inner
 			.column_item.about
 				.column_title= __('О нас')
 				.column_s_title= __('Философия')
 				.column_body.text!= philosophy
 
+	.content_section.x1
+		a.anchor#contacts
+		.section_inner
 			.column_item.contacts
 				.column_title= __('Контакты')
 				.column_body
@@ -42,16 +44,22 @@ block content
 					a.item.link(href='https://www.behance.net/shushu14051c2d', target='_blank'): span Behance
 
 
-	img.content_image(src='/cdn/images/image_1.jpeg')
+	.content_section.x2
+		.section_inner
+			img.content_image(src='/cdn/images/image_1.jpeg')
 
 
-	.content_section.two
+	.content_section.x1
 		.section_inner
 
 			if how_work.length
 				.column_item.how_work
 					.column_s_title= __('Как мы работаем')
 					.column_body.text!= how_work
+
+
+	.content_section.x1
+		.section_inner
 
 			if our_service.length
 				.column_item.our_service
@@ -64,18 +72,24 @@ block content
 					.column_body!= clients
 
 
-	img.content_image(src='/cdn/images/image_2.jpeg')
+	.content_section.x2
+		.section_inner
+			img.content_image(src='/cdn/images/image_2.jpeg')
 
 
-	.content_section.three
+	.content_section.x1
 		a.anchor#team
-		a.anchor#vacancies
 		.section_inner
 
 			if our_team.length
 				.column_item.our_team
 					.column_s_title= __('Наша команда')
 					.column_body.text!= our_team
+
+
+	.content_section.x1
+		a.anchor#vacancies
+		.section_inner
 
 			if peoples.length
 				.column_item.team
@@ -92,9 +106,8 @@ block content
 					.column_body!= vacancies
 
 
-	.content_section.four
+	.content_section.x1
 		a.anchor#publications
-		a.anchor#awards
 		.section_inner
 
 			if publications.length
@@ -106,6 +119,11 @@ block content
 								a.item.link(href=publication.link, target='_blank'): span= publication.i18n.title.get(locale)
 							else
 								.item.list= publication.i18n.title.get(locale)
+
+
+	.content_section.x1
+		a.anchor#awards
+		.section_inner
 
 			if awards.length
 				.column_item.awards

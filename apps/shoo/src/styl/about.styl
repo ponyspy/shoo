@@ -11,25 +11,30 @@
 
 .content_section
 	margin-bottom 40px
-	a
-		color black
+	display inline-block
+	vertical-align top
+	margin-right -4px
+	font-size 0
+	&.x1
+		width 50%
+	&.x2
+		width 100%
 	.column_item
+		font-size 0
 		display inline-block
 		margin-right -4px
 		vertical-align top
-		&:nth-child(1)
+		box-sizing border-box
+		&.contacts
+		&.social
+		&.our_service
+		&.clients
+		&.team
+		&.vacancies
 			width 50%
-			padding-right 40px
-			box-sizing border-box
-		&:nth-child(2)
-			width 25%
-			padding-left 40px
-			padding-right 40px
-			box-sizing border-box
-		&:nth-child(3)
-			padding-left 40px
-			box-sizing border-box
-			width 25%
+			padding-left 80px
+		&.awards
+			padding-left 80px
 		.column_title
 			font-size 28pt
 			line-height 30pt
@@ -40,9 +45,13 @@
 				content ''
 		.column_s_title
 			margin-bottom 20px
+			font-size 14pt
+			line-height 18pt
 			&:after
 				content ':'
 		.column_body
+			font-size 14pt
+			line-height 18pt
 			&.text
 				text-indent 60px
 			&.list .list_item
@@ -63,5 +72,4 @@
 .content_image
 	width 100%
 	display block
-	margin-bottom 40px
 
