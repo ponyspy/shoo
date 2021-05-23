@@ -16,10 +16,13 @@ block header_include
 block content
 
 	.project_header
-		.project_title= project.i18n.title.get(locale)
-		.project_build= project.build_date.getFullYear()
-		if project.category
-			.project_category= project.category.i18n.title.get(locale)
+		.column_item.left
+			.project_type= __(project.type)
+			.project_build= project.build_date.getFullYear()
+		.column_item.right
+			.project_title= project.i18n.title.get(locale)
+			if project.category
+				.project_category= project.category.i18n.title.get(locale)
 
 
 	.project_poster(style='background-image: url(' + project.poster + ')')

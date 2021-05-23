@@ -11,20 +11,29 @@
 
 .project_header
 	display flex
-	align-items flex-end
 	font-size 28pt
 	line-height 32pt
 	margin-bottom 20px
-	.project_title
-		// background-color red
-		flex-basis 40%
-	.project_build
-		// background-color green
-		flex-basis 10%
-	.project_category
-		// background-color grey
-		flex-basis 20%
-		margin-left auto
+	.column_item
+		display flex
+		&.left
+			flex-basis 20%
+		&.right
+			flex-basis 70%
+		.project_type
+			display none
+			&:after
+				content ':'
+		.project_title
+			// background-color red
+			flex-basis 80%
+		.project_build
+			// background-color green
+			flex-basis 10%
+		.project_category
+			// background-color grey
+			flex-basis 20%
+			margin-left auto
 
 
 .project_poster
