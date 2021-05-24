@@ -5,6 +5,7 @@ module.exports = function(Model, Params) {
 	var module = {};
 
 	var Project = Model.Project;
+	var Category = Model.Category;
 
 	var get_locale = function(option, lg) {
 		return ((option.filter(function(locale) {
@@ -14,20 +15,30 @@ module.exports = function(Model, Params) {
 
 	module.search = function(req, res, next) {
 
-		Project.find({ $text: { $search: req.body.text } }, { score: { $meta: 'textScore' } })
-					 .where('status').ne('hidden').sort( { score: { $meta: 'textScore' } } ).populate('category')
-					 .exec(function(err, projects) {
+		Category.find({ $text: { $search: req.body.text } }).where('status').nin(['hidden', 'special']).exec(function(err, categorys) {
+			var categorys_ids = categorys.map(function(category) {
+				return category._id;
+			});
 
-			var opts = {
-				__: function() { return res.locals.__.apply(null, arguments); },
-				__n: function() { return res.locals.__n.apply(null, arguments); },
-				get_locale: get_locale,
-				projects: projects,
-				locale: req.locale,
-				compileDebug: false, debug: false, cache: false, pretty: false
-			};
+			var query = categorys_ids && categorys_ids.length > 0
+				? { $or: [{ $text: { $search: req.body.text } }, { 'category': { $in: categorys_ids } }] }
+				: { $text: { $search: req.body.text } }
 
-			res.send(pug.renderFile(__app_root + '/views/main/projects/_projects.pug', opts));
+			Project.find(query, { score: { $meta: 'textScore' } })
+						 .where('status').ne('hidden').populate('category')
+						 .exec(function(err, projects) {
+
+				var opts = {
+					__: function() { return res.locals.__.apply(null, arguments); },
+					__n: function() { return res.locals.__n.apply(null, arguments); },
+					get_locale: get_locale,
+					projects: projects || [],
+					locale: req.locale,
+					compileDebug: false, debug: false, cache: false, pretty: false
+				};
+
+				res.send(pug.renderFile(__app_root + '/views/main/projects/_projects.pug', opts));
+			});
 		});
 	};
 

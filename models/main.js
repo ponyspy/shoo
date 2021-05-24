@@ -109,6 +109,7 @@ var categorySchema = new Schema({
 
 
 projectSchema.index({'date': -1});
+projectSchema.index({'category': 1});
 projectSchema.index({'title.value': 'text', 'description.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 publicationSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 awardSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
