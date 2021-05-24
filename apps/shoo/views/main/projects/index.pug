@@ -15,8 +15,8 @@ block content
 			a.project_item(href='/projects/' + project.type + '/' + (project.sym || project._short_id))
 				.column_item.one
 					.project_type= __(project.type)
-					.project_build= project.build_date.getFullYear()
+					.project_category= project.category ? project.category.i18n.title.get(locale) : ''
 				.column_item.two
 					.project_title= project.i18n.title.get(locale)
-					.project_category= project.category ? project.category.i18n.title.get(locale) : ''
+					.project_build= project.build_date.getFullYear()
 
