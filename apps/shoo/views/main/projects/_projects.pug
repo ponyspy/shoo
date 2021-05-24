@@ -7,8 +7,8 @@ each project in projects || projects_columns
 		.project_columns
 			.column_item.left
 				.project_type= __(project.type)
-				.project_build= project.build_date.getFullYear()
+				.project_category= project.category && project.category.i18n.title.get(locale)
 			.column_item.right
 				.project_title= project.i18n.title.get(locale)
-				.project_category= project.category && project.category.i18n.title.get(locale)
+				.project_build= project.build_date.getFullYear()
 
