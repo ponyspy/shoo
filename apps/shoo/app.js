@@ -52,6 +52,7 @@ app.use(session({
 
 
 app.use(function(req, res, next) {
+	res.locals.node_env = process.env.NODE_ENV;
 	res.locals.__app_name = __app_name;
 	res.locals.session = req.session;
 	res.locals.locale = req.cookies.locale || 'ru';

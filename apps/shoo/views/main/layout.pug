@@ -2,6 +2,8 @@ doctype html
 html(lang=locale)
 	head
 		include header
+		if node_env == 'production'
+			include counters
 	body(class=menu_active)
 		.header_block
 			.title_block
@@ -77,6 +79,4 @@ html(lang=locale)
 				div PR: #[a(href='mailto:pr@studioshoo.com') pr@studioshoo.com]
 
 			.column.copy: span!='&copy; STUDIO SHOO <br>' + new Date().getFullYear() + '<br><br>' + __('Все права защищены.')
-
-		include counters
 
