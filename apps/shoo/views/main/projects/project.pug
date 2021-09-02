@@ -14,6 +14,16 @@ block header_include
 	- var include_js = ['project.js']
 
 block content
+	.project_preview: .preview_outer: .preview_inner
+		.swiper-container.swiper-preview
+			.swiper-wrapper
+				each image in project.images
+					if image.size != '0x'
+						.swiper-slide(data-id=image._id): .swiper-lazy.slide_image(data-background=image.thumb)
+			.swiper-arrows
+				.arrow-left
+				.arrow-right
+
 
 	.project_header
 		.column_item.left
@@ -76,10 +86,11 @@ block content
 				else if item.every(function(item) { return item.size == '1x' })
 					- g_size = 'g_1x'
 				.slider_block(class=g_size)
-					.swiper-container
+					.swiper-container.swiper-gallery
 						.swiper-wrapper
 							each image, i in item
 								.swiper-slide
+									.toggle_full(data-id=image._id)
 									.swiper-lazy.slide_image(data-background=image.thumb)
 									.slide_body
 										- var description = image.description.filter(function(lang) { return lang.lg == locale })
@@ -91,6 +102,7 @@ block content
 			else
 				.image_item(class='size_' + item.size)
 					.image(style='background-image: url(' + item.thumb + ')')
+						.toggle_full(data-id=item._id)
 					- var description = item.description.filter(function(lang) { return lang.lg == locale })
 					.image_description= description.length ? description[0].value : ''
 

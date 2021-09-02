@@ -2,6 +2,67 @@
 	@import 'mobile/_project.styl'
 
 
+.project_preview
+	position fixed
+	top 0; left 0; right 0; bottom 0
+	z-index 999999999999
+	background-color white
+	display none
+	&.show
+		display block
+	.preview_outer
+		width 100%
+		max-width 1640px
+		position absolute
+		margin auto
+		left 0; right 0
+		top 50%
+		transform translateY(-50%)
+		padding-left 40px
+		padding-right 40px
+		box-sizing border-box
+		.preview_inner
+			position relative
+			padding-bottom 56.25%  /* 16:9 */
+			padding-top 0px
+			height 0
+			.swiper-arrows
+				width 100%
+				height 0
+				position absolute
+				top 0
+				left 0
+				z-index 9999999
+				.arrow-left
+				.arrow-right
+					outline none
+					background-size contain
+					background-position center
+					background-repeat no-repeat
+					width 60px
+					height 60px
+					position absolute
+					margin-top 28%
+				.arrow-left
+					left 40px
+					background-image url('/stuff/shoo/icons/arrow_left.svg')
+				.arrow-right
+					right 40px
+					background-image url('/stuff/shoo/icons/arrow_right.svg')
+			.swiper-container
+				width 100%
+				height 100%
+				position absolute
+				.swiper-slide
+					width 100%
+					.slide_image
+						width 100%
+						padding-top 60%
+						background-size cover
+						background-position center
+						background-repeat no-repeat
+
+
 .project_header
 	display flex
 	font-size 28pt
@@ -84,6 +145,17 @@
 .project_gallery
 	margin-left -10px
 	margin-right -10px
+	.toggle_full
+		display none
+		position absolute
+		width 40px
+		height 40px
+		top 20px
+		right 20px
+		background-position center
+		background-size contain
+		background-repeat no-repeat
+		background-image url('/stuff/shoo/icons/plus.svg')
 	.image_item
 		display inline-block
 		margin-right -4px
@@ -92,12 +164,15 @@
 		padding-left 10px
 		padding-right 10px
 		box-sizing border-box
+		&:hover .toggle_full
+			display block
 		.image
 			width 100%
 			padding-top 60%
 			background-size cover
 			background-position center
 			background-repeat no-repeat
+			position relative
 		.image_description
 			font-size 14pt
 			line-height 18pt
@@ -147,8 +222,11 @@
 			.arrow-right
 				right 40px
 				background-image url('/stuff/shoo/icons/arrow_right.svg')
-		&:hover .swiper-arrows
-			opacity 1
+		&:hover
+			.toggle_full
+				display block
+			.swiper-arrows
+				opacity 1
 		&.g_0x
 			display none
 		&.g_1x

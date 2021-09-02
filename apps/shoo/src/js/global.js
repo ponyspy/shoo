@@ -39,6 +39,7 @@ $(function() {
 			$('.search_block').removeClass('show').find('.search_results').empty();
 			$('.search_input').val('');
 		} else {
+			$('.project_preview').removeClass('show');
 			$(this).toggleClass('open');
 			$('body, .header_block').toggleClass('menu_open');
 		}
