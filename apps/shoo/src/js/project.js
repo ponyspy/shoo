@@ -37,6 +37,8 @@ $(function() {
 		spaceBetween: 40,
 		autoHeight: true,
 		slidesPerView: 1,
+		mousewheel: true,
+		effect: 'fade',
 		loop: true,
 		navigation: {
 			nextEl: $('.swiper-preview').find('.arrow-right')[0],
