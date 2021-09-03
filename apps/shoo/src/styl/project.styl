@@ -11,54 +11,49 @@
 	user-select none
 	&.show
 		display block
-	.preview_inner
+	.swiper-arrows
+		width 100%
+		height 0
+		position absolute
+		z-index 9999999
+		left 0
+		top 42%
+		transform: translateY(-50%)
+		.arrow-left
+		.arrow-right
+			outline none
+			cursor pointer
+			background-size contain
+			background-position center
+			background-repeat no-repeat
+			width 60px
+			height 60px
+			position absolute
+		.arrow-left
+			left 40px
+			background-image url('/stuff/shoo/icons/arrow_left.svg')
+		.arrow-right
+			right 40px
+			background-image url('/stuff/shoo/icons/arrow_right.svg')
+	.swiper-container
 		width 100%
 		height 100%
-		position relative
-		background-color red
-		.swiper-arrows
+		max-width 1640px
+		margin 0 auto
+		.swiper-slide
 			width 100%
-			height 0
-			position absolute
-			z-index 9999999
-			left 0
-			top 50%
-			transform: translateY(-50%)
-			.arrow-left
-			.arrow-right
-				outline none
-				cursor pointer
+			height 100%
+			background-color white
+			padding-left 20px
+			padding-right 20px
+			padding-bottom 20px
+			box-sizing border-box
+			.slide_image
+				width 100%
+				height 100%
 				background-size contain
 				background-position center
 				background-repeat no-repeat
-				width 60px
-				height 60px
-				position absolute
-			.arrow-left
-				left 40px
-				background-image url('/stuff/shoo/icons/arrow_left.svg')
-			.arrow-right
-				right 40px
-				background-image url('/stuff/shoo/icons/arrow_right.svg')
-		.swiper-container
-			width 100%
-			height 100%
-			max-width 1640px
-			margin 0 auto
-			.swiper-slide
-				width 100%
-				height 100%
-				background-color white
-				padding-left 20px
-				padding-right 20px
-				padding-bottom 20px
-				box-sizing border-box
-				.slide_image
-					width 100%
-					height 100%
-					background-size contain
-					background-position center
-					background-repeat no-repeat
 
 
 .project_header
