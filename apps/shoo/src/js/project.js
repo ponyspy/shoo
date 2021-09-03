@@ -1,7 +1,7 @@
 $(function() {
 
 	$(document).on('mouseup touchend', 'body.stop_scroll', function(e) {
-		if ($(e.target).closest('.swiper-preview').length) return;
+		if ($(e.target).closest('.swiper-preview, .arrow-left, .arrow-right').length) return;
 
 		$('.project_preview').removeClass('show');
 		$('body').removeClass('stop_scroll');
@@ -35,14 +35,14 @@ $(function() {
 
 	var swPreview = new Swiper('.swiper-preview', {
 		spaceBetween: 40,
-		autoHeight: true,
+		// autoHeight: true,
 		slidesPerView: 1,
 		mousewheel: true,
 		effect: 'fade',
 		loop: true,
 		navigation: {
-			nextEl: $('.swiper-preview').find('.arrow-right')[0],
-			prevEl: $('.swiper-preview').find('.arrow-left')[0],
+			nextEl: $('.project_preview').find('.arrow-right')[0],
+			prevEl: $('.project_preview').find('.arrow-left')[0],
 		},
 		preloadImages: false,
 		lazy: {
