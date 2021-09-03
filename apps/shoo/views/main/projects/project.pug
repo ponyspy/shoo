@@ -19,7 +19,7 @@ block content
 			.swiper-wrapper
 				each image in project.images
 					if image.size != '0x'
-						.swiper-slide(data-id=image._id): .swiper-lazy.slide_image(data-background=image.thumb)
+						.swiper-slide(data-id=image._id): .swiper-lazy.slide_image(data-background=image.original)
 		.swiper-arrows
 			.arrow-left
 			.arrow-right
