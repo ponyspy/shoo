@@ -4,20 +4,55 @@
 
 .project_preview
 	position fixed
-	top 100px; left 0; right 0; bottom 0
+	top 0; left 0; right 0; bottom 0
 	z-index 999999999999
 	background-color white
 	display none
 	user-select none
 	&.show
 		display block
+	.preview_close
+		width 30px
+		height 30px
+		transform rotate(0deg)
+		transition .5s ease-in-out
+		cursor pointer
+		position absolute
+		top 20px
+		right 20px
+		z-index 999999
+		span
+			display block
+			position absolute
+			height 4px
+			width 100%
+			background black
+			opacity 1
+			left 0
+			transform rotate(0deg)
+			transition .25s ease-in-out
+		span:nth-child(1)
+			top 10px
+			width 0%
+			left 50%
+		span:nth-child(2)
+		span:nth-child(3)
+			top 10px
+		span:nth-child(2)
+			transform rotate(45deg)
+		span:nth-child(3)
+			transform rotate(-45deg)
+		span:nth-child(4)
+			top 10px
+			width 0%
+			left 50%
 	.swiper-arrows
 		width 100%
 		height 0
 		position absolute
 		z-index 9999999
 		left 0
-		top 42%
+		top 47%
 		transform: translateY(-50%)
 		.arrow-left
 		.arrow-right
@@ -30,10 +65,10 @@
 			height 60px
 			position absolute
 		.arrow-left
-			left 40px
+			left 20px
 			background-image url('/stuff/shoo/icons/arrow_left.svg')
 		.arrow-right
-			right 40px
+			right 20px
 			background-image url('/stuff/shoo/icons/arrow_right.svg')
 	.swiper-container
 		width 100%
@@ -44,9 +79,7 @@
 			width 100%
 			height 100%
 			background-color white
-			padding-left 20px
-			padding-right 20px
-			padding-bottom 20px
+			padding 20px
 			box-sizing border-box
 			.slide_image
 				width 100%

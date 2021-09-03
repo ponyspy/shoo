@@ -13,8 +13,13 @@ block header_include
 	- var include_libs_js = ['swiper-bundle.min.js']
 	- var include_js = ['project.js']
 
-block content
+block outer
 	.project_preview
+		.preview_close
+			span
+			span
+			span
+			span
 		.swiper-container.swiper-preview
 			.swiper-wrapper
 				each image in project.images
@@ -25,6 +30,7 @@ block content
 			.arrow-right
 
 
+block content
 	.project_header
 		.column_item.left
 			.project_type= __(project.type)

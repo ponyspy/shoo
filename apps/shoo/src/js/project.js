@@ -1,13 +1,5 @@
 $(function() {
 
-	$(document).on('mouseup touchend', 'body.stop_scroll', function(e) {
-		if ($(e.target).closest('.swiper-preview, .arrow-left, .arrow-right').length) return;
-
-		$('.project_preview').removeClass('show');
-		$('body').removeClass('stop_scroll');
-	});
-
-
 	$('.swiper-gallery').each(function() {
 		var $this = $(this);
 
@@ -64,6 +56,15 @@ $(function() {
 		$('.project_preview').addClass('show');
 		swPreview.update();
 		swPreview.slideTo(+sw_index + 1, 0);
+	});
+
+	$('.preview_close').on('click', function(e) {
+		$('.project_preview').removeClass('show');
+		$('body').removeClass('stop_scroll');
+	});
+
+	$(document).on('keyup', function(e) {
+		if (e.which == 27) $('.preview_close').trigger('click');
 	});
 
 });
