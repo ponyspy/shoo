@@ -52,23 +52,26 @@
 		position absolute
 		z-index 9999999
 		left 0
-		top 47%
+		top 48%
 		transform: translateY(-50%)
 		.arrow-left
 		.arrow-right
 			outline none
 			cursor pointer
-			background-size contain
+			position absolute
+			background-size 60%
 			background-position center
 			background-repeat no-repeat
-			width 60px
-			height 60px
-			position absolute
+			width 68px
+			height 68px
+			border 2px solid white
+			background-color white
+			border-radius 100%
 		.arrow-left
-			left 20px
+			left 80px
 			background-image url('/stuff/shoo/icons/arrow_left.svg')
 		.arrow-right
-			right 20px
+			right 80px
 			background-image url('/stuff/shoo/icons/arrow_right.svg')
 	.swiper-container
 		width 100%
@@ -174,12 +177,15 @@
 	.toggle_full
 		display none
 		position absolute
-		width 40px
-		height 40px
+		width 48px
+		height 48px
 		top 20px
 		right 20px
+		background-color white
+		border 2px solid white
+		border-radius 100%
 		background-position center
-		background-size contain
+		background-size 80%
 		background-repeat no-repeat
 		background-image url('/stuff/shoo/icons/plus.svg')
 		cursor pointer
@@ -239,16 +245,20 @@
 				background-size contain
 				background-position center
 				background-repeat no-repeat
-				width 60px
-				height 60px
+				background-color white
+				border 2px solid white
+				border-radius 100%
+				width 48px
+				height 48px
+				margin-top 29%
 				position absolute
-				margin-top 28%
 				cursor pointer
+				background-size 60%
 			.arrow-left
-				left 40px
+				left 30px
 				background-image url('/stuff/shoo/icons/arrow_left.svg')
 			.arrow-right
-				right 40px
+				right 30px
 				background-image url('/stuff/shoo/icons/arrow_right.svg')
 		&:hover
 			.toggle_full
