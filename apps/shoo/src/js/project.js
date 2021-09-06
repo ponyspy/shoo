@@ -7,6 +7,7 @@ $(function() {
 			spaceBetween: 40,
 			autoHeight: true,
 			slidesPerView: 1,
+			simulateTouch: false,
 			loop: true,
 			navigation: {
 				nextEl: $this.parent('.slider_block').find('.arrow-right')[0],
@@ -46,8 +47,7 @@ $(function() {
 		},
 	});
 
-
-	$('.toggle_full').on('click', function(e) {
+	$('.project_gallery').find('.image, .slide_image').on('click', function(e) {
 		$('body').addClass('stop_scroll');
 
 		var id = $(this).attr('data-id');

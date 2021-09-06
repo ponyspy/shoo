@@ -96,8 +96,7 @@ block content
 						.swiper-wrapper
 							each image, i in item
 								.swiper-slide
-									.toggle_full(data-id=image._id)
-									.swiper-lazy.slide_image(data-background=image.thumb)
+									.swiper-lazy.slide_image(data-background=image.thumb, data-id=image._id)
 									.slide_body
 										- var description = image.description.filter(function(lang) { return lang.lg == locale })
 										.slide_description= description.length ? description[0].value : ''
@@ -107,8 +106,7 @@ block content
 						.arrow-right
 			else
 				.image_item(class='size_' + item.size)
-					.image(style='background-image: url(' + item.thumb + ')')
-						.toggle_full(data-id=item._id)
+					.image(data-id=item._id, style='background-image: url(' + item.thumb + ')')
 					- var description = item.description.filter(function(lang) { return lang.lg == locale })
 					.image_description= description.length ? description[0].value : ''
 

@@ -62,11 +62,8 @@
 			background-size 60%
 			background-position center
 			background-repeat no-repeat
-			width 68px
-			height 68px
-			border 2px solid white
-			background-color white
-			border-radius 100%
+			width 90px
+			height 90px
 		.arrow-left
 			left 80px
 			background-image url('/stuff/shoo/icons/arrow_left.svg')
@@ -174,21 +171,6 @@
 .project_gallery
 	margin-left -10px
 	margin-right -10px
-	.toggle_full
-		display none
-		position absolute
-		width 48px
-		height 48px
-		top 20px
-		right 20px
-		background-color white
-		border 2px solid white
-		border-radius 100%
-		background-position center
-		background-size 80%
-		background-repeat no-repeat
-		background-image url('/stuff/shoo/icons/plus.svg')
-		cursor pointer
 	.image_item
 		display inline-block
 		margin-right -4px
@@ -197,9 +179,8 @@
 		padding-left 10px
 		padding-right 10px
 		box-sizing border-box
-		&:hover .toggle_full
-			display block
 		.image
+			cursor pointer
 			width 100%
 			padding-top 60%
 			background-size cover
@@ -245,12 +226,9 @@
 				background-size contain
 				background-position center
 				background-repeat no-repeat
-				background-color white
-				border 2px solid white
-				border-radius 100%
-				width 48px
-				height 48px
-				margin-top 29%
+				width 90px
+				height 90px
+				margin-top 24%
 				position absolute
 				cursor pointer
 				background-size 60%
@@ -260,11 +238,8 @@
 			.arrow-right
 				right 30px
 				background-image url('/stuff/shoo/icons/arrow_right.svg')
-		&:hover
-			.toggle_full
-				display block
-			.swiper-arrows
-				opacity 1
+		&:hover .swiper-arrows
+			opacity 1
 		&.g_0x
 			display none
 		&.g_1x
@@ -281,6 +256,7 @@
 					background-size cover
 					background-position center
 					background-repeat no-repeat
+					cursor pointer
 				.slide_body
 					font-size 14pt
 					line-height 18pt
