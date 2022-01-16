@@ -4,6 +4,7 @@ module.exports = function(Model) {
 	var module = {};
 
 	var People = Model.People;
+	var Project = Model.Project;
 
 
 	module.index = function(req, res, next) {
