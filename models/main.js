@@ -6,10 +6,10 @@ var Schema = mongoose.Schema,
 		ObjectId = Schema.Types.ObjectId;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/' +  __app_name, {
-	useCreateIndex: true,
+mongoose.connect('mongodb://0.0.0.0/' +  __app_name, {
+	// useCreateIndex: true,
+	// useFindAndModify: false,
 	useNewUrlParser: true,
-	useFindAndModify: false,
 	useUnifiedTopology: true
 });
 
