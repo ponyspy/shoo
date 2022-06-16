@@ -30,10 +30,10 @@ module.exports = function(Model) {
 			Query.where('status').equals(post.context.status);
 		}
 
-		Query.countDocuments(function(err, count) {
+		Query.clone().countDocuments(function(err, count) {
 			if (err) return next(err);
 
-			Query.find().sort('-date').skip(+post.context.skip).limit(+post.context.limit).exec(function(err, news) {
+			Query.clone().find().sort('-date').skip(+post.context.skip).limit(+post.context.limit).exec(function(err, news) {
 				if (err) return next(err);
 
 				if (news.length > 0) {
