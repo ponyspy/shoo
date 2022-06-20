@@ -6,14 +6,13 @@
 	],
 
 	"peoples_types": [
+		"art_director",
 		"architect",
 		"photographer",
-		"art_director",
 		"lead_designer",
 		"designer",
 		"junior_designer",
 		"project_manager",
-		"procurement_manager",
 		"3d",
 		"3d_designer",
 		"junior_architect",
@@ -22,6 +21,7 @@
 		"producer",
 		"graphic_designer",
 		"videographer",
+		"procurement_manager",
 		"pr_development_manager"
 	]
 }

@@ -95,10 +95,14 @@ block content
 				.column_item.team
 					.column_title= __('Команда')
 					.column_body.list
-						each people in peoples
-							.list_item
-								.people_type= __(people.type)
-								.people_name= people.i18n.name.get(locale)
+						- var peoples_types = static_types.peoples_types.map(function(p_type) { return {p_type: p_type, peoples: peoples.filter(function(people) { return people.type == p_type })} })
+						each p_type in peoples_types
+							if p_type.peoples.length > 0
+								.list_item
+									b.people_type= __(p_type.p_type)
+									each people in p_type.peoples
+										if p_type.p_type == people.type
+											.people_name= people.i18n.name.get(locale)
 
 			if vacancies.length
 				.column_item.vacancies
