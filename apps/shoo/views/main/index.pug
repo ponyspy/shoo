@@ -25,12 +25,13 @@ block content
 							.slide_columns
 								.column_item.left
 									.project_type= __(project.type)
-									.project_build= project.build_date.getFullYear()
+									.project_category= project.category && project.category.i18n.title.get(locale)
 								.column_item.right
 									.project_title= project.i18n.title.get(locale)
-									.project_category= project.category && project.category.i18n.title.get(locale)
-								.column_item.counter
-									.project_counter= (i + 1) + ' / ' + projects_slider.length
+									.project_build= project.build_date.getFullYear()
+								if projects_slider.length > 0
+									.column_item.counter
+										.project_counter= (i + 1) + ' / ' + projects_slider.length
 
 
 	if projects_columns.length

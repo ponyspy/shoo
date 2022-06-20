@@ -155,8 +155,8 @@ block content
 						.project_columns
 							.column_item.left
 								.project_type= __(project.type)
-								.project_build= project.build_date.getFullYear()
+								.project_category= sim_category
 							.column_item.right
 								.project_title= get_locale(project.title, locale)
-								.project_category= sim_category
+								.project_build= project.build_date.getFullYear()
 
