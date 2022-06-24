@@ -33,15 +33,21 @@ block content
 					div= __('Работа и стажировка') + ':'
 					div: a(href='mailto:hr@studioshoo.com') hr@studioshoo.com
 					br
+					div= __('Подрядчики') + ':'
+					div: a(href='mailto:supply@studioshoo.com') supply@studioshoo.com
+					br
 					div PR: #[a(href='mailto:pr@studioshoo.com') pr@studioshoo.com]
 
 			.column_item.social
 				.column_title.none &nbsp;
 				.column_body
-					//- a.item.link(href='https://www.facebook.com/studioshoo', target='_blank'): span Facebook
-					//- a.item.link(href='https://www.instagram.com/studio_shoo', target='_blank'): span Instagram
+					a.item.link(href='https://www.facebook.com/studioshoo', target='_blank'): span Facebook*
+					a.item.link(href='https://www.instagram.com/studio_shoo', target='_blank'): span Instagram*
 					a.item.link(href='https://www.pinterest.ru/STUDIO_SHOO/_saved', target='_blank'): span Pinterest
 					a.item.link(href='https://www.behance.net/shushu14051c2d', target='_blank'): span Behance
+					br
+					br
+					small= __('*запрещен в РФ, Meta Platforms Inc. признана экстремистской организацией на территории РФ')
 
 
 	.content_section.x2

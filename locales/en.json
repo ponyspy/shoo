@@ -29,22 +29,74 @@
 	"Все права защищены.": "All rights reserved.",
 	"design": "Design",
 	"architecture": "Architecture",
-
-	"designer": {"one": "Designer", "other": "Designers"},
-	"architect": {"one": "Architect", "other": "Architects"},
-	"photographer": {"one": "Photographer", "other": "Photographers"},
-	"art_director": {"one": "Art director", "other": "Art directors"},
-	"lead_designer": {"one": "Lead designer", "other": "Lead designers"},
-	"junior_designer": {"one": "Junior designer", "other": "Junior designers"},
-	"project_manager": {"one": "Project manager", "other": "Project managers"},
-	"procurement_manager": {"one": "Procurement manager", "other": "Procurement managers"},
-	"3d": {"one": "3D artist", "other": "3D artists"},
-	"3d_designer": {"one": "3D artist", "other": "3D artists"},
-	"junior_architect": {"one": "Junior architect", "other": "Junior architects"},
-	"stylist": {"one": "Stylist", "other": "Stylist"},
-	"photographer_stylist": {"one": "Photographer / stylist", "other": "Photographers / stylists"},
-	"producer": {"one": "Producer", "other": "Producers"},
-	"graphic_designer": {"one": "Graphic designer", "other": "Graphic designers"},
-	"videographer": {"one": "Videographer", "other": "Videographers"},
-	"pr_development_manager": {"one": "PR & development manager", "other": "PR & development managers"}
+	"designer": {
+		"one": "Designer",
+		"other": "Designers"
+	},
+	"architect": {
+		"one": "Architect",
+		"other": "Architects"
+	},
+	"photographer": {
+		"one": "Photographer",
+		"other": "Photographers"
+	},
+	"art_director": {
+		"one": "Art director",
+		"other": "Art directors"
+	},
+	"lead_designer": {
+		"one": "Lead designer",
+		"other": "Lead designers"
+	},
+	"junior_designer": {
+		"one": "Junior designer",
+		"other": "Junior designers"
+	},
+	"project_manager": {
+		"one": "Project manager",
+		"other": "Project managers"
+	},
+	"procurement_manager": {
+		"one": "Procurement manager",
+		"other": "Procurement managers"
+	},
+	"3d": {
+		"one": "3D artist",
+		"other": "3D artists"
+	},
+	"3d_designer": {
+		"one": "3D artist",
+		"other": "3D artists"
+	},
+	"junior_architect": {
+		"one": "Junior architect",
+		"other": "Junior architects"
+	},
+	"stylist": {
+		"one": "Stylist",
+		"other": "Stylist"
+	},
+	"photographer_stylist": {
+		"one": "Photographer / stylist",
+		"other": "Photographers / stylists"
+	},
+	"producer": {
+		"one": "Producer",
+		"other": "Producers"
+	},
+	"graphic_designer": {
+		"one": "Graphic designer",
+		"other": "Graphic designers"
+	},
+	"videographer": {
+		"one": "Videographer",
+		"other": "Videographers"
+	},
+	"pr_development_manager": {
+		"one": "PR & development manager",
+		"other": "PR & development managers"
+	},
+	"*запрещен в РФ, Meta Platforms Inc. признана экстремистской организацией на территории РФ": "*is banned in Russia, as a part of Meta Platforms Inc. “extremist organisation”",
+	"Подрядчики": "Suppliers"
 }
