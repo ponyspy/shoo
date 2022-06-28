@@ -21,10 +21,16 @@ block content
 	.form_block
 		.title= content_title
 		form(action='', method='post', enctype="multipart/form-data")
-			.form_title Изображение 1:
-			input(type='file', name='image_1', accept='image/jpeg')
-			.form_title Изображение 2:
-			input(type='file', name='image_2', accept='image/jpeg')
+			.form_title Изображение / Видео 1:
+			label
+				span= 'удалить | '
+				input(type='checkbox', name='image_1_del')
+			input(type='file', name='image_1', accept='image/jpeg,image/png,video/mp4')
+			.form_title Изображение / Видео 2:
+			label
+				span= 'удалить | '
+				input(type='checkbox', name='image_2_del')
+			input(type='file', name='image_2', accept='image/jpeg,image/png,video/mp4')
 			.form_title Философия:
 			.content
 				textarea.ru.editor(name='philosophy[ru]')= content.philosophy_ru

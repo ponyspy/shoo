@@ -20,6 +20,11 @@ module.exports = function(Model) {
 	module.about = function(req, res, next) {
 
 		async.parallel({
+			images: function(callback) {
+				fs.readdir(__glob_root + '/public/cdn/about', function(err, files) {
+					callback(null, files);
+				});
+			},
 			philosophy: function(callback) {
 				fs.readFile(__app_root + '/static/philosophy_' + req.locale + '.html', 'utf8', function(err, content) {
 					callback(null, content || '');

@@ -52,7 +52,10 @@ block content
 
 	.content_section.x2
 		.section_inner
-			img.content_image(src='/cdn/images/image_1.jpeg')
+			- var image = images.filter(function(img) {return img.indexOf('image_1') !== -1 })
+
+			if image.length
+				video.content_image(autoplay=true, loop=true, muted=true, playsinline=true, controls=false, poster=src='/cdn/about/' + image[0], src='/cdn/about/' + image[0])
 
 
 	.content_section.x1
@@ -80,7 +83,10 @@ block content
 
 	.content_section.x2
 		.section_inner
-			img.content_image(src='/cdn/images/image_2.jpeg')
+			- var image = images.filter(function(img) {return img.indexOf('image_2') !== -1 })
+
+			if image.length
+				video.content_image(autoplay=true, loop=true, muted=true, playsinline=true, controls=false, poster=src='/cdn/about/' + image[0], src='/cdn/about/' + image[0])
 
 
 	.content_section.x1
