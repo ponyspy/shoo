@@ -41,7 +41,8 @@ html(lang=locale)
 				a.menu_item(href='/about')= __('О нас')
 				//- a.menu_item(href='/about#contacts')= __('Контакты')
 				//- a.menu_item(href='/about#vacancies')= __('Вакансии')
-				a.menu_item(href='/publications')= __('Публикации')
+				if (session && session.user_id)
+					a.menu_item(href='/publications')= __('Публикации')
 				a.menu_item(href='/news')= __('Новости')
 				br
 
