@@ -121,33 +121,3 @@ block content
 					.column_title= __('Вакансии')
 					.column_body!= vacancies
 
-
-	.content_section.x1
-		a.anchor#publications
-		.section_inner
-
-			if publications.length
-				.column_item.publications
-					.column_title= __('Публикации')
-					.column_body
-						each publication in publications
-							if publication.link
-								a.item.link(href=publication.link, target='_blank'): span= publication.i18n.title.get(locale)
-							else
-								.item.list= publication.i18n.title.get(locale)
-
-
-	.content_section.x1
-		a.anchor#awards
-		.section_inner
-
-			if awards.length
-				.column_item.awards
-					.column_title= __('Награды')
-					.column_body.list
-						each award in awards
-							if award.link
-								a.item.link(href=award.link, target='_blank'): span= award.i18n.title.get(locale)
-							else
-								.item.list= award.i18n.title.get(locale)
-

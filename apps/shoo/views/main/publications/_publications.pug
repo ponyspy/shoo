@@ -1,0 +1,10 @@
+each publication in publications
+	a.publication_item(href=publication.link, rel='nofollow noopener', target='_blank')
+		.publication_poster(style='background-image: url(' + publication.poster + ')')
+		.publication_columns
+			.column_item.left
+				.publication_type= __(publication.type)
+				.publication_date= moment(publication.date).format('DD.MM.YYYY')
+			.column_item.right
+				.publication_title= publication.i18n.title.get(locale)
+

@@ -60,16 +60,9 @@ var projectSchema = new Schema({
 var publicationSchema = new Schema({
 	title: { type: String, trim: true, locale: true },
 	link: String,
+	poster: { type: String },
 	projects: [{ type: ObjectId, ref: 'Project' }],
-	status: String,
-	_short_id: { type: String, unique: true, index: true, sparse: true },
-	date: { type: Date, default: Date.now },
-});
-
-var awardSchema = new Schema({
-	title: { type: String, trim: true, locale: true },
-	link: String,
-	projects: [{ type: ObjectId, ref: 'Project' }],
+	type: String,
 	status: String,
 	_short_id: { type: String, unique: true, index: true, sparse: true },
 	date: { type: Date, default: Date.now },
@@ -112,7 +105,6 @@ projectSchema.index({'date': -1});
 projectSchema.index({'category': 1});
 projectSchema.index({'title.value': 'text', 'description.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 publicationSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
-awardSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 newsSchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 peopleSchema.index({'name.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
 categorySchema.index({'title.value': 'text'}, {language_override: 'lg', default_language: 'ru'});
@@ -127,7 +119,6 @@ userSchema.plugin(mongooseBcrypt, { fields: ['password'] });
 
 projectSchema.plugin(mongooseLocale);
 publicationSchema.plugin(mongooseLocale);
-awardSchema.plugin(mongooseLocale);
 newsSchema.plugin(mongooseLocale);
 peopleSchema.plugin(mongooseLocale);
 categorySchema.plugin(mongooseLocale);
@@ -141,7 +132,6 @@ categorySchema.plugin(mongooseLocale);
 module.exports.User = mongoose.model('User', userSchema);
 module.exports.Project = mongoose.model('Project', projectSchema);
 module.exports.Publication = mongoose.model('Publication', publicationSchema);
-module.exports.Award = mongoose.model('Award', awardSchema);
 module.exports.News = mongoose.model('News', newsSchema);
 module.exports.People = mongoose.model('People', peopleSchema);
 module.exports.Category = mongoose.model('Category', categorySchema);

@@ -7,7 +7,6 @@ module.exports = function(Model) {
 	var Project = Model.Project;
 	var People = Model.People;
 	var Publication = Model.Publication;
-	var Award = Model.Award;
 
 	module.index = function(req, res, next) {
 		Project.find({'main': {'$exists': true}}).where('status').ne('hidden').sort('-build_date').populate('category').exec(function(err, projects) {
@@ -54,9 +53,6 @@ module.exports = function(Model) {
 				fs.readFile(__app_root + '/static/vacancies_' + req.locale + '.html', 'utf8', function(err, content) {
 					callback(null, content || '');
 				});
-			},
-			awards: function(callback) {
-				Award.find().where('status').ne('hidden').exec(callback);
 			},
 			publications: function(callback) {
 				Publication.find().where('status').ne('hidden').exec(callback);

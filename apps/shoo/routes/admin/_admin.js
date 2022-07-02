@@ -7,7 +7,6 @@ var admin = {
 	main: require('./main.js'),
 	projects: require('./projects/_projects.js'),
 	publications: require('./publications/_publications.js'),
-	awards: require('./awards/_awards.js'),
 	news: require('./news/_news.js'),
 	peoples: require('./peoples/_peoples.js'),
 	categorys: require('./categorys/_categorys.js'),
@@ -32,8 +31,7 @@ module.exports = (function() {
 		.post(checkAuth, upload.fields([ {name: 'image_1'}, { name: 'image_2' } ]), admin.about.edit_form);
 
 	router.use('/projects', checkAuth, upload.fields([ {name: 'poster'}, { name: 'logo' } ]), admin.projects);
-	router.use('/publications', checkAuth, admin.publications);
-	router.use('/awards', checkAuth, admin.awards);
+	router.use('/publications', checkAuth, upload.fields([ { name: 'poster' } ]), admin.publications);
 	router.use('/news', checkAuth, upload.fields([ { name: 'poster' } ]), admin.news);
 	router.use('/peoples', checkAuth, admin.peoples);
 	router.use('/categorys', checkAuth, admin.categorys);

@@ -5,6 +5,7 @@ var Model = require(__glob_root + '/models/main.js');
 var main = {
 	index: require('./index.js')(Model),
 	projects: require('./projects.js')(Model),
+	publications: require('./publications.js')(Model),
 	news: require('./news.js')(Model),
 	options: require('./options.js')(Model)
 };
@@ -26,6 +27,10 @@ module.exports = (function() {
 
 	router.route('/news/:news_id')
 		.get(main.news.news);
+
+	router.route('/publications')
+		.get(main.publications.index)
+		.post(main.publications.get_publications);
 
 	router.route('/projects')
 		.get(main.projects.index);

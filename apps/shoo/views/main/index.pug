@@ -29,10 +29,14 @@ block content
 								.column_item.right
 									.project_title= project.i18n.title.get(locale)
 									.project_build= project.build_date.getFullYear()
-								if projects_slider.length > 1
-									.column_item.counter
+								.column_item.counter
+									if projects_slider.length > 1
 										.project_counter= (i + 1) + ' / ' + projects_slider.length
 
+				if projects_slider.length > 1
+					.swiper-arrows
+						.arrow-left
+						.arrow-right
 
 	if projects_columns.length
 		.projects_columns

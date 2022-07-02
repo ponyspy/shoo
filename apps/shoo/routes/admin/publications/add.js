@@ -1,5 +1,6 @@
 var shortid = require('shortid');
 var moment = require('moment');
+var async = require('async');
 
 module.exports = function(Model, Params) {
 	var module = {};
@@ -8,6 +9,7 @@ module.exports = function(Model, Params) {
 	var Project = Model.Project;
 
 	var checkNested = Params.locale.checkNested;
+	var uploadImage = Params.upload.image;
 
 
 	module.index = function(req, res, next) {
@@ -29,6 +31,7 @@ module.exports = function(Model, Params) {
 		publication.status = post.status;
 		publication.date = moment(post.date.date + 'T' + post.date.time.hours + ':' + post.date.time.minutes);
 		publication.link = post.link;
+		publication.type = post.type;
 		publication.projects = post.projects.filter(function(project) { return project != 'none'; });
 
 		var locales = post.en ? ['ru', 'en'] : ['ru'];
@@ -39,10 +42,17 @@ module.exports = function(Model, Params) {
 
 		});
 
-		publication.save(function(err, publication) {
+
+		async.series([
+			async.apply(uploadImage, publication, 'publications', 'poster', 1920, files.poster && files.poster[0], null),
+		], function(err, results) {
 			if (err) return next(err);
 
-			res.redirect('/admin/publications');
+			publication.save(function(err, publication) {
+				if (err) return next(err);
+
+				res.redirect('/admin/publications');
+			});
 		});
 	};
 

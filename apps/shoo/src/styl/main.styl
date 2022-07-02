@@ -7,6 +7,34 @@
 	.slider_block
 		width 100%
 		margin-bottom 10px
+		.swiper-arrows
+			width 100%
+			height 0
+			position absolute
+			top 0
+			left 0
+			z-index 999
+			opacity 0
+			.arrow-left
+			.arrow-right
+				outline none
+				background-size contain
+				background-position center
+				background-repeat no-repeat
+				width 90px
+				height 90px
+				margin-top 24%
+				position absolute
+				cursor pointer
+				background-size 60%
+			.arrow-left
+				left 30px
+				background-image url('/stuff/shoo/icons/arrow_left.svg')
+			.arrow-right
+				right 30px
+				background-image url('/stuff/shoo/icons/arrow_right.svg')
+		&:hover .swiper-arrows
+			opacity 1
 		.slide_item
 			width 100%
 			color black

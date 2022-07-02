@@ -1,0 +1,66 @@
+@media screen and (max-width: 1200px)
+	@import 'mobile/_news.styl'
+
+
+.content_block
+	padding-top 90px!important
+
+
+.publications_block
+	margin-left -10px
+	margin-right -10px
+	margin-bottom 80px
+	.publication_item
+		width 50%
+		display inline-block
+		vertical-align top
+		text-decoration none
+		color black
+		border 10px solid white
+		box-sizing border-box
+		.publication_poster
+			width 100%
+			padding-top 60%
+			background-size contain
+			background-position center
+			background-repeat no-repeat
+		.publication_columns
+			margin-top 10px
+			display flex
+			align-items flex-end
+			.column_item
+				display flex
+				&.left
+					flex-basis 30%
+					flex-direction column
+				&.right
+					flex-basis 70%
+					flex-direction row
+				.publication_type
+					// background-color rgb(48, 154, 106)
+					padding-right 40px
+					&:after
+						content ':'
+				.publication_date
+					// background-color rgb(231, 71, 37)
+					padding-right 40px
+				.publication_title
+					// background-color rgb(249, 177, 11)
+					flex-grow 1
+					padding-right 40px
+
+
+.publications_loader
+	margin-bottom 120px
+	font-size 28pt
+	line-height 32pt
+	cursor pointer
+	color transparent
+	-webkit-text-stroke-width 0.7px
+	-webkit-text-stroke-color black
+	&.hide
+		display none
+	&:hover
+		color black
+		-webkit-text-stroke-color transparent
+

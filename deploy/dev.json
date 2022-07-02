@@ -4,7 +4,7 @@
 			"name": "shoo",
 			"script": "./apps/shoo/app.js",
 			"exec_mode": "fork",
-			"watch": ["apps/shoo/app.js", "apps/shoo/models", "apps/shoo/routes", "locales/ru.json", "locales/en.json"],
+			"watch": ["./apps/shoo/app.js", "./apps/shoo/models", "./apps/shoo/routes", "./locales/ru.json", "./locales/en.json"],
 			"min_uptime": "300s",
 			"autorestart": false,
 			"max_restarts": 1,

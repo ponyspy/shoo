@@ -1,0 +1,15 @@
+extends ../layout
+
+block header_meta
+	- var content_title = 'STUDIO SHOO | ' + __('Публикации')
+	- var content_description= ''
+	- var menu_active = 'publications'
+
+block header_include
+	- var include_css = ['publications.css']
+	- var include_js = ['publications.js']
+
+block content
+	.publications_block
+	.publications_loader= __('Еще публикации') + '...'
+

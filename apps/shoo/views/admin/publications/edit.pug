@@ -20,11 +20,17 @@ block sub_menu
 block content
 	.form_block
 		.title= content_title
-		form(action="", method="post")
+		form(action="", method="post", enctype="multipart/form-data")
 			.form_title Название:
 			+form_text_single('title', publication)
 			.form_title Ссылка:
 			input(type='text', name='link', value=publication.link)
+			.form_title Обложка:
+			+form_single_file('poster', publication)(accept='image/jpeg,image/png,image/gif')
+			.form_title Тип:
+			select(name='type')
+				option(value='publication', , selected= publication.type == 'publication' && 'publication') Публикация
+				option(value='award', , selected= publication.type == 'award' && 'award') Награда
 			.form_title Проекты:
 			+form_multiple_select('projects', projects, publication.projects)
 			.form_title Статус:
@@ -33,3 +39,4 @@ block content
 				option(value='hidden', selected= publication.status == 'hidden' && 'hidden') Скрытый
 			.form_title Дата публикации:
 			+form_date('date', publication.date)
+

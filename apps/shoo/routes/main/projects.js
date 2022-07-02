@@ -5,7 +5,6 @@ module.exports = function(Model) {
 	var module = {};
 
 	var Project = Model.Project;
-	var Award = Model.Award;
 	var Publication = Model.Publication;
 	var Category = Model.Category;
 
@@ -78,25 +77,21 @@ module.exports = function(Model) {
 				}
 			}, []);
 
-			Award.find({projects: project._id}).where('status').ne('hidden').sort('-date').exec(function(err, awards) {
+			Publication.find({projects: project._id}).where('status').ne('hidden').sort('-date').exec(function(err, publications) {
 				if (err) return next(err);
 
-				Publication.find({projects: project._id}).where('status').ne('hidden').sort('-date').exec(function(err, publications) {
+				var category = project.category ? project.category._id : {'$ne': 'none'};
+
+				Project.aggregate().match({
+					'type': project.type, '_id': {'$ne': project._id},
+					'category': category , 'status': {'$ne': 'hidden'}
+					}).sample(2).exec(function(err, sim_projects) {
 					if (err) return next(err);
 
-					var category = project.category ? project.category._id : {'$ne': 'none'};
-
-					Project.aggregate().match({
-						'type': project.type, '_id': {'$ne': project._id},
-						'category': category , 'status': {'$ne': 'hidden'}
-						}).sample(2).exec(function(err, sim_projects) {
-						if (err) return next(err);
-
-						res.render('main/projects/project.pug', {
-							get_locale: get_locale, moment: moment,
-							project: project, awards: awards, images: images,
-							publications: publications, sim_projects: sim_projects,
-						});
+					res.render('main/projects/project.pug', {
+						get_locale: get_locale, moment: moment,
+						project: project, images: images,
+						publications: publications, sim_projects: sim_projects,
 					});
 				});
 			});
@@ -105,7 +100,7 @@ module.exports = function(Model) {
 
 	module.map_categorys = function(req, res, next) {
 		if (/admin|auth/.test(req.originalUrl)) return next();
-		if (req._parsedUrl.pathname !== '/' && !/about|projects|news/.test(req.originalUrl)) return next();
+		if (req._parsedUrl.pathname !== '/' && !/about|projects|publications|news/.test(req.originalUrl)) return next();
 
 		Project.aggregate([
 			{ $group: {
