@@ -49,6 +49,7 @@ module.exports = function(Model, Params) {
 			var links = [
 				{ url: '/' },
 				{ url: '/news' },
+				{ url: '/publications' },
 				{ url: '/about' }
 			];
 

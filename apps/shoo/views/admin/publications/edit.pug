@@ -29,8 +29,8 @@ block content
 			+form_single_file('poster', publication)(accept='image/jpeg,image/png,image/gif')
 			.form_title Тип:
 			select(name='type')
-				option(value='publication', , selected= publication.type == 'publication' && 'publication') Публикация
-				option(value='award', , selected= publication.type == 'award' && 'award') Награда
+				option(value='publication', selected= publication.type == 'publication' && 'publication') Публикация
+				option(value='award', selected= publication.type == 'award' && 'award') Награда
 			.form_title Проекты:
 			+form_multiple_select('projects', projects, publication.projects)
 			.form_title Статус:
