@@ -54,11 +54,8 @@ module.exports = function(Model) {
 					callback(null, content || '');
 				});
 			},
-			publications: function(callback) {
-				Publication.find().where('status').ne('hidden').exec(callback);
-			},
 			peoples: function(callback) {
-				People.find().where('status').nin(['hidden', 'special']).ne('hidden').exec(callback);
+				People.find().where('status').nin(['hidden', 'special']).sort('-date').exec(callback);
 			},
 		}, function(err, results) {
 			if (err) return next(err);
