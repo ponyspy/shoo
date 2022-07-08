@@ -70,17 +70,24 @@ html(lang=locale)
 				small= __('*запрещен в РФ, Meta Platforms Inc. признана экстремистской организацией на территории РФ')
 
 			.column.contacts
-				div +7 985 187 13 41
+				div= __('Ереван, Армения')
+				div +374 55 664 651
 				br
-				div= __('Общие вопросы') + ':'
-				div: a(href='mailto:info@studioshoo.com') info@studioshoo.com
+				div= __('Москва, Россия')
+				div +7 985 187 13 41
 
 			.column.contacts
+				div= __('Общие вопросы') + ':'
+				div: a(href='mailto:info@studioshoo.com') info@studioshoo.com
+				br
 				div= __('Работа и стажировка') + ':'
 				div: a(href='mailto:hr@studioshoo.com') hr@studioshoo.com
+
+			.column.contacts
+				div= __('Подрядчики') + ':'
+				div: a(href='mailto:supply@studioshoo.com') supply@studioshoo.com
 				br
 				div PR: #[a(href='mailto:pr@studioshoo.com') pr@studioshoo.com]
 
 			.column.copy
 				div!='&copy; STUDIO SHOO' + '<br>' + new Date().getFullYear() + '<br><br>' + __('Все права защищены.')
-
