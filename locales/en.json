@@ -103,5 +103,9 @@
 	"award": "Award",
 	"publication": "Publication",
 	"Ереван, Армения": "Yerevan, Armenia",
-	"Москва, Россия": "Moscow, Russia"
+	"Москва, Россия": "Moscow, Russia",
+	"designers_architects": {
+		"one": "Designers and Architects",
+		"other": "Designers and Architects"
+	}
 }

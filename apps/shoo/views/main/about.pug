@@ -112,13 +112,17 @@ block content
 					.column_title= __('Команда')
 					.column_body.list
 						- var peoples_types = static_types.peoples_types.map(function(p_type) { return {p_type: p_type, peoples: peoples.filter(function(people) { return people.type == p_type })} })
+
+						- peoples_types = peoples_types.filter(function(p_type) { return !/designer|architect/.test(p_type.p_type) })
+						- var designers_architects = peoples.filter(function(people) { return /designer|architect/.test(people.type) })
+						- peoples_types.splice(1, 0, {'p_type': 'designers_architects', 'peoples': designers_architects})
+
 						each p_type in peoples_types
 							if p_type.peoples.length > 0
 								.list_item
 									.people_type= __n(p_type.p_type, p_type.peoples.length) + ':'
 									each people in p_type.peoples
-										if p_type.p_type == people.type
-											.people_name= people.i18n.name.get(locale)
+										.people_name= people.i18n.name.get(locale)
 
 			if vacancies.length
 				.column_item.vacancies
