@@ -95,9 +95,13 @@ block content
 
 			if our_team.length
 				.column_item.our_team
-					.column_s_title= __('Наша команда')
+					.column_title= __('Наша команда')
 					.column_body.text!= our_team
 
+			if vacancies.length
+				.column_item.vacancies
+					.column_s_title= __('Вакансии')
+					.column_body!= vacancies
 
 	.content_section.x1
 		a.anchor#vacancies
@@ -116,8 +120,4 @@ block content
 										if p_type.p_type == people.type
 											.people_name= people.i18n.name.get(locale)
 
-			if vacancies.length
-				.column_item.vacancies
-					.column_title= __('Вакансии')
-					.column_body!= vacancies
 
