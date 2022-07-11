@@ -7,21 +7,21 @@
 
 	"peoples_types": [
 		"art_director",
-		"architect",
-		"photographer",
+		"project_manager",
 		"lead_designer",
 		"designer",
 		"junior_designer",
-		"project_manager",
+		"architect",
+		"junior_architect",
+		"graphic_designer",
 		"3d",
 		"3d_designer",
-		"junior_architect",
+		"procurement_manager",
 		"stylist",
 		"photographer_stylist",
-		"producer",
-		"graphic_designer",
+		"photographer",
 		"videographer",
-		"procurement_manager",
-		"pr_development_manager"
+		"producer",
+		"pr_manager"
 	]
 }
