@@ -62,7 +62,8 @@ module.exports = function(Model) {
 			if (!project || err) return next(err);
 
 			var images = project.images.reduce(function(prev, curr) {
-				if (prev.length && curr.gallery == prev[prev.length - 1].every(function(item) { return item.gallery && item.size == curr.size })) {
+				if (prev.length && curr.gallery == prev[prev.length - 1][0].gallery) {
+				// if (prev.length && curr.gallery == prev[prev.length - 1].every(function(item) { return item.gallery && item.size == curr.size })) {
 					prev[prev.length - 1].push(curr);
 				} else {
 					prev.push([curr]);
@@ -71,6 +72,8 @@ module.exports = function(Model) {
 				return prev;
 			}, []).reduce(function(prev, curr) {
 				if (curr.some(function(item) { return item.gallery == true; }) && curr.length > 1) {
+				// if (curr.every(function(item) { return item.gallery && item.size == curr.size }) && curr.length > 1) {
+
 					return prev.concat([curr]);
 				} else {
 					return prev.concat(curr);
