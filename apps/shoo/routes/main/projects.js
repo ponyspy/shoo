@@ -62,7 +62,7 @@ module.exports = function(Model) {
 			if (!project || err) return next(err);
 
 			var images = project.images.reduce(function(prev, curr) {
-				if (prev.length && curr.gallery == prev[prev.length - 1][0].gallery) {
+				if (prev.length && curr.gallery == prev[prev.length - 1].every(function(item) { return item.gallery && item.size == curr.size })) {
 					prev[prev.length - 1].push(curr);
 				} else {
 					prev.push([curr]);
