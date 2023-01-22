@@ -27,9 +27,9 @@ block content
 				.column_body
 					div= __('Ереван, Армения')
 					div +374 55 664 651
-					br
-					div= __('Москва, Россия')
-					div +7 985 187 13 41
+					//- br
+					//- div= __('Москва, Россия')
+					//- div +7 985 187 13 41
 					br
 					div= __('Общие вопросы') + ':'
 					div: a(href='mailto:info@studioshoo.com') info@studioshoo.com
@@ -40,18 +40,21 @@ block content
 					div= __('Подрядчики') + ':'
 					div: a(href='mailto:supply@studioshoo.com') supply@studioshoo.com
 					br
-					div PR: #[a(href='mailto:pr@studioshoo.com') pr@studioshoo.com]
+					//- div PR: #[a(href='mailto:pr@studioshoo.com') pr@studioshoo.com]
+					div PR:
+					div #[a(href='mailto:pr@studioshoo.com') pr@studioshoo.com]
+					div #[a(href='mailto:hello@studioshoo.com') hello@studioshoo.com]
 
 			.column_item.social
 				.column_title.none &nbsp;
 				.column_body
-					a.item.link(href='https://www.facebook.com/studioshoo', rel='nofollow noopener', target='_blank'): span Facebook*
-					a.item.link(href='https://www.instagram.com/studio_shoo', rel='nofollow noopener', target='_blank'): span Instagram*
+					a.item.link(href='https://www.facebook.com/studioshoo', rel='nofollow noopener', target='_blank'): span Facebook
+					a.item.link(href='https://www.instagram.com/studio_shoo', rel='nofollow noopener', target='_blank'): span Instagram
 					a.item.link(href='https://www.pinterest.ru/STUDIO_SHOO/_saved', rel='nofollow noopener', target='_blank'): span Pinterest
 					a.item.link(href='https://www.behance.net/shushu14051c2d', rel='nofollow noopener', target='_blank'): span Behance
-					br
-					br
-					small= __('*запрещен в РФ, Meta Platforms Inc. признана экстремистской организацией на территории РФ')
+					//- br
+					//- br
+					//- small= __('*запрещен в РФ, Meta Platforms Inc. признана экстремистской организацией на территории РФ')
 
 
 	.content_section.x2

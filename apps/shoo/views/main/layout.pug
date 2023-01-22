@@ -61,20 +61,20 @@ html(lang=locale)
 
 		.footer_block
 			.column.s_links
-				a(href='https://www.facebook.com/studioshoo', rel='nofollow noopener', target='_blank'): span Facebook*
-				a(href='https://www.instagram.com/studio_shoo', rel='nofollow noopener', target='_blank'): span Instagram*
+				a(href='https://www.facebook.com/studioshoo', rel='nofollow noopener', target='_blank'): span Facebook
+				a(href='https://www.instagram.com/studio_shoo', rel='nofollow noopener', target='_blank'): span Instagram
 				a(href='https://www.pinterest.ru/STUDIO_SHOO/_saved', rel='nofollow noopener', target='_blank'): span Pinterest
 				a(href='https://www.behance.net/shushu14051c2d', rel='nofollow noopener', target='_blank'): span Behance
 
-			.column.spoiler
+			//- .column.spoiler
 				small= __('*запрещен в РФ, Meta Platforms Inc. признана экстремистской организацией на территории РФ')
 
 			.column.contacts
 				div= __('Ереван, Армения')
 				div +374 55 664 651
-				br
-				div= __('Москва, Россия')
-				div +7 985 187 13 41
+				//- br
+				//- div= __('Москва, Россия')
+				//- div +7 985 187 13 41
 
 			.column.contacts
 				div= __('Общие вопросы') + ':'
@@ -87,7 +87,10 @@ html(lang=locale)
 				div= __('Подрядчики') + ':'
 				div: a(href='mailto:supply@studioshoo.com') supply@studioshoo.com
 				br
-				div PR: #[a(href='mailto:pr@studioshoo.com') pr@studioshoo.com]
+				//- div PR: #[a(href='mailto:pr@studioshoo.com') pr@studioshoo.com]
+				div PR:
+				div #[a(href='mailto:pr@studioshoo.com') pr@studioshoo.com]
+				div #[a(href='mailto:hello@studioshoo.com') hello@studioshoo.com]
 
 			.column.copy
 				div!='&copy; STUDIO SHOO' + '<br>' + new Date().getFullYear() + '<br><br>' + __('Все права защищены.')
