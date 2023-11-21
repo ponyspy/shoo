@@ -6,6 +6,7 @@
 	],
 
 	"peoples_types": [
+		"founder_designer",
 		"art_director",
 		"project_manager",
 		"lead_designer",

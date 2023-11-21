@@ -45,6 +45,10 @@
 		"one": "Art director",
 		"other": "Art directors"
 	},
+	"founder_designer": {
+		"one": "Founder and Designer",
+		"other": "Founder and Designers"
+	},
 	"lead_designer": {
 		"one": "Lead designer",
 		"other": "Lead designers"
