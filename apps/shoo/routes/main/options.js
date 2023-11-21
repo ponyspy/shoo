@@ -48,8 +48,9 @@ module.exports = function(Model, Params) {
 			var sm_stream = new sitemap.SitemapStream({ hostname: 'https://' + req.hostname });
 			var links = [
 				{ url: '/' },
-				{ url: '/news' },
-				{ url: '/publications' },
+				// { url: '/news' },
+				// { url: '/publications' },
+				{ url: '/projects' },
 				{ url: '/about' }
 			];
 

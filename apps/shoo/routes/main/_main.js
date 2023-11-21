@@ -21,16 +21,16 @@ module.exports = (function() {
 	router.route('/about')
 		.get(main.index.about);
 
-	router.route('/news')
-		.get(main.news.index)
-		.post(main.news.get_news);
+	// router.route('/news')
+	// 	.get(main.news.index)
+	// 	.post(main.news.get_news);
 
-	router.route('/news/:news_id')
-		.get(main.news.news);
+	// router.route('/news/:news_id')
+	// 	.get(main.news.news);
 
-	router.route('/publications')
-		.get(main.publications.index)
-		.post(main.publications.get_publications);
+	// router.route('/publications')
+	// 	.get(main.publications.index)
+	// 	.post(main.publications.get_publications);
 
 	router.route('/projects')
 		.get(main.projects.index);

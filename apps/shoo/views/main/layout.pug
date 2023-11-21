@@ -43,7 +43,7 @@ html(lang=locale)
 				//- a.menu_item(href='/about#vacancies')= __('Вакансии')
 				if (session && session.user_id)
 					a.menu_item(href='/publications')= __('Публикации')
-				a.menu_item(href='/news')= __('Новости')
+					a.menu_item(href='/news')= __('Новости')
 				br
 
 				if (session && session.user_id)
