@@ -22,6 +22,7 @@
 		"photographer",
 		"videographer",
 		"producer",
-		"pr_manager"
+		"pr_manager",
+		"pr_development_manager"
 	]
 }
