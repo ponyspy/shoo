@@ -117,9 +117,9 @@ block content
 					.column_body.list
 						- var peoples_types = static_types.peoples_types.map(function(p_type) { return {p_type: p_type, peoples: peoples.filter(function(people) { return people.type == p_type })} })
 
-						- peoples_types = peoples_types.filter(function(p_type) { return !/designer|architect/.test(p_type.p_type) })
-						- var designers_architects = peoples.filter(function(people) { return /designer|architect/.test(people.type) })
-						- peoples_types.splice(1, 0, {'p_type': 'designers_architects', 'peoples': designers_architects})
+						//- - peoples_types = peoples_types.filter(function(p_type) { return !/designer|architect/.test(p_type.p_type) })
+						//- - var designers_architects = peoples.filter(function(people) { return /designer|architect/.test(people.type) })
+						//- - peoples_types.splice(1, 0, {'p_type': 'designers_architects', 'peoples': designers_architects})
 
 						each p_type in peoples_types
 							if p_type.peoples.length > 0
