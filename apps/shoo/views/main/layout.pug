@@ -46,10 +46,11 @@ html(lang=locale)
 				a.menu_item(href='/news')= __('Новости')
 				br
 
-				.locale_block
-					a.menu_item(href='/lang/en', class=(locale == 'en' ? 'active' : '')) Eng
-					a.menu_item(href='/lang/ru', class=(locale == 'ru' ? 'active' : '')) Rus
-					br
+				if (session && session.user_id)
+					.locale_block
+						a.menu_item(href='/lang/en', class=(locale == 'en' ? 'active' : '')) Eng
+						a.menu_item(href='/lang/ru', class=(locale == 'ru' ? 'active' : '')) Rus
+						br
 
 				a.search_open(href='#')= __('Поиск')
 
