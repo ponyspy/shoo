@@ -97,6 +97,10 @@
 		"one": "PR & development manager",
 		"other": "PR & development managers"
 	},
+	"pr_manager": {
+		"one": "PR manager",
+		"other": "PR managers"
+	},
 	"*запрещен в РФ, Meta Platforms Inc. признана экстремистской организацией на территории РФ": "*is banned in Russia, as a part of Meta Platforms Inc. “extremist organisation”",
 	"Подрядчики": "Suppliers",
 	"Еще публикации": "More publications",
